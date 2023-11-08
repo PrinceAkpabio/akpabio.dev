@@ -2,6 +2,7 @@
 
 import React from "react";
 import styles from "@/styles/page-wrapper.module.scss";
+import Header from "./header";
 
 type PageContextProps = {
   children: React.ReactNode;
@@ -12,7 +13,7 @@ export default function PageWrapper({ children }: PageContextProps) {
     <div className={styles.pageWrapperBackground}>
       <div className={styles.pageWrapperTop}>
         <div className={styles.pageWrapperTopLeftGrid}></div>
-        <div className={styles.pageWrapperTopPadding}></div>
+        <Header></Header>
         <div className={styles.pageWrapperTopRightGrid}></div>
       </div>
 

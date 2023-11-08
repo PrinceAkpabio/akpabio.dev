@@ -1,0 +1,74 @@
+.pageHeaderWrapper {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  height: 80px;
+  padding: 40px;
+  justify-content: space-between;
+  align-items: center;
+  width: calc(100% - 160px);
+  border-bottom: 1px solid var(--black-75, #222);
+}
+
+.headerSection {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.logoName {
+  color: var(--black-0, #999);
+  font-family: Fixedsys 62;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+}
+.status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.statusText {
+  color: var(--black-25, #666);
+  font-family: Fixedsys 62;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+}
+.statusIconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .statusIcon {
+    width: 9.75px;
+    height: 9.75px;
+    border-radius: 50%;
+    background-color: #00ff00;
+  }
+}
+
+.languageText {
+  color: var(--black-0, #999);
+  font-family: Fixedsys 62;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.line {
+  width: 48px;
+  height: 1px;
+  stroke-width: 1px;
+  stroke: var(--black-25, #666);
+  background-color: #666666;
+}
