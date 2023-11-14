@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, MouseEvent } from "react";
 import styles from "@/styles/page-wrapper.module.scss";
 import loadingStyles from "@/styles/loading.module.scss";
-import { motion } from "framer-motion";
+import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import useMousePosition from "@/utils/useMousePosition";
 import usePageGrid from "@/utils/usePageGrid";
 import LoadingTextAnimation from "./loading-text-animation";
@@ -12,8 +12,23 @@ import HundredPercentLoadingTextAnimation from "./hundredpercent-loading-animati
 export default function PageLoaderElement() {
   const [done, setDone] = useState(false);
   const { x, y } = useMousePosition();
+  let mouseX = useMotionValue(0);
+  let mouseY = useMotionValue(0);
   const grid = usePageGrid("loadingGrid");
   const size = 40;
+
+  function handleMouseMove({
+    currentTarget,
+    clientX,
+    clientY,
+  }: MouseEvent<HTMLDivElement>) {
+    let { left, top } = currentTarget?.getBoundingClientRect();
+
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+    //  mouseX.set((x as number) - left);
+    //  mouseY.set((y as number) - top);
+  }
 
   useEffect(() => {
     setTimeout(() => {
@@ -31,7 +46,23 @@ export default function PageLoaderElement() {
       <div className={styles.pageWrapperMain}>
         <div className={styles.pageWrapperLeftPadding}></div>
 
-        <div className={loadingStyles.pageLoaderMain}>
+        <div
+          className={loadingStyles.pageLoaderMain}
+          onMouseMoveCapture={handleMouseMove}
+        >
+          <motion.div
+            className={loadingStyles.flashlight}
+            style={{
+              background: useMotionTemplate`
+            radial-gradient(
+              350px circle at ${mouseX}px ${mouseY}px,
+              rgba(255, 255, 255, 0.1),
+              transparent 70%
+            )
+          `,
+            }}
+          ></motion.div>
+
           <motion.div
             id="loadingGrid"
             className={loadingStyles.mask}

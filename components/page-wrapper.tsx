@@ -13,15 +13,17 @@ export default function PageWrapper({ children }: PageContextProps) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => {
+    let loadingTimer = setTimeout(() => {
       setIsLoading(false);
     }, 15200);
+
+    return () => clearTimeout(loadingTimer);
   }, []);
 
   return (
     <>
-      {/* <Loading></Loading> */}
-      {isLoading ? (
+      <Loading></Loading>
+      {/* {isLoading ? (
         <Loading></Loading>
       ) : (
         <div className={styles.pageWrapperBackground}>
@@ -45,7 +47,7 @@ export default function PageWrapper({ children }: PageContextProps) {
             <div className={styles.pageWrapperBottomRightGrid}></div>
           </div>
         </div>
-      )}
+      )} */}
     </>
   );
 }
