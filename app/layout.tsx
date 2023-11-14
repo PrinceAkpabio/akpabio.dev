@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import PageWrapper from "@/components/page-wrapper";
 
-const inter = Inter({ subsets: ["latin"] });
+const fixedSys62 = localFont({ src: "./Fixedsys62.ttf" });
 
 export const metadata: Metadata = {
   title: "Prince Akpabio",
@@ -18,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={fixedSys62.className}>
         <PageWrapper>{children}</PageWrapper>
       </body>
     </html>
