@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import loadingStyles from "@/styles/loading.module.scss";
+import { motion } from "framer-motion";
 
 export default function HundredPercentLoadingTextAnimation() {
   const [count, setCount] = useState(0);
@@ -11,7 +12,7 @@ export default function HundredPercentLoadingTextAnimation() {
     if (count < 100) {
       startCountUp = setInterval(() => {
         setCount(count + 1);
-      }, 120);
+      }, 20);
     } else {
       setCount(100);
     }
@@ -20,7 +21,8 @@ export default function HundredPercentLoadingTextAnimation() {
   }, [count]);
 
   return (
-    <div
+    <motion.div
+      // transition={{ type: "tween", ease: "easeInOut" }}
       className={
         count === 100
           ? loadingStyles.loadedNumberCount
@@ -28,6 +30,6 @@ export default function HundredPercentLoadingTextAnimation() {
       }
     >
       {count}%
-    </div>
+    </motion.div>
   );
 }

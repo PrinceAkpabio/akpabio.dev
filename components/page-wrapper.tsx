@@ -15,7 +15,7 @@ export default function PageWrapper({ children }: PageContextProps) {
   useEffect(() => {
     let loadingTimer = setTimeout(() => {
       setIsLoading(false);
-    }, 15200);
+    }, 4200);
 
     return () => clearTimeout(loadingTimer);
   }, []);

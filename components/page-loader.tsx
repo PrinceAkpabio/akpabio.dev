@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, MouseEvent } from "react";
+import React, { useState, useEffect, MouseEvent, useRef } from "react";
 import styles from "@/styles/page-wrapper.module.scss";
 import loadingStyles from "@/styles/loading.module.scss";
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
@@ -26,8 +26,6 @@ export default function PageLoaderElement() {
 
     mouseX.set(clientX - left);
     mouseY.set(clientY - top);
-    //  mouseX.set((x as number) - left);
-    //  mouseY.set((y as number) - top);
   }
 
   useEffect(() => {
@@ -37,6 +35,18 @@ export default function PageLoaderElement() {
   }, [done]);
   return (
     <div className={styles.pageWrapperBackground}>
+      <motion.div
+        id="loadingGrid"
+        className={loadingStyles.mask}
+        animate={{
+          WebkitMaskPosition: `${(x as number) - (size + 60)}px ${
+            (y as number) - (size + 60)
+          }px`,
+          WebkitMaskSize: `${size}px`,
+        }}
+        transition={{ type: "tween", ease: "backOut", duration: 0.5 }}
+      ></motion.div>
+
       <div className={styles.pageWrapperTop}>
         <div className={styles.pageWrapperTopLeftGrid}></div>
         <div className={styles.pageWrapperTopPadding}></div>
@@ -53,27 +63,15 @@ export default function PageLoaderElement() {
           <motion.div
             className={loadingStyles.flashlight}
             style={{
-              background: useMotionTemplate`
-            radial-gradient(
-              350px circle at ${mouseX}px ${mouseY}px,
-              rgba(255, 255, 255, 0.1),
-              transparent 70%
-            )
-          `,
+              background: useMotionTemplate`radial-gradient(
+            400px circle at ${mouseX}px ${mouseY}px,
+            transparent,
+            #111 90%
+          )`,
             }}
           ></motion.div>
 
-          <motion.div
-            id="loadingGrid"
-            className={loadingStyles.mask}
-            animate={{
-              WebkitMaskPosition: `${(x as number) - (size + 60)}px ${
-                (y as number) - (size + 60)
-              }px`,
-              WebkitMaskSize: `${size}px`,
-            }}
-            transition={{ type: "tween", ease: "backOut", duration: 0.5 }}
-          >
+          <motion.div className={loadingStyles.gridWrapper}>
             {grid.map((row, idx: number) => (
               <div key={idx} className={loadingStyles.row}>
                 {row.columns.map((cell, idxx: number) => (
