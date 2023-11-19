@@ -23,6 +23,9 @@ const usePageGrid = (
   const [isGridNull, setIsGridNull] = useState(true);
 
   const updatePageGrid = (e: any) => {
+    if (gridElement === null) {
+      gridElement = document.getElementById(gridId) as HTMLElement;
+    }
     let newGrid = new Array(
       Math.ceil(gridElement?.offsetHeight / cellHeight)
     ).fill({
@@ -30,7 +33,6 @@ const usePageGrid = (
         null
       ),
     });
-
     setGrid(newGrid);
   };
 

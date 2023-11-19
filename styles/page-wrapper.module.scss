@@ -33,7 +33,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: calc(100% - 160px);
+  width: calc(100% - 128px);
   align-self: stretch;
   height: 100%;
 }
@@ -42,8 +42,8 @@
   position: relative;
   box-sizing: border-box;
   display: flex;
-  width: 80px;
-  height: 80px;
+  width: 64px;
+  height: 64px;
   padding: 40px;
   flex-direction: column;
   justify-content: center;
@@ -56,8 +56,8 @@
   position: relative;
   box-sizing: border-box;
   display: flex;
-  width: 80px;
-  height: 80px;
+  width: 64px;
+  height: 64px;
   padding: 40px;
   flex-direction: column;
   justify-content: center;
@@ -70,8 +70,8 @@
   position: relative;
   box-sizing: border-box;
   display: flex;
-  width: 80px;
-  height: 80px;
+  width: 64px;
+  height: 64px;
   padding: 40px;
   flex-direction: column;
   justify-content: center;
@@ -83,8 +83,8 @@
   position: relative;
   box-sizing: border-box;
   display: flex;
-  width: 80px;
-  height: 80px;
+  width: 64px;
+  height: 64px;
   padding: 40px;
   flex-direction: column;
   justify-content: center;
@@ -96,7 +96,7 @@
 .pageWrapperRightPadding {
   position: relative;
   display: flex;
-  width: 80px;
+  width: 64px;
   height: 100%;
   padding: 40px;
   flex-direction: column;
@@ -112,7 +112,7 @@
 .pageWrapperLeftPadding {
   position: relative;
   display: flex;
-  width: 80px;
+  width: 64px;
   height: 100%;
   padding: 40px;
   flex-direction: column;
@@ -128,22 +128,22 @@
   position: relative;
   box-sizing: border-box;
   display: flex;
-  height: 80px;
+  height: 64px;
   padding: 40px;
   justify-content: space-between;
   align-items: center;
-  width: calc(100% - 160px);
+  width: calc(100% - 128px);
   border-bottom: 1px solid var(--black-75, #222);
 }
 .pageWrapperBottomPadding {
   position: relative;
   box-sizing: border-box;
   display: flex;
-  height: 80px;
+  height: 64px;
   padding: 40px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: calc(100% - 160px);
+  width: calc(100% - 128px);
   border-top: 1px solid var(--black-75, #222);
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, MouseEvent, useRef } from "react";
+import React, { useState, useEffect, MouseEvent } from "react";
 import styles from "@/styles/page-wrapper.module.scss";
 import loadingStyles from "@/styles/loading.module.scss";
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
@@ -36,7 +36,6 @@ export default function PageLoaderElement() {
   return (
     <div className={styles.pageWrapperBackground}>
       <motion.div
-        id="loadingGrid"
         className={loadingStyles.mask}
         animate={{
           WebkitMaskPosition: `${(x as number) - (size + 60)}px ${
@@ -57,6 +56,7 @@ export default function PageLoaderElement() {
         <div className={styles.pageWrapperLeftPadding}></div>
 
         <div
+          id="loadingGrid"
           className={loadingStyles.pageLoaderMain}
           onMouseMoveCapture={handleMouseMove}
         >
