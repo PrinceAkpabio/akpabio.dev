@@ -34,7 +34,7 @@ export default function PageLoaderElement() {
     }, 1500);
   }, [done]);
   return (
-    <div className={styles.pageWrapperBackground}>
+    <div className={styles.pageLoadingWrapperBackground}>
       <motion.div
         className={loadingStyles.mask}
         animate={{
@@ -52,7 +52,7 @@ export default function PageLoaderElement() {
         <div className={styles.pageWrapperTopRightGrid}></div>
       </div>
 
-      <div className={styles.pageWrapperMain}>
+      <div className={styles.pageLoadingWrapperMain}>
         <div className={styles.pageWrapperLeftPadding}></div>
 
         <div
