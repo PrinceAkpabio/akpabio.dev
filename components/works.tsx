@@ -14,7 +14,7 @@ import ProjectImage8 from "@/public/project-08.jpg";
 
 export default function Works() {
   return (
-    <div className={styles.worksSection}>
+    <div id="works-section" className={styles.worksSection}>
       <div className={styles.sectionTitle}>
         <p className={styles.title}> Works</p>
       </div>

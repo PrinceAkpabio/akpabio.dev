@@ -6,7 +6,7 @@ import PageWrapper from "@/components/page-wrapper";
 const fixedSys62 = localFont({ src: "./Fixedsys62.ttf" });
 
 export const metadata: Metadata = {
-  title: "Prince Akpabio",
+  title: "Prince Akpabio — Frontend Developer",
   description:
     "Prince is a frontend software developer with 5 years of experience.",
 };

@@ -6,8 +6,7 @@ import loadingStyles from "@/styles/loading.module.scss";
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import useMousePosition from "@/utils/useMousePosition";
 import usePageGrid from "@/utils/usePageGrid";
-import Image from "next/image";
-import Scroll from "../public/scroll.svg";
+import Link from "next/link";
 
 export default function Contact() {
   const { x, y } = useMousePosition();
@@ -67,7 +66,7 @@ export default function Contact() {
         ))}
       </motion.div>
 
-      <div className={styles.contact}>
+      <div id="contact-section" className={styles.contact}>
         <div className={styles.left}>
           <p className={styles.contactTitle}>CONTACT</p>
           <p className={styles.contactMessage}>
@@ -85,12 +84,33 @@ export default function Contact() {
 
       <div className={styles.contactBottom}>
         <div className={styles.left}>
-          <p className={styles.designTag}>Designed by James Chimdindu</p>
+          <p className={styles.designTag}>
+            {" "}
+            Designed by{" "}
+            <Link
+              className={styles.link}
+              href="https://linkedin.com/in/jameschimdindu"
+              target="_blank"
+            >
+              James Chimdindu
+            </Link>
+          </p>
         </div>
         <div className={styles.right}>
-          <div className={styles.menuItem}>Works</div>
-          <div className={styles.menuItem}>Contact</div>
-          <div className={styles.menuItem}>RESUMé</div>
+          <Link href="#works-section" className={styles.menuItem}>
+            Works
+          </Link>
+          <Link href="#contact-section" className={styles.menuItem}>
+            Contact
+          </Link>
+          <Link
+            href="/prince-akpabio-cv.pdf"
+            className={styles.menuItem}
+            download="prince-akpabio-cv"
+            target="_blank"
+          >
+            RESUMé
+          </Link>
         </div>
       </div>
     </div>

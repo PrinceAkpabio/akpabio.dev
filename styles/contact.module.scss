@@ -111,6 +111,10 @@
         line-height: 24px; /* 150% */
         text-transform: lowercase;
         z-index: 7;
+
+        .link {
+          color: var(--black-0, #999);
+        }
       }
     }
 
@@ -131,6 +135,7 @@
         line-height: 24px; /* 150% */
         letter-spacing: 0.64px;
         text-transform: lowercase;
+        text-decoration: none;
         z-index: 7;
       }
     }
