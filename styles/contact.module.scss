@@ -1,8 +1,8 @@
 .contactSection {
   position: relative;
   display: flex;
-  padding: 40px;
-  gap: 40px;
+  padding: 2.5rem;
+  gap: 2.5rem;
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
@@ -12,6 +12,10 @@
   box-sizing: border-box;
   // cursor: none;
 
+  @media screen and (max-width: 425px) {
+    padding: 1.5rem;
+  }
+
   .contact {
     display: flex;
     justify-content: space-between;
@@ -20,20 +24,20 @@
 
     .left {
       display: flex;
-      max-width: 400px;
+      max-width: 25rem;
       flex-direction: column;
       align-items: flex-start;
-      gap: 24px;
+      gap: 1.5rem;
       flex: 1 0 0;
 
       .contactTitle {
         color: var(--black-0, #999);
         font-family: Fixedsys 62;
-        font-size: 16px;
+        font-size: 1rem;
         font-style: normal;
         font-weight: 500;
-        line-height: 24px; /* 150% */
-        letter-spacing: 0.64px;
+        line-height: 1.5rem; /* 150% */
+        letter-spacing: 0.04rem;
         text-transform: lowercase;
         z-index: 7;
       }
@@ -41,10 +45,10 @@
       .contactMessage {
         color: var(--black-0, #999);
         font-family: Fixedsys 62;
-        font-size: 16px;
+        font-size: 1rem;
         font-style: normal;
         font-weight: 500;
-        line-height: 24px; /* 150% */
+        line-height: 1.5rem; /* 150% */
         text-transform: lowercase;
         z-index: 7;
       }
@@ -52,11 +56,15 @@
 
     .right {
       display: flex;
-      max-width: 400px;
+      max-width: 25rem;
       justify-content: flex-end;
       align-items: flex-start;
-      gap: 24px;
+      gap: 1.5rem;
       flex: 1 0 0;
+
+      @media screen and (max-width: 425px) {
+        display: none;
+      }
     }
   }
 
@@ -66,7 +74,7 @@
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-end;
-    gap: -40px;
+    gap: -2.5rem;
     align-self: stretch;
     box-sizing: border-box;
 
@@ -74,7 +82,7 @@
       color: var(--primary, #0f0);
       text-align: right;
       font-family: Fixedsys 62;
-      font-size: 120px;
+      font-size: 7.5rem;
       font-style: normal;
       font-weight: 500;
       line-height: normal;
@@ -82,7 +90,12 @@
       z-index: 7;
 
       &:nth-child(1) {
-        margin-bottom: -32px;
+        margin-bottom: -2rem;
+      }
+
+      @media screen and (max-width: 425px) {
+        font-size: 4rem;
+        line-height: 6rem;
       }
     }
   }
@@ -95,45 +108,49 @@
 
     .left {
       display: flex;
-      max-width: 400px;
+      max-width: 25rem;
       flex-direction: column;
       align-items: flex-start;
-      gap: 24px;
+      gap: 1.5rem;
       flex: 1 0 0;
 
       .designTag {
         color: var(--black-0, #999);
         text-align: right;
         font-family: Fixedsys 62;
-        font-size: 16px;
+        font-size: 1rem;
         font-style: normal;
         font-weight: 500;
-        line-height: 24px; /* 150% */
+        line-height: 1.5rem; /* 150% */
         text-transform: lowercase;
         z-index: 7;
 
         .link {
           color: var(--black-0, #999);
         }
+
+        @media screen and (max-width: 425px) {
+          display: none;
+        }
       }
     }
 
     .right {
       display: flex;
-      max-width: 400px;
+      max-width: 25rem;
       justify-content: flex-end;
       align-items: flex-start;
-      gap: 24px;
+      gap: 1.5rem;
       flex: 1 0 0;
 
       .menuItem {
         color: var(--black-0, #999);
         font-family: Fixedsys 62;
-        font-size: 16px;
+        font-size: 1rem;
         font-style: normal;
         font-weight: 500;
-        line-height: 24px; /* 150% */
-        letter-spacing: 0.64px;
+        line-height: 1.5rem; /* 150% */
+        letter-spacing: 0.04rem;
         text-transform: lowercase;
         text-decoration: none;
         z-index: 7;

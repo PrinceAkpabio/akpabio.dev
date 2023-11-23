@@ -1,29 +1,33 @@
 .worksSection {
   display: flex;
-  padding: 40px;
+  padding: 2.5rem;
   flex-direction: column;
   align-items: flex-start;
-  gap: 40px;
+  gap: 2.5rem;
   flex: 1 0 0;
   align-self: stretch;
   box-sizing: border-box;
 
+  @media screen and (max-width: 425px) {
+    padding: 1.5rem;
+  }
+
   .sectionTitle {
     display: flex;
-    max-width: 400px;
+    max-width: 25rem;
     flex-direction: column;
     align-items: flex-start;
-    gap: 24px;
+    gap: 1.5rem;
     align-self: stretch;
 
     .title {
       color: var(--black-0, #999);
       font-family: Fixedsys 62;
-      font-size: 16px;
+      font-size: 1rem;
       font-style: normal;
       font-weight: 500;
-      line-height: 24px; /* 150% */
-      letter-spacing: 0.64px;
+      line-height: 1.5rem; /* 150% */
+      letter-spacing: 0.04rem;
       text-transform: lowercase;
     }
   }
@@ -36,11 +40,17 @@
     width: 100%;
     box-sizing: border-box;
 
+    @media screen and (max-width: 425px) {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
     .workItem {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 16px;
+      gap: 1rem;
       flex: 1 0 0;
       margin: 0;
       width: 100%;
@@ -58,10 +68,10 @@
         align-self: stretch;
         color: var(--black-0, #999);
         font-family: Fixedsys 62;
-        font-size: 16px;
+        font-size: 1rem;
         font-style: normal;
         font-weight: 500;
-        line-height: 24px; /* 150% */
+        line-height: 1.5rem; /* 150% */
         text-transform: lowercase;
       }
 

@@ -51,7 +51,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: calc(100% - 128px);
+  width: calc(100% - 8rem);
   align-self: stretch;
   height: auto;
 }
@@ -60,108 +60,148 @@
   position: relative;
   box-sizing: border-box;
   display: flex;
-  width: 64px;
-  height: 64px;
-  padding: 40px;
+  width: 4rem;
+  height: 4rem;
+  padding: 2.5rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid var(--black-75, #222);
-  border-left: 1px solid var(--black-75, #222);
+  border-bottom: 0.063rem solid var(--black-75, #222);
+  border-left: 0.063rem solid var(--black-75, #222);
+  @media screen and (max-width: 425px) {
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 1.5rem;
+  }
 }
 
 .pageWrapperBottomRightGrid {
   position: relative;
   box-sizing: border-box;
   display: flex;
-  width: 64px;
-  height: 64px;
-  padding: 40px;
+  width: 4rem;
+  height: 4rem;
+  padding: 2.5rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-top: 1px solid var(--black-75, #222);
-  border-left: 1px solid var(--black-75, #222);
+  border-top: 0.063rem solid var(--black-75, #222);
+  border-left: 0.063rem solid var(--black-75, #222);
+  @media screen and (max-width: 425px) {
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 1.5rem;
+  }
 }
 
 .pageWrapperTopLeftGrid {
   position: relative;
   box-sizing: border-box;
   display: flex;
-  width: 64px;
-  height: 64px;
-  padding: 40px;
+  width: 4rem;
+  height: 4rem;
+  padding: 2.5rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-right: 1px solid var(--black-75, #222);
-  border-bottom: 1px solid var(--black-75, #222);
+  border-right: 0.063rem solid var(--black-75, #222);
+  border-bottom: 0.063rem solid var(--black-75, #222);
+
+  @media screen and (max-width: 425px) {
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 1.5rem;
+  }
 }
 .pageWrapperBottomLeftGrid {
   position: relative;
   box-sizing: border-box;
   display: flex;
-  width: 64px;
-  height: 64px;
-  padding: 40px;
+  width: 4rem;
+  height: 4rem;
+  padding: 2.5rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-top: 1px solid var(--black-75, #222);
-  border-right: 1px solid var(--black-75, #222);
+  border-top: 0.063rem solid var(--black-75, #222);
+  border-right: 0.063rem solid var(--black-75, #222);
+
+  @media screen and (max-width: 425px) {
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 1.5rem;
+  }
 }
 
 .pageWrapperRightPadding {
   position: relative;
   display: flex;
-  width: 64px;
+  width: 4rem;
   height: auto;
-  padding: 40px;
+  padding: 2.5rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   justify-self: flex-end;
-  gap: 40px;
+  gap: 2.5rem;
   align-self: stretch;
   box-sizing: border-box;
-  border-left: 1px solid var(--black-75, #222);
+  border-left: 0.063rem solid var(--black-75, #222);
 }
 
 .pageWrapperLeftPadding {
   position: relative;
   display: flex;
-  width: 64px;
+  width: 4rem;
   height: auto;
-  padding: 40px;
+  padding: 2.5rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   justify-self: flex-start;
-  gap: 40px;
+  gap: 2.5rem;
   align-self: stretch;
   box-sizing: border-box;
-  border-right: 1px solid var(--black-75, #222);
+  border-right: 0.063rem solid var(--black-75, #222);
+}
+.pageWrapperLeftPadding,
+.pageWrapperRightPadding {
+  @media screen and (max-width: 425px) {
+    width: 2.5rem;
+    padding: 1.5rem;
+  }
 }
 .pageWrapperTopPadding {
   position: relative;
   box-sizing: border-box;
   display: flex;
-  height: 64px;
-  padding: 40px;
+  height: 4rem;
+  padding: 2.5rem;
   justify-content: space-between;
   align-items: center;
-  width: calc(100% - 128px);
-  border-bottom: 1px solid var(--black-75, #222);
+  width: calc(100% - 8rem);
+  border-bottom: 0.063rem solid var(--black-75, #222);
+  @media screen and (max-width: 425px) {
+    height: 2.5rem;
+    padding: 1.5rem;
+  }
 }
 .pageWrapperBottomPadding {
   position: relative;
   box-sizing: border-box;
   display: flex;
-  height: 64px;
-  padding: 40px;
+  height: 4rem;
+  padding: 2.5rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: calc(100% - 128px);
-  border-top: 1px solid var(--black-75, #222);
+  width: calc(100% - 8rem);
+  border-top: 0.063rem solid var(--black-75, #222);
+  @media screen and (max-width: 425px) {
+    height: 2.5rem;
+    padding: 1.5rem;
+  }
+}
+.pageWrapperTopPadding,
+.pageWrapperBottomPadding {
 }

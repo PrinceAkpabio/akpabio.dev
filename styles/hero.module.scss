@@ -1,16 +1,20 @@
 .heroSection {
   position: relative;
   display: flex;
-  padding: 40px;
+  padding: 2.5rem;
   flex-direction: column;
   align-items: flex-start;
   // justify-content: space-between;
   width: 100%;
   align-self: stretch;
   height: 100%;
-  min-height: calc(100vh - 80px);
+  min-height: calc(100vh - 5rem);
   box-sizing: border-box;
   //   cursor: none;
+
+  @media screen and (max-width: 425px) {
+    padding: 1.5rem;
+  }
 
   .introduction {
     display: flex;
@@ -20,19 +24,19 @@
 
     .left {
       display: flex;
-      max-width: 400px;
+      max-width: 25rem;
       flex-direction: column;
       align-items: flex-start;
-      gap: 24px;
+      gap: 1.5rem;
       flex: 1 0 0;
 
       .introText {
         color: var(--black-0, #999);
         font-family: Fixedsys 62;
-        font-size: 16px;
+        font-size: 1rem;
         font-style: normal;
         font-weight: 500;
-        line-height: 24px; /* 150% */
+        line-height: 1.5rem; /* 150% */
         text-transform: lowercase;
         z-index: 7;
       }
@@ -40,11 +44,11 @@
       .hireMeText {
         color: var(--primary, #0f0);
         font-family: Fixedsys 62;
-        font-size: 16px;
+        font-size: 1rem;
         font-style: normal;
         font-weight: 500;
-        line-height: 24px; /* 150% */
-        letter-spacing: 0.64px;
+        line-height: 1.5rem; /* 150% */
+        letter-spacing: 0.04rem;
         text-transform: lowercase;
         z-index: 7;
       }
@@ -52,20 +56,24 @@
 
     .right {
       display: flex;
-      max-width: 400px;
+      max-width: 25rem;
       justify-content: flex-end;
       align-items: flex-start;
-      gap: 24px;
+      gap: 1.5rem;
       flex: 1 0 0;
+
+      @media screen and (max-width: 425px) {
+        display: none;
+      }
 
       .menuItem {
         color: var(--black-0, #999);
         font-family: Fixedsys 62;
-        font-size: 16px;
+        font-size: 1rem;
         font-style: normal;
         font-weight: 500;
-        line-height: 24px; /* 150% */
-        letter-spacing: 0.64px;
+        line-height: 1.5rem; /* 150% */
+        letter-spacing: 0.04rem;
         text-transform: lowercase;
         text-decoration: none;
         z-index: 7;
@@ -79,26 +87,36 @@
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-end;
-    gap: -40px;
+    gap: -2.5rem;
     align-self: stretch;
     box-sizing: border-box;
+
+    @media screen and (max-width: 425px) {
+      align-items: flex-start;
+    }
 
     .name {
       color: var(--black-50, #333);
       text-align: center;
       font-family: Fixedsys 62;
-      font-size: 130px;
+      font-size: 8.125rem;
       font-style: normal;
       font-weight: 500;
       line-height: normal;
       text-transform: lowercase;
       z-index: 7;
+      box-sizing: border-box;
 
       &:nth-child(1) {
-        margin-bottom: -32px;
+        margin-bottom: -2rem;
       }
       &:nth-child(2) {
-        margin-bottom: -26px;
+        margin-bottom: -1.625rem;
+      }
+
+      @media screen and (max-width: 425px) {
+        font-size: 3.5rem;
+        line-height: 5.5rem;
       }
     }
 
@@ -106,13 +124,19 @@
       color: var(--black-25, #666);
       text-align: center;
       font-family: Fixedsys 62;
-      font-size: 130px;
+      font-size: 8.125rem;
       font-style: normal;
       font-weight: 500;
       line-height: normal;
       text-transform: lowercase;
       z-index: 7;
-      margin-bottom: -26px;
+      margin-bottom: -1.625rem;
+      box-sizing: border-box;
+
+      @media screen and (max-width: 425px) {
+        font-size: 3.5rem;
+        line-height: 5.5rem;
+      }
     }
 
     .scrollSvg {
@@ -120,6 +144,10 @@
       z-index: 7;
       top: 80%;
       left: 0%;
+
+      @media screen and (max-width: 425px) {
+        display: none;
+      }
     }
   }
 }
