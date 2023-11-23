@@ -1,3 +1,5 @@
+@import "./_layout";
+
 .contactSection {
   position: relative;
   display: flex;
@@ -12,7 +14,7 @@
   box-sizing: border-box;
   // cursor: none;
 
-  @media screen and (max-width: 425px) {
+  @include for-phone-only {
     padding: 1.5rem;
   }
 
@@ -62,7 +64,7 @@
       gap: 1.5rem;
       flex: 1 0 0;
 
-      @media screen and (max-width: 425px) {
+      @include for-phone-only {
         display: none;
       }
     }
@@ -93,7 +95,7 @@
         margin-bottom: -2rem;
       }
 
-      @media screen and (max-width: 425px) {
+      @include for-phone-only {
         font-size: 4rem;
         line-height: 6rem;
       }
@@ -129,7 +131,7 @@
           color: var(--black-0, #999);
         }
 
-        @media screen and (max-width: 425px) {
+        @include for-phone-only {
           display: none;
         }
       }

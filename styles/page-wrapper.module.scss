@@ -1,3 +1,5 @@
+@import "./_layout";
+
 .pageWrapperBackground {
   position: relative;
   display: flex;
@@ -68,7 +70,7 @@
   align-items: center;
   border-bottom: 0.063rem solid var(--black-75, #222);
   border-left: 0.063rem solid var(--black-75, #222);
-  @media screen and (max-width: 425px) {
+  @include for-phone-only {
     width: 2.5rem;
     height: 2.5rem;
     padding: 1.5rem;
@@ -87,7 +89,7 @@
   align-items: center;
   border-top: 0.063rem solid var(--black-75, #222);
   border-left: 0.063rem solid var(--black-75, #222);
-  @media screen and (max-width: 425px) {
+  @include for-phone-only {
     width: 2.5rem;
     height: 2.5rem;
     padding: 1.5rem;
@@ -107,7 +109,7 @@
   border-right: 0.063rem solid var(--black-75, #222);
   border-bottom: 0.063rem solid var(--black-75, #222);
 
-  @media screen and (max-width: 425px) {
+  @include for-phone-only {
     width: 2.5rem;
     height: 2.5rem;
     padding: 1.5rem;
@@ -126,7 +128,7 @@
   border-top: 0.063rem solid var(--black-75, #222);
   border-right: 0.063rem solid var(--black-75, #222);
 
-  @media screen and (max-width: 425px) {
+  @include for-phone-only {
     width: 2.5rem;
     height: 2.5rem;
     padding: 1.5rem;
@@ -166,7 +168,7 @@
 }
 .pageWrapperLeftPadding,
 .pageWrapperRightPadding {
-  @media screen and (max-width: 425px) {
+  @include for-phone-only {
     width: 2.5rem;
     padding: 1.5rem;
   }
@@ -181,7 +183,7 @@
   align-items: center;
   width: calc(100% - 8rem);
   border-bottom: 0.063rem solid var(--black-75, #222);
-  @media screen and (max-width: 425px) {
+  @include for-phone-only {
     height: 2.5rem;
     padding: 1.5rem;
   }
@@ -197,7 +199,7 @@
   align-items: center;
   width: calc(100% - 8rem);
   border-top: 0.063rem solid var(--black-75, #222);
-  @media screen and (max-width: 425px) {
+  @include for-phone-only {
     height: 2.5rem;
     padding: 1.5rem;
   }

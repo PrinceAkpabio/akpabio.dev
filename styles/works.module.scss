@@ -1,3 +1,5 @@
+@import "./_layout";
+
 .worksSection {
   display: flex;
   padding: 2.5rem;
@@ -8,7 +10,7 @@
   align-self: stretch;
   box-sizing: border-box;
 
-  @media screen and (max-width: 425px) {
+  @include for-phone-only {
     padding: 1.5rem;
   }
 
@@ -40,7 +42,7 @@
     width: 100%;
     box-sizing: border-box;
 
-    @media screen and (max-width: 425px) {
+    @include for-phone-only {
       display: flex;
       flex-direction: column;
       gap: 0.5rem;

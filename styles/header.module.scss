@@ -1,3 +1,5 @@
+@import "./_layout";
+
 .pageHeaderWrapper {
   position: relative;
   box-sizing: border-box;
@@ -9,7 +11,7 @@
   width: calc(100% - 8rem);
   border-bottom: 0.063rem solid var(--black-75, #222);
 
-  @media screen and (max-width: 425px) {
+  @include for-phone-only {
     height: 2.5rem;
     padding: 1.5rem;
   }
@@ -21,7 +23,7 @@
   gap: 2.5rem;
 
   &:nth-child(2) {
-    @media screen and (max-width: 425px) {
+    @include for-phone-only {
       display: none;
     }
   }
@@ -41,7 +43,7 @@
   align-items: center;
   gap: 0.5em;
 
-  @media screen and (max-width: 425px) {
+  @include for-phone-only {
     display: none;
   }
 }
