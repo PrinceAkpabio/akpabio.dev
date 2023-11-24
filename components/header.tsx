@@ -3,8 +3,10 @@
 import React from "react";
 import styles from "@/styles/header.module.scss";
 import { SunDim } from "@phosphor-icons/react";
+import BurgerMenu from "./burger-menu";
+import { MenuState } from "./page-wrapper";
 
-export default function Header() {
+export default function Header({ isActive, openMenu }: MenuState) {
   return (
     <div className={styles.pageHeaderWrapper}>
       <div className={styles.headerSection}>
@@ -21,6 +23,10 @@ export default function Header() {
         <span className={styles.languageText}>EN</span>
         <span className={styles.line}></span>
         <span className={styles.languageText}>FR</span>
+      </div>
+
+      <div className={styles.headerSection}>
+        <BurgerMenu isActive={isActive} openMenu={openMenu} />
       </div>
     </div>
   );

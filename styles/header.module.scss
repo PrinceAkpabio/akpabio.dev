@@ -27,6 +27,12 @@
       display: none;
     }
   }
+  &:nth-child(3) {
+    display: none;
+    @include for-phone-only {
+      display: flex;
+    }
+  }
 }
 .logoName {
   color: var(--black-0, #999);
