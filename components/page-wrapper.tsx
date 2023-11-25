@@ -60,7 +60,15 @@ export default function PageWrapper({ children }: PageContextProps) {
             <div className={styles.pageWrapperBottomRightGrid}></div>
           </div>
 
-          <AnimatePresence mode="wait">{isActive && <Nav />}</AnimatePresence>
+          <AnimatePresence mode="wait">
+            {isActive && (
+              <Nav
+                openMenu={() => {
+                  setIsActive(!isActive);
+                }}
+              />
+            )}
+          </AnimatePresence>
         </div>
       )}
     </>

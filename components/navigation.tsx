@@ -24,6 +24,13 @@ export interface NavLinkItem {
   data: NavLinkDataItem;
   isActive: boolean;
   setSelectedIndicator: React.Dispatch<React.SetStateAction<string>>;
+  openMenu: NavLinkAction;
+}
+
+export type NavLinkAction = () => void;
+
+export interface NavLinkActionInterface {
+  openMenu: () => void;
 }
 
 const navItems: NavItem[] = [
@@ -48,7 +55,7 @@ const navItems: NavItem[] = [
   },
 ];
 
-export default function Nav() {
+export default function Nav({ openMenu }: NavLinkActionInterface) {
   const pathname = usePathname();
 
   const [selectedIndicator, setSelectedIndicator] = useState(pathname);
@@ -61,12 +68,7 @@ export default function Nav() {
       className={styles.menu}
     >
       <div className={styles.body}>
-        <div
-          onMouseLeave={() => {
-            setSelectedIndicator(pathname);
-          }}
-          className={styles.nav}
-        >
+        <div className={styles.nav}>
           {navItems.map((data, index) => {
             return (
               <NavLink
@@ -74,6 +76,7 @@ export default function Nav() {
                 data={{ ...data, index }}
                 isActive={selectedIndicator == data.href}
                 setSelectedIndicator={setSelectedIndicator}
+                openMenu={openMenu}
               ></NavLink>
             );
           })}

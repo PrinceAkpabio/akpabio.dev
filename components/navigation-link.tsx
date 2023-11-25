@@ -3,13 +3,25 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { slide } from "@/utils/anim";
 import { NavLinkItem } from "./navigation";
+import { useRouter } from "next/navigation";
 
 export default function NavLink({
   data,
   isActive,
   setSelectedIndicator,
+  openMenu,
 }: NavLinkItem) {
   const { title, href, index } = data;
+  const router = useRouter();
+
+  const navLinkAction = () => {
+    openMenu();
+
+    setTimeout(() => {
+      router.replace("/");
+      router.push(href);
+    }, 1200);
+  };
 
   return (
     <motion.div
@@ -36,11 +48,12 @@ export default function NavLink({
           className={styles.menuItem}
           download="prince-akpabio-cv"
           target="_blank"
+          onClick={() => openMenu()}
         >
           {title}
         </Link>
       ) : (
-        <Link href={href}>{title}</Link>
+        <div onClick={navLinkAction}>{title}</div>
       )}
     </motion.div>
   );
