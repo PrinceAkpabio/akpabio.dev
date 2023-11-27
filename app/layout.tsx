@@ -18,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={fixedSys62.className}>
+      <body className={fixedSys62.className} suppressHydrationWarning={true}>
         <PageWrapper>{children}</PageWrapper>
       </body>
     </html>
