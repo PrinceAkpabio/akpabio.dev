@@ -41,7 +41,7 @@ export default function WorkCardMobile({
       onClick={() => navigateToSingleProjectPage(`00${id}`)}
       className={styles.workItem}
       style={{
-        top: `calc(-5vh + ${(i as number) * 30}px)`,
+        top: `calc(-5vh + ${(i as number) * 27}px)`,
       }}
     >
       <Image

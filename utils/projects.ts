@@ -203,7 +203,7 @@ export const projects: Project[] = [
   {
     id: 7,
     title: "projectname 007",
-    src: "/project-07.jpg",
+    src: "/project-01.jpg",
     tags: [
       {
         label: "client",
