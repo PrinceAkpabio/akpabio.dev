@@ -7,6 +7,7 @@
   line-height: 1.5rem; /* 150% */
   letter-spacing: 0.04rem;
   text-transform: lowercase;
+  cursor: pointer;
 
   .status {
     display: flex;
@@ -14,7 +15,7 @@
     gap: 0.5em;
   }
   .statusText {
-    color: var(--black-25, #666); 
+    color: var(--black-25, #666);
     font-family: Fixedsys 62;
     font-size: 0.75rem;
     font-style: normal;

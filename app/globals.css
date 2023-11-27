@@ -1,16 +1,20 @@
-body {
-  margin: 0;
-  padding: 0;
-  overflow: hidden; /* Hide scrollbars */
-}
-
 html {
   /* font-size: 1rem; */
   scroll-behavior: smooth;
 }
-
-p {
+body {
   margin: 0;
+  padding: 0;
+  overflow: hidden; /* Hide scrollbars */
+  scroll-behavior: smooth;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  p {
+    margin: 0;
+  }
 }
 
 /* @media screen and (min-width: 320px) {

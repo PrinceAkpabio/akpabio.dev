@@ -22,6 +22,8 @@ export default function PageWrapper({ children }: PageContextProps) {
 
   useEffect(() => {
     let loadingTimer = setTimeout(() => {
+      // Remove overflow hidden from the body styling to enable scrolling
+      document.body.style.overflowY = "scroll";
       setIsLoading(false);
     }, 5000);
 
@@ -39,6 +41,9 @@ export default function PageWrapper({ children }: PageContextProps) {
             isActive={isActive}
             openMenu={() => {
               setIsActive(!isActive);
+              isActive
+                ? (document.body.style.overflowY = "scroll")
+                : (document.body.style.overflowY = "hidden");
             }}
           ></Header>
           <div className={styles.pageWrapperTopRightGrid}></div>
@@ -63,6 +68,9 @@ export default function PageWrapper({ children }: PageContextProps) {
             <Nav
               openMenu={() => {
                 setIsActive(!isActive);
+                isActive
+                  ? (document.body.style.overflowY = "scroll")
+                  : (document.body.style.overflowY = "hidden");
               }}
             />
           )}
