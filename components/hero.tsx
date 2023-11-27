@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, MouseEvent } from "react";
+import React, { useLayoutEffect, MouseEvent, useRef } from "react";
 import styles from "@/styles/hero.module.scss";
 import loadingStyles from "@/styles/loading.module.scss";
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
@@ -9,6 +9,8 @@ import usePageGrid from "@/utils/usePageGrid";
 import Image from "next/image";
 import Scroll from "../public/scroll.svg";
 import Link from "next/link";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function Hero() {
   const { x, y } = useMousePosition();
@@ -16,6 +18,10 @@ export default function Hero() {
   let mouseX = useMotionValue(0);
   let mouseY = useMotionValue(0);
   const grid = usePageGrid("heroGrid");
+
+  const worksMenuItem = useRef(null);
+  const contactMenuItem = useRef(null);
+  const resumeMenuItem = useRef(null);
 
   function handleMouseMove({
     currentTarget,
@@ -28,7 +34,35 @@ export default function Hero() {
     mouseY.set(clientY - top);
   }
 
-  useEffect(() => {}, []);
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const scrollTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: document.documentElement,
+        scrub: true,
+        start: "top",
+        end: "+90vh",
+      },
+    });
+
+    const normalTimeline = gsap.timeline({
+      defaults: {
+        duration: 0.6,
+        ease: "ease.in",
+        stagger: { repeat: 0, yoyo: true, yoyoEase: true },
+      },
+    });
+
+    normalTimeline
+      .from(worksMenuItem.current, { opacity: 0, y: "-100px" })
+      .to(worksMenuItem.current, { opacity: 1, y: 0 })
+      .from(contactMenuItem.current, { opacity: 0, y: "-100px" })
+      .to(contactMenuItem.current, { opacity: 1, y: 0 })
+      .from(resumeMenuItem.current, { opacity: 0, y: "-100px" })
+      .to(resumeMenuItem.current, { opacity: 1, y: 0 });
+
+    normalTimeline.play().delay(5.5);
+  }, []);
 
   return (
     <div
@@ -78,13 +112,22 @@ export default function Hero() {
           <p className={styles.hireMeText}>Hire Me_</p>
         </div>
         <div className={styles.right}>
-          <Link href="#works-section" className={styles.menuItem}>
+          <Link
+            ref={worksMenuItem}
+            href="#works-section"
+            className={styles.menuItem}
+          >
             Works
           </Link>
-          <Link href="#contact-section" className={styles.menuItem}>
+          <Link
+            ref={contactMenuItem}
+            href="#contact-section"
+            className={styles.menuItem}
+          >
             Contact
           </Link>
           <Link
+            ref={resumeMenuItem}
             href="/prince-akpabio-cv.pdf"
             className={styles.menuItem}
             download="prince-akpabio-cv"
