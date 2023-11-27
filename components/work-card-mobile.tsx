@@ -41,7 +41,6 @@ export default function WorkCardMobile({
       onClick={() => navigateToSingleProjectPage(`00${id}`)}
       className={styles.workItem}
       style={{
-        // scale: scale.isAnimating() ? scale.getVelocity() : scale.get(),
         top: `calc(-5vh + ${(i as number) * 30}px)`,
       }}
     >
@@ -50,13 +49,6 @@ export default function WorkCardMobile({
         height={100}
         src={`${src}`}
         alt="Project Image"
-        style={
-          {
-            // scale: imageScale.isAnimating()
-            //   ? imageScale.getVelocity()
-            //   : imageScale.get(),
-          }
-        }
         className={styles.workItemImage}
       />
 
