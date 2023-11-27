@@ -11,8 +11,14 @@ import ProjectImage5 from "@/public/project-05.jpg";
 import ProjectImage6 from "@/public/project-06.jpg";
 import ProjectImage7 from "@/public/project-07.jpg";
 import ProjectImage8 from "@/public/project-08.jpg";
+import { useRouter } from "next/navigation";
 
 export default function Works() {
+  const router = useRouter();
+
+  const navigateToSingleProjectPage = (projectId: string) => {
+    router.push(`/project/${projectId}`);
+  };
   return (
     <div id="works-section" className={styles.worksSection}>
       <div className={styles.sectionTitle}>
@@ -20,7 +26,10 @@ export default function Works() {
       </div>
 
       <div className={styles.worksGrid}>
-        <figure className={styles.workItem}>
+        <figure
+          onClick={() => navigateToSingleProjectPage("001")}
+          className={styles.workItem}
+        >
           <Image
             src={ProjectImage1}
             alt="Project Image 1"
@@ -31,7 +40,10 @@ export default function Works() {
             projectname 001
           </figcaption>
         </figure>
-        <figure className={styles.workItem}>
+        <figure
+          onClick={() => navigateToSingleProjectPage("002")}
+          className={styles.workItem}
+        >
           <Image
             src={ProjectImage2}
             alt="Project Image 2"
@@ -42,7 +54,10 @@ export default function Works() {
             projectname 002
           </figcaption>
         </figure>
-        <figure className={styles.workItem}>
+        <figure
+          onClick={() => navigateToSingleProjectPage("003")}
+          className={styles.workItem}
+        >
           <Image
             src={ProjectImage3}
             alt="Project Image 3"
@@ -53,7 +68,10 @@ export default function Works() {
             projectname 003
           </figcaption>
         </figure>
-        <figure className={styles.workItem}>
+        <figure
+          onClick={() => navigateToSingleProjectPage("004")}
+          className={styles.workItem}
+        >
           <Image
             src={ProjectImage4}
             alt="Project Image 4"
@@ -64,7 +82,10 @@ export default function Works() {
             projectname 004
           </figcaption>
         </figure>
-        <figure className={styles.workItem}>
+        <figure
+          onClick={() => navigateToSingleProjectPage("005")}
+          className={styles.workItem}
+        >
           <Image
             src={ProjectImage5}
             alt="Project Image 5"
@@ -75,7 +96,10 @@ export default function Works() {
             projectname 005
           </figcaption>
         </figure>
-        <figure className={styles.workItem}>
+        <figure
+          onClick={() => navigateToSingleProjectPage("006")}
+          className={styles.workItem}
+        >
           <Image
             src={ProjectImage6}
             alt="Project Image 6"
@@ -86,7 +110,10 @@ export default function Works() {
             projectname 006
           </figcaption>
         </figure>
-        <figure className={styles.workItem}>
+        <figure
+          onClick={() => navigateToSingleProjectPage("007")}
+          className={styles.workItem}
+        >
           <Image
             src={ProjectImage7}
             alt="Project Image 7"
@@ -97,7 +124,10 @@ export default function Works() {
             projectname 007
           </figcaption>
         </figure>
-        <figure className={styles.workItem}>
+        <figure
+          onClick={() => navigateToSingleProjectPage("008")}
+          className={styles.workItem}
+        >
           <Image
             src={ProjectImage8}
             alt="Project Image 8"

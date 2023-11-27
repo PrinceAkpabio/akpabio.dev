@@ -8,6 +8,7 @@ export default function HundredPercentLoadingTextAnimation() {
   const [count, setCount] = useState(0);
   useEffect(() => {
     let startCountUp: NodeJS.Timeout;
+    let timeoutId: NodeJS.Timeout;
 
     if (count < 100) {
       startCountUp = setInterval(() => {
@@ -15,9 +16,16 @@ export default function HundredPercentLoadingTextAnimation() {
       }, 20);
     } else {
       setCount(100);
+      // Remove overflow hidden from the body styling to enable scrolling
+      timeoutId = setTimeout(() => {
+        document.body.style.overflow = "auto";
+      }, 1000);
     }
 
-    return () => clearInterval(startCountUp);
+    return () => {
+      clearInterval(startCountUp);
+      clearTimeout(timeoutId);
+    };
   }, [count]);
 
   return (

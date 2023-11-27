@@ -99,6 +99,10 @@
         font-size: 4rem;
         line-height: 6rem;
       }
+
+      @include for-small-phone-only {
+        font-size: 3rem;
+      }
     }
   }
 
@@ -115,6 +119,10 @@
       align-items: flex-start;
       gap: 1.5rem;
       flex: 1 0 0;
+
+      @include for-small-phone-only {
+        display: none;
+      }
 
       .designTag {
         color: var(--black-0, #999);
@@ -144,6 +152,15 @@
       align-items: flex-start;
       gap: 1.5rem;
       flex: 1 0 0;
+
+      @include for-small-phone-only {
+        flex-direction: column;
+
+        // max-width: none;
+        // width: 100%;
+        justify-content: center;
+        align-items: center;
+      }
 
       .menuItem {
         color: var(--black-0, #999);
