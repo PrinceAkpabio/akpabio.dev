@@ -21,6 +21,11 @@ export default function PageWrapper({ children }: PageContextProps) {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
+    if (!isLoading) {
+      // Remove overflow hidden from the body styling to enable scrolling
+      document.body.style.overflowY = "scroll";
+    }
+
     let loadingTimer = setTimeout(() => {
       // Remove overflow hidden from the body styling to enable scrolling
       document.body.style.overflowY = "scroll";

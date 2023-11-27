@@ -1,143 +1,47 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import styles from "@/styles/works.module.scss";
-import Image from "next/image";
-import ProjectImage1 from "@/public/project-01.jpg";
-import ProjectImage2 from "@/public/project-02.png";
-import ProjectImage3 from "@/public/project-03.jpg";
-import ProjectImage4 from "@/public/project-04.jpg";
-import ProjectImage5 from "@/public/project-05.jpg";
-import ProjectImage6 from "@/public/project-06.jpg";
-import ProjectImage7 from "@/public/project-07.jpg";
-import ProjectImage8 from "@/public/project-08.jpg";
-import { useRouter } from "next/navigation";
+import { Project, projects } from "@/utils/projects";
+import WorkCard from "./work-card";
+import WorkCardMobile from "./work-card-mobile";
+import { useScroll } from "framer-motion";
 
 export default function Works() {
-  const router = useRouter();
+  const container = useRef(null);
 
-  const navigateToSingleProjectPage = (projectId: string) => {
-    router.push(`/project/${projectId}`);
-  };
+  const { scrollYProgress } = useScroll({
+    target: container,
+
+    offset: ["start start", "end end"],
+  });
+
   return (
-    <div id="works-section" className={styles.worksSection}>
+    <div ref={container} id="works-section" className={styles.worksSection}>
       <div className={styles.sectionTitle}>
         <p className={styles.title}> Works</p>
       </div>
 
       <div className={styles.worksGrid}>
-        <figure
-          onClick={() => navigateToSingleProjectPage("001")}
-          className={styles.workItem}
-        >
-          <Image
-            src={ProjectImage1}
-            alt="Project Image 1"
-            className={styles.workItemImage}
-          />
+        {projects.map((project: Project, idx: number) => {
+          return <WorkCard key={`p_${idx}`} {...project} />;
+        })}
+      </div>
 
-          <figcaption className={styles.workItemName}>
-            projectname 001
-          </figcaption>
-        </figure>
-        <figure
-          onClick={() => navigateToSingleProjectPage("002")}
-          className={styles.workItem}
-        >
-          <Image
-            src={ProjectImage2}
-            alt="Project Image 2"
-            className={styles.workItemImage}
-          />
-
-          <figcaption className={styles.workItemName}>
-            projectname 002
-          </figcaption>
-        </figure>
-        <figure
-          onClick={() => navigateToSingleProjectPage("003")}
-          className={styles.workItem}
-        >
-          <Image
-            src={ProjectImage3}
-            alt="Project Image 3"
-            className={styles.workItemImage}
-          />
-
-          <figcaption className={styles.workItemName}>
-            projectname 003
-          </figcaption>
-        </figure>
-        <figure
-          onClick={() => navigateToSingleProjectPage("004")}
-          className={styles.workItem}
-        >
-          <Image
-            src={ProjectImage4}
-            alt="Project Image 4"
-            className={styles.workItemImage}
-          />
-
-          <figcaption className={styles.workItemName}>
-            projectname 004
-          </figcaption>
-        </figure>
-        <figure
-          onClick={() => navigateToSingleProjectPage("005")}
-          className={styles.workItem}
-        >
-          <Image
-            src={ProjectImage5}
-            alt="Project Image 5"
-            className={styles.workItemImage}
-          />
-
-          <figcaption className={styles.workItemName}>
-            projectname 005
-          </figcaption>
-        </figure>
-        <figure
-          onClick={() => navigateToSingleProjectPage("006")}
-          className={styles.workItem}
-        >
-          <Image
-            src={ProjectImage6}
-            alt="Project Image 6"
-            className={styles.workItemImage}
-          />
-
-          <figcaption className={styles.workItemName}>
-            projectname 006
-          </figcaption>
-        </figure>
-        <figure
-          onClick={() => navigateToSingleProjectPage("007")}
-          className={styles.workItem}
-        >
-          <Image
-            src={ProjectImage7}
-            alt="Project Image 7"
-            className={styles.workItemImage}
-          />
-
-          <figcaption className={styles.workItemName}>
-            projectname 007
-          </figcaption>
-        </figure>
-        <figure
-          onClick={() => navigateToSingleProjectPage("008")}
-          className={styles.workItem}
-        >
-          <Image
-            src={ProjectImage8}
-            alt="Project Image 8"
-            className={styles.workItemImage}
-          />
-
-          <figcaption className={styles.workItemName}>
-            projectname 008
-          </figcaption>
-        </figure>
+      <div className={styles.worksGridMobile}>
+        {projects.map((project: Project, idx: number) => {
+          const targetScale = 1 - (projects.length - idx) * 0.05;
+          return (
+            <WorkCardMobile
+              key={`p_${idx}`}
+              i={idx}
+              {...project}
+              progress={scrollYProgress}
+              range={[idx * 0.25, 1]}
+              targetScale={targetScale}
+            />
+          );
+        })}
       </div>
     </div>
   );

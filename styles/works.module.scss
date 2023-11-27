@@ -1,6 +1,7 @@
 @import "./_layout";
 
 .worksSection {
+  position: relative;
   display: flex;
   padding: 2.5rem;
   flex-direction: column;
@@ -43,15 +44,110 @@
     box-sizing: border-box;
 
     @include for-phone-only {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
+      display: none;
     }
 
     .workItem {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      gap: 1rem;
+      flex: 1 0 0;
+      margin: 0;
+      width: 100%;
+      box-sizing: border-box;
+      cursor: pointer;
+
+      .workItemImage {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        background-blend-mode: saturation, normal;
+      }
+
+      .workItemName {
+        align-self: stretch;
+        color: var(--black-0, #999);
+        font-family: Fixedsys 62;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 1.5rem; /* 150% */
+        text-transform: lowercase;
+      }
+
+      &:nth-child(1) {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 1;
+        grid-row-end: 5;
+      }
+      &:nth-child(2) {
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 3;
+        grid-row-end: 7;
+      }
+      &:nth-child(3) {
+        grid-column-start: 3;
+        grid-column-end: 4;
+        grid-row-start: 5;
+        grid-row-end: 9;
+      }
+      &:nth-child(4) {
+        grid-column-start: 4;
+        grid-column-end: 5;
+        grid-row-start: 7;
+        grid-row-end: 11;
+      }
+      &:nth-child(5) {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 6;
+        grid-row-end: 10;
+      }
+      &:nth-child(6) {
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 8;
+        grid-row-end: 12;
+      }
+      &:nth-child(7) {
+        grid-column-start: 3;
+        grid-column-end: 4;
+        grid-row-start: 10;
+        grid-row-end: 14;
+      }
+      &:nth-child(8) {
+        grid-column-start: 4;
+        grid-column-end: 5;
+        grid-row-start: 12;
+        grid-row-end: 16;
+      }
+    }
+  }
+
+  .worksGridMobile {
+    display: none;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(16, 5vw);
+    column-gap: 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
+
+    @include for-phone-only {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .workItem {
+      position: sticky;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      top: 0px;
       gap: 1rem;
       flex: 1 0 0;
       margin: 0;
