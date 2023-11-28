@@ -80,6 +80,7 @@ export default function Hero() {
         ease: "ease.out",
         width: "18px",
         height: "18px",
+        immediateRender: false,
       })
       .to(ellipseOneItem.current, {
         y: "-25px",
@@ -91,41 +92,61 @@ export default function Hero() {
       });
 
     normalTimeline
-      .from(heroIntroItem.current, { display: "none" })
+      .from(heroIntroItem.current, { display: "none", immediateRender: false })
       .to(heroIntroItem.current, { display: "block" })
-      .from(heroHireMeItem.current, { display: "none" })
+      .from(heroHireMeItem.current, { display: "none", immediateRender: false })
       .to(heroHireMeItem.current, { display: "block", delay: 8 })
-      .from(worksMenuItem.current, { opacity: 0, y: "-100px" })
+      .from(worksMenuItem.current, {
+        opacity: 0,
+        y: "-100px",
+        immediateRender: false,
+      })
       .to(worksMenuItem.current, { opacity: 1, y: 0 })
-      .from(contactMenuItem.current, { opacity: 0, y: "-100px" })
+      .from(contactMenuItem.current, {
+        opacity: 0,
+        y: "-100px",
+        immediateRender: false,
+      })
       .to(contactMenuItem.current, { opacity: 1, y: 0 })
-      .from(resumeMenuItem.current, { opacity: 0, y: "-100px" })
+      .from(resumeMenuItem.current, {
+        opacity: 0,
+        y: "-100px",
+        immediateRender: false,
+      })
       .to(resumeMenuItem.current, { opacity: 1, y: 0 })
       .from(firstNameItem.current, {
         opacity: 0,
         x: "200px",
         delay: 0.7,
+        immediateRender: false,
       })
       .to(firstNameItem.current, { opacity: 1, x: 0, ease: "ease.in" })
       .from(lastNameItem.current, {
         opacity: 0,
         x: "200px",
+        immediateRender: false,
       })
       .to(lastNameItem.current, { opacity: 1, x: 0, ease: "ease.in" })
       .from(roleOneItem.current, {
         opacity: 0,
         x: "200px",
         delay: 0.7,
+        immediateRender: false,
       })
       .to(roleOneItem.current, { opacity: 1, x: 0, ease: "ease.in" })
       .from(roleTwoItem.current, {
         opacity: 0,
         x: "200px",
+        immediateRender: false,
       })
       .to(roleTwoItem.current, { opacity: 1, x: 0, ease: "ease.in" })
       .add(animatedScrollIconTimeline);
 
     normalTimeline.play().delay(5.5);
+
+    return () => {
+      gsap.killTweensOf(normalTimeline);
+    };
   }, []);
 
   return (
