@@ -10,7 +10,7 @@
   width: 100%;
   align-self: stretch;
   height: 100%;
-  min-height: calc(100vh - 5rem);
+  // min-height: calc(100vh - 5rem);
   box-sizing: border-box;
   //   cursor: none;
 
@@ -31,6 +31,24 @@
       align-items: flex-start;
       gap: 1.5rem;
       flex: 1 0 0;
+
+      .typewriterEffectWrapper {
+        position: relative;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+      }
+
+      .cursorBlinker {
+        position: absolute;
+        top: 80%;
+        left: 100%;
+        width: 0.5rem;
+        height: 0.031rem;
+        background: var(--primary, #0f0);
+        opacity: 0;
+        z-index: 7;
+      }
 
       .introText {
         color: var(--black-0, #999);
@@ -109,9 +127,10 @@
       text-transform: lowercase;
       z-index: 7;
       box-sizing: border-box;
+      opacity: 0;
 
       &:nth-child(1) {
-        margin-bottom: -2rem;
+        margin-bottom: -2.1rem;
       }
       &:nth-child(2) {
         margin-bottom: -1.625rem;
@@ -135,6 +154,7 @@
       z-index: 7;
       margin-bottom: -1.625rem;
       box-sizing: border-box;
+      opacity: 0;
 
       @include for-phone-only {
         font-size: 3.5rem;
@@ -142,14 +162,38 @@
       }
     }
 
-    .scrollSvg {
+    .animatedScrollIcon {
+      opacity: 0;
       position: absolute;
       z-index: 7;
       top: 80%;
       left: 0%;
+      display: flex;
+      width: 18px;
+      height: 47px;
+      padding: 16px;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      border-radius: 27px;
+      border: 1px solid var(--black-25, #666);
 
       @include for-phone-only {
         display: none;
+      }
+      @include for-tablet-portait-only {
+        display: none;
+      }
+      @include for-tablet-landscape-small-only {
+        display: none;
+      }
+
+      .ellipseOne {
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+        border-radius: 16px;
+        background: var(--black-25, #666);
       }
     }
   }

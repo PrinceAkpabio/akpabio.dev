@@ -3,7 +3,12 @@
 import React, { useLayoutEffect, MouseEvent, useRef } from "react";
 import styles from "@/styles/hero.module.scss";
 import loadingStyles from "@/styles/loading.module.scss";
-import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
+import {
+  delay,
+  motion,
+  useMotionTemplate,
+  useMotionValue,
+} from "framer-motion";
 import useMousePosition from "@/utils/useMousePosition";
 import usePageGrid from "@/utils/usePageGrid";
 import Image from "next/image";
@@ -11,6 +16,8 @@ import Scroll from "../public/scroll.svg";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import HeroIntroductionTypewriterAnimation from "./hero-intro-typewriter-animation";
+import HeroHireMeTypewriterAnimation from "./hero-hire-me-typewriter-animation";
 
 export default function Hero() {
   const { x, y } = useMousePosition();
@@ -19,9 +26,20 @@ export default function Hero() {
   let mouseY = useMotionValue(0);
   const grid = usePageGrid("heroGrid");
 
+  const heroIntroItem = useRef(null);
+  const heroHireMeItem = useRef(null);
+
   const worksMenuItem = useRef(null);
   const contactMenuItem = useRef(null);
   const resumeMenuItem = useRef(null);
+
+  const firstNameItem = useRef(null);
+  const lastNameItem = useRef(null);
+  const roleOneItem = useRef(null);
+  const roleTwoItem = useRef(null);
+
+  const animatedScrollIcon = useRef(null);
+  const ellipseOneItem = useRef(null);
 
   function handleMouseMove({
     currentTarget,
@@ -53,13 +71,59 @@ export default function Hero() {
       },
     });
 
+    const animatedScrollIconTimeline = gsap.timeline();
+
+    animatedScrollIconTimeline
+      .to(animatedScrollIcon.current, { opacity: 1 })
+      .from(ellipseOneItem.current, {
+        y: 0,
+        ease: "ease.out",
+        width: "18px",
+        height: "18px",
+      })
+      .to(ellipseOneItem.current, {
+        y: "-25px",
+        width: "14px",
+        height: "18px",
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+      });
+
     normalTimeline
+      .from(heroIntroItem.current, { display: "none" })
+      .to(heroIntroItem.current, { display: "block" })
+      .from(heroHireMeItem.current, { display: "none" })
+      .to(heroHireMeItem.current, { display: "block", delay: 8 })
       .from(worksMenuItem.current, { opacity: 0, y: "-100px" })
       .to(worksMenuItem.current, { opacity: 1, y: 0 })
       .from(contactMenuItem.current, { opacity: 0, y: "-100px" })
       .to(contactMenuItem.current, { opacity: 1, y: 0 })
       .from(resumeMenuItem.current, { opacity: 0, y: "-100px" })
-      .to(resumeMenuItem.current, { opacity: 1, y: 0 });
+      .to(resumeMenuItem.current, { opacity: 1, y: 0 })
+      .from(firstNameItem.current, {
+        opacity: 0,
+        x: "200px",
+        delay: 0.7,
+      })
+      .to(firstNameItem.current, { opacity: 1, x: 0, ease: "ease.in" })
+      .from(lastNameItem.current, {
+        opacity: 0,
+        x: "200px",
+      })
+      .to(lastNameItem.current, { opacity: 1, x: 0, ease: "ease.in" })
+      .from(roleOneItem.current, {
+        opacity: 0,
+        x: "200px",
+        delay: 0.7,
+      })
+      .to(roleOneItem.current, { opacity: 1, x: 0, ease: "ease.in" })
+      .from(roleTwoItem.current, {
+        opacity: 0,
+        x: "200px",
+      })
+      .to(roleTwoItem.current, { opacity: 1, x: 0, ease: "ease.in" })
+      .add(animatedScrollIconTimeline);
 
     normalTimeline.play().delay(5.5);
   }, []);
@@ -104,12 +168,12 @@ export default function Hero() {
 
       <div className={styles.introduction}>
         <div className={styles.left}>
-          <p className={styles.introText}>
-            I am a Developer based in Abuja, Nigeria, dedicated to crafting
-            interactive digital experiences on the web, collaborating with
-            various industry leaders to achieve this goal.
-          </p>
-          <p className={styles.hireMeText}>Hire Me_</p>
+          <span ref={heroIntroItem} style={{ display: "none" }}>
+            <HeroIntroductionTypewriterAnimation />
+          </span>
+          <span ref={heroHireMeItem} style={{ display: "none" }}>
+            <HeroHireMeTypewriterAnimation />
+          </span>
         </div>
         <div className={styles.right}>
           <Link
@@ -139,12 +203,24 @@ export default function Hero() {
       </div>
 
       <div className={styles.introductionBottom}>
-        <div className={styles.name}>Prince</div>
-        <div className={styles.name}>Akpabio</div>
-        <div className={styles.role}>Frontend</div>
-        <div className={styles.role}>Déveloper</div>
+        <div ref={firstNameItem} className={styles.name}>
+          Prince
+        </div>
+        <div ref={lastNameItem} className={styles.name}>
+          Akpabio
+        </div>
+        <div ref={roleOneItem} className={styles.role}>
+          Frontend
+        </div>
+        <div ref={roleTwoItem} className={styles.role}>
+          Déveloper
+        </div>
 
-        <Image className={styles.scrollSvg} src={Scroll} alt="Scroll svg" />
+        <div ref={animatedScrollIcon} className={styles.animatedScrollIcon}>
+          {/* <div ref={ellipseTwoItem} className={styles.ellipseTwo}></div> */}
+          <div ref={ellipseOneItem} className={styles.ellipseOne}></div>
+        </div>
+        {/* <Image className={styles.scrollSvg} src={Scroll} alt="Scroll svg" /> */}
       </div>
     </div>
   );

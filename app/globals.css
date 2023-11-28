@@ -16,6 +16,10 @@ body {
   }
 }
 
+p {
+  margin: 0;
+}
+
 /* @media screen and (min-width: 320px) {
   html {
     font-size: calc(1rem + 6 * ((100vw - 20rem) / 680));
