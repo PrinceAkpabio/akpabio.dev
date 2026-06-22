@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import CursorBlinker from "./cursor";
 import loadingStyles from "@/styles/loading.module.scss";
 
+const baseText = "loading";
+
 export default function LoadingTextAnimation() {
-  const baseText = "loading" as string;
   const count = useMotionValue(0);
   const rounded = useTransform(count, (latest) => Math.round(latest));
   const displayText = useTransform(rounded, (latest) =>
@@ -18,7 +19,7 @@ export default function LoadingTextAnimation() {
       ease: "easeInOut",
     });
     return controls.stop;
-  }, []);
+  }, [count]);
 
   return (
     <span className={loadingStyles.loadingTextWrapper}>

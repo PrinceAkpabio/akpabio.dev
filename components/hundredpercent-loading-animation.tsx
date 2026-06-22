@@ -7,17 +7,10 @@ import { motion } from "framer-motion";
 export default function HundredPercentLoadingTextAnimation() {
   const [count, setCount] = useState(0);
   useEffect(() => {
-    let startCountUp: NodeJS.Timeout;
+    if (count >= 100) return;
 
-    if (count < 100) {
-      startCountUp = setInterval(() => {
-        setCount(count + 1);
-      }, 20);
-    } else {
-      setCount(100);
-    }
-
-    return () => clearInterval(startCountUp);
+    const tick = setTimeout(() => setCount(count + 1), 20);
+    return () => clearTimeout(tick);
   }, [count]);
 
   return (

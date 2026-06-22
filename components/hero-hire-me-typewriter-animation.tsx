@@ -3,8 +3,9 @@ import { useEffect } from "react";
 import loadingStyles from "@/styles/hero.module.scss";
 import HeroIntroCursorBlinker from "./hero-intro-cursor";
 
+const baseText = "Hire Me";
+
 export default function HeroHireMeTypewriterAnimation() {
-  const baseText = "Hire Me" as string;
   const count = useMotionValue(0);
   const rounded = useTransform(count, (latest) => Math.round(latest));
   const displayText = useTransform(rounded, (latest) =>
@@ -19,7 +20,7 @@ export default function HeroHireMeTypewriterAnimation() {
       delay: 14,
     });
     return controls.stop;
-  }, []);
+  }, [count]);
 
   return (
     <span className={loadingStyles.typewriterEffectWrapper}>

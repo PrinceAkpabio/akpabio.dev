@@ -1,50 +1,35 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 type Grid = Array<{ columns: Array<null> }>;
+
+const DEFAULT_GRID: Grid = new Array(8).fill({
+  columns: new Array(10).fill(null),
+});
 
 const usePageGrid = (
   gridId: string,
   cellHeight: number = 64,
   cellWidth: number = 64
 ): Grid => {
-  let gridElement: HTMLElement;
-
-  if (typeof window !== "undefined") {
-    gridElement = document.getElementById(gridId) as HTMLElement;
-  }
-
-  let initialGrid = new Array(8).fill({
-    columns: new Array(10).fill(null),
-  });
-
-  const [grid, setGrid] = useState(initialGrid);
-  const [isGridNull, setIsGridNull] = useState(true);
-
-  const updatePageGrid = (e: any) => {
-    if (gridElement === null) {
-      gridElement = document.getElementById(gridId) as HTMLElement;
-    }
-    let newGrid = new Array(
-      Math.ceil(gridElement?.offsetHeight / cellHeight)
-    ).fill({
-      columns: new Array(Math.ceil(gridElement?.offsetWidth / cellWidth)).fill(
-        null
-      ),
-    });
-    setGrid(newGrid);
-  };
+  const [grid, setGrid] = useState<Grid>(DEFAULT_GRID);
 
   useEffect(() => {
-    if (gridElement !== null && isGridNull) {
-      setIsGridNull(false);
-      updatePageGrid(false);
-    }
-    window.addEventListener("resize", updatePageGrid);
+    const gridElement = document.getElementById(gridId);
+    if (!gridElement) return;
 
-    return () => window.removeEventListener("resize", updatePageGrid);
-  }, []);
+    const measureGrid = () => {
+      const rows = Math.ceil(gridElement.offsetHeight / cellHeight);
+      const columns = Math.ceil(gridElement.offsetWidth / cellWidth);
+      setGrid(new Array(rows).fill({ columns: new Array(columns).fill(null) }));
+    };
+
+    const observer = new ResizeObserver(measureGrid);
+    observer.observe(gridElement);
+
+    return () => observer.disconnect();
+  }, [gridId, cellHeight, cellWidth]);
 
   return grid;
 };

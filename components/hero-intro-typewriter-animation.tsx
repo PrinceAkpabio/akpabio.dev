@@ -2,9 +2,10 @@ import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { useEffect } from "react";
 import loadingStyles from "@/styles/hero.module.scss";
 
+const baseText =
+  "I am a Developer based in Abuja, Nigeria, dedicated to crafting interactive digital experiences on the web, collaborating with various industry leaders to achieve this goal.";
+
 export default function HeroIntroductionTypewriterAnimation() {
-  const baseText =
-    "I am a Developer based in Abuja, Nigeria, dedicated to crafting interactive digital experiences on the web, collaborating with various industry leaders to achieve this goal." as string;
   const count = useMotionValue(0);
   const rounded = useTransform(count, (latest) => Math.round(latest));
   const displayText = useTransform(rounded, (latest) =>
@@ -19,7 +20,7 @@ export default function HeroIntroductionTypewriterAnimation() {
       delay: 5,
     });
     return controls.stop;
-  }, []);
+  }, [count]);
 
   return (
     <span className={loadingStyles.typewriterEffectWrapper}>

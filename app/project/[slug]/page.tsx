@@ -1,7 +1,7 @@
 "use client";
 
 import Contact from "@/components/contact";
-import React, { use, useEffect, useState } from "react";
+import React, { use } from "react";
 import styles from "@/styles/works.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -9,7 +9,7 @@ import Image from "next/image";
 
 export default function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
-  const [projectId, setProjectId] = useState(1);
+  const projectId = Number(slug);
   const router = useRouter();
 
   const navLinkAction = () => {
@@ -19,10 +19,6 @@ export default function Page({ params }: { params: Promise<{ slug: string }> }) 
       router.push("#works-section");
     }, 500);
   };
-
-  useEffect(() => {
-    setProjectId(Number(slug));
-  }, [slug]);
 
   return (
     <>
