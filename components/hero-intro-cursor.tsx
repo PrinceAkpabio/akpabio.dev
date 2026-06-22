@@ -1,7 +1,7 @@
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import loadingStyles from "@/styles/hero.module.scss";
 
-const cursorVariants = {
+const cursorVariants: Variants = {
   blinking: {
     opacity: [0, 0, 1, 1],
     transition: {

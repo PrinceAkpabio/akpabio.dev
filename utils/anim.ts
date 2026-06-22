@@ -1,4 +1,6 @@
-export const menuSlide = {
+import { type Variants } from "framer-motion";
+
+export const menuSlide: Variants = {
   initial: { x: "calc(100% + 100px)" },
   enter: { x: "0", transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } },
   exit: {
@@ -7,19 +9,19 @@ export const menuSlide = {
   },
 };
 
-export const slide = {
+export const slide: Variants = {
   initial: { x: 80 },
-  enter: (i: any) => ({
+  enter: (i: number) => ({
     x: 0,
     transition: { duration: 0.9, ease: [0.76, 0, 0.24, 1], delay: 0.07 * i },
   }),
-  exit: (i: any) => ({
+  exit: (i: number) => ({
     x: 80,
     transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.05 * i },
   }),
 };
 
-export const scale = {
+export const scale: Variants = {
   open: { scale: 1, transition: { duration: 0.3 } },
   closed: { scale: 0, transition: { duration: 0.4 } },
 };

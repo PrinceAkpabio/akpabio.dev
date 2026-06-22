@@ -1,13 +1,14 @@
 "use client";
 
 import Contact from "@/components/contact";
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import styles from "@/styles/works.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-export default function Page({ params }: { params: { slug: string } }) {
+export default function Page({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = use(params);
   const [projectId, setProjectId] = useState(1);
   const router = useRouter();
 
@@ -20,9 +21,8 @@ export default function Page({ params }: { params: { slug: string } }) {
   };
 
   useEffect(() => {
-    const slug = Number(params.slug);
-    setProjectId(slug);
-  }, [params]);
+    setProjectId(Number(slug));
+  }, [slug]);
 
   return (
     <>
@@ -52,7 +52,7 @@ export default function Page({ params }: { params: { slug: string } }) {
         </div>
 
         <div className={styles.projectName}>
-          <p className={styles.name}>projectname {params.slug}</p>
+          <p className={styles.name}>projectname {slug}</p>
         </div>
 
         <div className={styles.project}>

@@ -37,10 +37,10 @@ export default function Contact() {
       <motion.div
         className={loadingStyles.mask}
         animate={{
-          WebkitMaskPosition: `${(x as number) - (size + 10) / 2}px ${
+          maskPosition: `${(x as number) - (size + 10) / 2}px ${
             (y as number) - (size + 10) / 2
           }px`,
-          WebkitMaskSize: `${size}px`,
+          maskSize: `${size}px`,
         }}
         transition={{ type: "tween", ease: "backOut", duration: 0.5 }}
       ></motion.div>
