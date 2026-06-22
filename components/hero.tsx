@@ -240,7 +240,7 @@ export default function Hero() {
           Frontend
         </div>
         <div ref={roleTwoItem} className={styles.role}>
-          Déveloper
+          Developer
         </div>
 
         <div ref={animatedScrollIcon} className={styles.animatedScrollIcon}>
