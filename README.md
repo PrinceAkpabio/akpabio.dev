@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# akpabio.dev
 
-## Getting Started
+My personal portfolio. A dark, terminal-flavoured single page site with an animated
+loader, an interactive flashlight hero, a works grid and individual project pages.
 
-First, run the development server:
+Live at [akpabio.dev](https://akpabio.dev).
+
+## Stack
+
+- **Next.js** (App Router) and **React**, written in **TypeScript**
+- **SCSS modules** for styling, with shared responsive mixins in `styles/_layout.scss`
+- **GSAP** (+ `@gsap/react`) for the hero scroll timeline and animated scroll cue
+- **Framer Motion** for the flashlight/cursor mask effect
+- **Lenis** for smooth scrolling
+- Custom `Fixedsys62` bitmap font
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+| Script          | Description                |
+| --------------- | -------------------------- |
+| `npm run dev`   | Start the dev server       |
+| `npm run build` | Production build           |
+| `npm run start` | Serve the production build |
+| `npm run lint`  | Run ESLint                 |
 
-## Learn More
+## Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+app/          Routes, root layout, global styles, project/[slug] page
+components/    Header, hero, works grid, contact, navigation, loader
+styles/        SCSS modules + responsive mixins
+utils/         Project data, animation variants, mouse/grid hooks
+public/        Project images, CV, SVGs
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Project content lives in `utils/projects.ts`.
