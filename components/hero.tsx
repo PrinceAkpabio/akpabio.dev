@@ -15,6 +15,7 @@ import Image from "next/image";
 import Scroll from "../public/scroll.svg";
 import Link from "next/link";
 import gsap from "gsap";
+import {useGSAP} from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HeroIntroductionTypewriterAnimation from "./hero-intro-typewriter-animation";
 import HeroHireMeTypewriterAnimation from "./hero-hire-me-typewriter-animation";
@@ -55,7 +56,7 @@ export default function Hero() {
     mouseY.set(clientY - top);
   }
 
-  useIsomorphicLayoutEffect(() => {
+  useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
     const scrollTimeline = gsap.timeline({
       scrollTrigger: {

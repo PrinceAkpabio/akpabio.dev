@@ -5,12 +5,13 @@ import styles from "@/styles/header.module.scss";
 import { SunDim } from "@phosphor-icons/react";
 import BurgerMenu from "./burger-menu";
 import { MenuState } from "./page-wrapper";
+import Link from "next/link";
 
 export default function Header({ isActive, openMenu }: MenuState) {
   return (
     <div className={styles.pageHeaderWrapper}>
       <div className={styles.headerSection}>
-        <span className={styles.logoName}>akpabio.dev</span>
+        <Link href="/" className={styles.logoName}>akpabio.dev</Link>
         <div className={styles.status}>
           <span className={styles.statusIconWrapper}>
             <span className={styles.statusIcon}></span>
