@@ -4,14 +4,21 @@ import React, { useEffect, useState } from "react";
 import loadingStyles from "@/styles/loading.module.scss";
 import { motion } from "framer-motion";
 
-export default function HundredPercentLoadingTextAnimation() {
+export default function HundredPercentLoadingTextAnimation({
+  onComplete,
+}: {
+  onComplete?: () => void;
+}) {
   const [count, setCount] = useState(0);
   useEffect(() => {
-    if (count >= 100) return;
+    if (count >= 100) {
+      onComplete?.();
+      return;
+    }
 
     const tick = setTimeout(() => setCount(count + 1), 20);
     return () => clearTimeout(tick);
-  }, [count]);
+  }, [count, onComplete]);
 
   return (
     <motion.div

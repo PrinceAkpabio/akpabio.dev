@@ -9,7 +9,11 @@ import usePageGrid from "@/utils/usePageGrid";
 import LoadingTextAnimation from "./loading-text-animation";
 import HundredPercentLoadingTextAnimation from "./hundredpercent-loading-animation";
 
-export default function PageLoaderElement() {
+export default function PageLoaderElement({
+  onComplete,
+}: {
+  onComplete?: () => void;
+}) {
   const [done, setDone] = useState(false);
   const { x, y } = useMousePosition();
   let mouseX = useMotionValue(0);
@@ -83,7 +87,9 @@ export default function PageLoaderElement() {
 
           <LoadingTextAnimation />
 
-          {done && <HundredPercentLoadingTextAnimation />}
+          {done && (
+            <HundredPercentLoadingTextAnimation onComplete={onComplete} />
+          )}
         </div>
 
         <div className={styles.pageWrapperRightPadding}></div>

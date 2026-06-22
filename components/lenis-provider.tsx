@@ -14,7 +14,13 @@ const LenisContext = createContext<Lenis | null>(null);
 /** Access the shared Lenis instance (null until it is created on mount). */
 export const useLenis = () => useContext(LenisContext);
 
-export default function LenisProvider({ children }: { children: ReactNode }) {
+export default function LenisProvider({
+  children,
+  paused = false,
+}: {
+  children: ReactNode;
+  paused?: boolean;
+}) {
   const [lenis, setLenis] = useState<Lenis | null>(null);
 
   useEffect(() => {
@@ -41,6 +47,12 @@ export default function LenisProvider({ children }: { children: ReactNode }) {
       setLenis(null);
     };
   }, []);
+
+  // Lock scrolling while paused (e.g. during the loading screen)
+  useEffect(() => {
+    if (!lenis) return;
+    paused ? lenis.stop() : lenis.start();
+  }, [lenis, paused]);
 
   return (
     <LenisContext.Provider value={lenis}>{children}</LenisContext.Provider>

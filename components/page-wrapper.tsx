@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import styles from "@/styles/page-wrapper.module.scss";
 import Header from "./header";
@@ -21,24 +21,26 @@ export default function PageWrapper({ children }: PageContextProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [isActive, setIsActive] = useState(false);
 
+  // Revealed only once the loader counter reaches 100%
+  const handleLoaderComplete = useCallback(() => setIsLoading(false), []);
+
   useEffect(() => {
-    if (isLoading === false) {
-      // Remove overflow hidden from the body styling to enable scrolling
-      document.body.style.overflowY = "scroll";
+    if (isLoading) {
+      // Lock the page behind the loader; Lenis is also paused via the provider
+      document.body.style.overflowY = "hidden";
+      // Safety net in case the counter stalls
+      const fallback = setTimeout(() => setIsLoading(false), 8000);
+      return () => clearTimeout(fallback);
     }
 
-    let loadingTimer = setTimeout(() => {
-      // Remove overflow hidden from the body styling to enable scrolling
-      document.body.style.overflowY = "scroll";
-      setIsLoading(false);
-    }, 5000);
-
-    return () => clearTimeout(loadingTimer);
+    document.body.style.overflowY = "scroll";
   }, [isLoading]);
 
   return (
-    <LenisProvider>
-      <AnimatePresence mode="wait">{isLoading && <Loading />}</AnimatePresence>
+    <LenisProvider paused={isLoading}>
+      <AnimatePresence mode="wait">
+        {isLoading && <Loading onComplete={handleLoaderComplete} />}
+      </AnimatePresence>
 
       <div className={styles.pageWrapperBackground}>
         <div className={styles.pageWrapperTop}>
