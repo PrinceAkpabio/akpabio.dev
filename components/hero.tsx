@@ -19,12 +19,14 @@ import {useGSAP} from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HeroIntroductionTypewriterAnimation from "./hero-intro-typewriter-animation";
 import HeroHireMeTypewriterAnimation from "./hero-hire-me-typewriter-animation";
+import { useScrollTo } from "./lenis-provider";
 
 const useIsomorphicLayoutEffect =
   typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 export default function Hero() {
   const { x, y } = useMousePosition();
+  const scrollTo = useScrollTo();
   const size = 40;
   let mouseX = useMotionValue(0);
   let mouseY = useMotionValue(0);
@@ -207,6 +209,10 @@ export default function Hero() {
             ref={worksMenuItem}
             href="#works-section"
             className={styles.menuItem}
+            onClick={(e) => {
+              e.preventDefault();
+              scrollTo("#works-section");
+            }}
           >
             Works
           </Link>
@@ -214,6 +220,10 @@ export default function Hero() {
             ref={contactMenuItem}
             href="#contact-section"
             className={styles.menuItem}
+            onClick={(e) => {
+              e.preventDefault();
+              scrollTo("#contact-section");
+            }}
           >
             Contact
           </Link>

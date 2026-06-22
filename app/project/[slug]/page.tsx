@@ -4,21 +4,13 @@ import Contact from "@/components/contact";
 import React, { use } from "react";
 import styles from "@/styles/works.module.scss";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { useScrollTo } from "@/components/lenis-provider";
 
 export default function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
   const projectId = Number(slug);
-  const router = useRouter();
-
-  const navLinkAction = () => {
-    router.push("/");
-
-    setTimeout(() => {
-      router.push("#works-section");
-    }, 500);
-  };
+  const scrollTo = useScrollTo();
 
   return (
     <>
@@ -30,10 +22,20 @@ export default function Page({ params }: { params: Promise<{ slug: string }> }) 
             </Link>
           </div>
           <div className={styles.right}>
-            <span onClick={() => navLinkAction()} className={styles.menuItem}>
+            <span
+              onClick={() => scrollTo("#works-section")}
+              className={styles.menuItem}
+            >
               Works
             </span>
-            <Link href="#contact-section" className={styles.menuItem}>
+            <Link
+              href="#contact-section"
+              className={styles.menuItem}
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo("#contact-section");
+              }}
+            >
               Contact
             </Link>
             <Link

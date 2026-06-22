@@ -3,7 +3,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { slide } from "@/utils/anim";
 import { NavLinkItem } from "./navigation";
-import { useRouter } from "next/navigation";
+import { useScrollTo } from "./lenis-provider";
 
 export default function NavLink({
   data,
@@ -12,15 +12,13 @@ export default function NavLink({
   openMenu,
 }: NavLinkItem) {
   const { title, href, index } = data;
-  const router = useRouter();
+  const scrollTo = useScrollTo();
 
   const navLinkAction = () => {
     openMenu();
 
-    setTimeout(() => {
-      router.replace("/");
-      router.push(href);
-    }, 1200);
+    // Wait for the menu to slide out before scrolling to the section
+    setTimeout(() => scrollTo(href), 1200);
   };
 
   return (

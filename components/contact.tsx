@@ -7,9 +7,11 @@ import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import useMousePosition from "@/utils/useMousePosition";
 import usePageGrid from "@/utils/usePageGrid";
 import Link from "next/link";
+import { useScrollTo } from "./lenis-provider";
 
 export default function Contact() {
   const { x, y } = useMousePosition();
+  const scrollTo = useScrollTo();
   const size = 40;
   let mouseX = useMotionValue(0);
   let mouseY = useMotionValue(0);
@@ -97,10 +99,24 @@ export default function Contact() {
           </p>
         </div>
         <div className={styles.right}>
-          <Link href="#works-section" className={styles.menuItem}>
+          <Link
+            href="#works-section"
+            className={styles.menuItem}
+            onClick={(e) => {
+              e.preventDefault();
+              scrollTo("#works-section");
+            }}
+          >
             Works
           </Link>
-          <Link href="#contact-section" className={styles.menuItem}>
+          <Link
+            href="#contact-section"
+            className={styles.menuItem}
+            onClick={(e) => {
+              e.preventDefault();
+              scrollTo("#contact-section");
+            }}
+          >
             Contact
           </Link>
           <Link

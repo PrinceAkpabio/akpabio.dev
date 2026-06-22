@@ -1,8 +1,10 @@
 "use client";
 
 import Lenis from "@studio-freight/lenis";
+import { useRouter } from "next/navigation";
 import {
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useState,
@@ -13,6 +15,35 @@ const LenisContext = createContext<Lenis | null>(null);
 
 /** Access the shared Lenis instance (null until it is created on mount). */
 export const useLenis = () => useContext(LenisContext);
+
+/**
+ * Returns a function that smooth-scrolls to an in-page anchor (e.g. "#works-section").
+ * If the target is not on the current page, it navigates home to that anchor instead.
+ */
+export const useScrollTo = () => {
+  const lenis = useLenis();
+  const router = useRouter();
+
+  return useCallback(
+    (href: string) => {
+      if (!href.startsWith("#")) {
+        router.push(href);
+        return;
+      }
+
+      const target = document.querySelector(href);
+      if (target) {
+        lenis
+          ? lenis.scrollTo(target as HTMLElement, { offset: 0 })
+          : target.scrollIntoView({ behavior: "smooth" });
+      } else {
+        // Target lives on the home page (e.g. linking to works from a project page)
+        router.push(`/${href}`);
+      }
+    },
+    [lenis, router]
+  );
+};
 
 export default function LenisProvider({
   children,
