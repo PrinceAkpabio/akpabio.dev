@@ -6,6 +6,7 @@ import styles from "@/styles/page-wrapper.module.scss";
 import Header from "./header";
 import Loading from "../app/loading";
 import Nav from "./navigation";
+import LenisProvider from "./lenis-provider";
 
 type PageContextProps = {
   children: React.ReactNode;
@@ -36,7 +37,7 @@ export default function PageWrapper({ children }: PageContextProps) {
   }, [isLoading]);
 
   return (
-    <>
+    <LenisProvider>
       <AnimatePresence mode="wait">{isLoading && <Loading />}</AnimatePresence>
 
       <div className={styles.pageWrapperBackground}>
@@ -81,6 +82,6 @@ export default function PageWrapper({ children }: PageContextProps) {
           )}
         </AnimatePresence>
       </div>
-    </>
+    </LenisProvider>
   );
 }
