@@ -457,6 +457,11 @@
         text-decoration: none;
         z-index: 7;
         cursor: pointer;
+
+        &.disabled {
+          color: var(--black-50, #333);
+          cursor: not-allowed;
+        }
       }
     }
 
@@ -480,6 +485,11 @@
         text-decoration: none;
         z-index: 7;
         cursor: pointer;
+
+        &.disabled {
+          color: var(--black-50, #333);
+          cursor: not-allowed;
+        }
       }
     }
   }

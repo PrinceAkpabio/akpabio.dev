@@ -4,6 +4,8 @@ export interface Project {
   id: number;
   title: string;
   src: string;
+  /** Optional extra images for the project gallery; falls back to [src]. */
+  images?: string[];
   tags: Tag[];
   i?: number;
   progress?: MotionValue<number>;
