@@ -2,10 +2,11 @@ import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { useEffect, useState } from "react";
 import CursorBlinker from "./cursor";
 import loadingStyles from "@/styles/loading.module.scss";
-
-const baseText = "loading";
+import { useTranslation } from "./language-provider";
 
 export default function LoadingTextAnimation() {
+  const { t } = useTranslation();
+  const baseText = t("loader.loading");
   const count = useMotionValue(0);
   const rounded = useTransform(count, (latest) => Math.round(latest));
   const displayText = useTransform(rounded, (latest) =>
@@ -19,7 +20,7 @@ export default function LoadingTextAnimation() {
       ease: "easeInOut",
     });
     return controls.stop;
-  }, [count]);
+  }, [count, baseText]);
 
   return (
     <span className={loadingStyles.loadingTextWrapper}>

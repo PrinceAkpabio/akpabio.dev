@@ -7,9 +7,12 @@ import BurgerMenu from "./burger-menu";
 import { MenuState } from "./page-wrapper";
 import Link from "next/link";
 import { useTheme } from "./theme-provider";
+import { useTranslation } from "./language-provider";
+import LanguageSwitcher from "./language-switcher";
 
 export default function Header({ isActive, openMenu }: MenuState) {
   const { toggleTheme } = useTheme();
+  const { t } = useTranslation();
 
   return (
     <div className={styles.pageHeaderWrapper}>
@@ -19,7 +22,9 @@ export default function Header({ isActive, openMenu }: MenuState) {
           <span className={styles.statusIconWrapper}>
             <span className={styles.statusIcon}></span>
           </span>
-          <span className={styles.statusText}>available for hire</span>
+          <span className={styles.statusText}>
+            {t("nav.availableForHire")}
+          </span>
         </div>
       </div>
       <div className={styles.headerSection}>
@@ -27,13 +32,11 @@ export default function Header({ isActive, openMenu }: MenuState) {
           type="button"
           className={styles.themeToggle}
           onClick={toggleTheme}
-          aria-label="Toggle theme"
+          aria-label={t("a11y.toggleTheme")}
         >
           <SunDim weight="regular" />
         </button>
-        <span className={styles.languageText}>EN</span>
-        <span className={styles.line}></span>
-        <span className={styles.languageText}>FR</span>
+        <LanguageSwitcher />
       </div>
 
       <div className={styles.headerSection}>

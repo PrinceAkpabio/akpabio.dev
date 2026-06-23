@@ -8,6 +8,8 @@ import { menuSlide } from "../utils/anim";
 import NavLink from "./navigation-link";
 import { SunDim } from "@phosphor-icons/react";
 import { useTheme } from "./theme-provider";
+import { useTranslation } from "./language-provider";
+import LanguageSwitcher from "./language-switcher";
 
 export interface NavItem {
   title: string;
@@ -34,31 +36,17 @@ export interface NavLinkActionInterface {
   openMenu: () => void;
 }
 
-const navItems: NavItem[] = [
-  {
-    title: "Works",
-    href: "#works-section",
-    download: false,
-  },
-  {
-    title: "Contact",
-    href: "#contact-section",
-    download: false,
-  },
-  {
-    title: "RESUMé",
-    href: "/prince-akpabio-cv.pdf",
-    download: true,
-  },
-  {
-    title: "available for hire",
-    href: "#",
-  },
-];
-
 export default function Nav({ openMenu }: NavLinkActionInterface) {
   const pathname = usePathname();
   const { toggleTheme } = useTheme();
+  const { t } = useTranslation();
+
+  const navItems: NavItem[] = [
+    { title: t("nav.works"), href: "#works-section", download: false },
+    { title: t("nav.contact"), href: "#contact-section", download: false },
+    { title: t("nav.resume"), href: "/prince-akpabio-cv.pdf", download: true },
+    { title: t("nav.availableForHire"), href: "#" },
+  ];
 
   const [selectedIndicator, setSelectedIndicator] = useState(pathname);
   return (
@@ -89,13 +77,11 @@ export default function Nav({ openMenu }: NavLinkActionInterface) {
             type="button"
             className={styles.themeToggle}
             onClick={toggleTheme}
-            aria-label="Toggle theme"
+            aria-label={t("a11y.toggleTheme")}
           >
             <SunDim weight="regular" />
           </button>
-          <span className={styles.languageText}>EN</span>
-          <span className={styles.line}></span>
-          <span className={styles.languageText}>FR</span>
+          <LanguageSwitcher />
         </div>
       </div>
     </motion.div>

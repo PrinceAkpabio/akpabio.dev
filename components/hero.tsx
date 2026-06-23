@@ -9,11 +9,13 @@ import HeroIntroductionTypewriterAnimation from "./hero-intro-typewriter-animati
 import HeroHireMeTypewriterAnimation from "./hero-hire-me-typewriter-animation";
 import { useScrollTo } from "./lenis-provider";
 import { useLoading } from "./loading-context";
+import { useTranslation } from "./language-provider";
 import Flashlight from "./flashlight";
 
 export default function Hero() {
   const scrollTo = useScrollTo();
   const isLoading = useLoading();
+  const { t } = useTranslation();
   const [skipIntro, setSkipIntro] = useState(false);
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
 
@@ -129,7 +131,7 @@ export default function Hero() {
               scrollTo("#works-section");
             }}
           >
-            Works
+            {t("nav.works")}
           </Link>
           <Link
             ref={contactMenuItem}
@@ -140,7 +142,7 @@ export default function Hero() {
               scrollTo("#contact-section");
             }}
           >
-            Contact
+            {t("nav.contact")}
           </Link>
           <Link
             ref={resumeMenuItem}
@@ -149,7 +151,7 @@ export default function Hero() {
             download="prince-akpabio-cv"
             target="_blank"
           >
-            RESUMé
+            {t("nav.resume")}
           </Link>
         </div>
       </div>
@@ -162,10 +164,10 @@ export default function Hero() {
           Akpabio
         </div>
         <div ref={roleOneItem} className={styles.role} data-flashlight="grow">
-          Frontend
+          {t("hero.role1")}
         </div>
         <div ref={roleTwoItem} className={styles.role} data-flashlight="grow">
-          Developer
+          {t("hero.role2")}
         </div>
 
         <div ref={animatedScrollIcon} className={styles.animatedScrollIcon}>

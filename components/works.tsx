@@ -7,8 +7,10 @@ import WorkCard from "./work-card";
 import WorkCardMobile from "./work-card-mobile";
 import { useScroll } from "framer-motion";
 import Flashlight from "./flashlight";
+import { useTranslation } from "./language-provider";
 
 export default function Works() {
+  const { t } = useTranslation();
   const container = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -22,7 +24,7 @@ export default function Works() {
       <Flashlight gridId="works-section" />
 
       <div className={styles.sectionTitle}>
-        <p className={styles.title}> Works</p>
+        <p className={styles.title}>{t("works.title")}</p>
       </div>
 
       <div className={styles.worksGrid}>

@@ -5,6 +5,7 @@ import { use, useEffect } from "react";
 import styles from "@/styles/works.module.scss";
 import Link from "next/link";
 import { useLenis, useScrollTo } from "@/components/lenis-provider";
+import { useTranslation } from "@/components/language-provider";
 import Flashlight from "@/components/flashlight";
 import ProjectGallery from "@/components/project-gallery";
 import { projects } from "@/utils/projects";
@@ -16,6 +17,7 @@ export default function Page({ params }: { params: Promise<{ slug: string }> }) 
   const images = project.images ?? [project.src];
   const scrollTo = useScrollTo();
   const lenis = useLenis();
+  const { t } = useTranslation();
 
   const hasPrevious = projectId > 1;
   const hasNext = projectId < projects.length;
@@ -33,7 +35,7 @@ export default function Page({ params }: { params: Promise<{ slug: string }> }) 
         <div className={styles.introduction}>
           <div className={styles.left}>
             <Link href="/" className={styles.introText}>
-              back to home
+              {t("nav.backToHome")}
             </Link>
           </div>
           <div className={styles.right}>
@@ -41,7 +43,7 @@ export default function Page({ params }: { params: Promise<{ slug: string }> }) 
               onClick={() => scrollTo("#works-section")}
               className={styles.menuItem}
             >
-              Works
+              {t("nav.works")}
             </span>
             <Link
               href="#contact-section"
@@ -51,7 +53,7 @@ export default function Page({ params }: { params: Promise<{ slug: string }> }) 
                 scrollTo("#contact-section");
               }}
             >
-              Contact
+              {t("nav.contact")}
             </Link>
             <Link
               href="/prince-akpabio-cv.pdf"
@@ -59,7 +61,7 @@ export default function Page({ params }: { params: Promise<{ slug: string }> }) 
               download="prince-akpabio-cv"
               target="_blank"
             >
-              RESUMé
+              {t("nav.resume")}
             </Link>
           </div>
         </div>
@@ -74,7 +76,9 @@ export default function Page({ params }: { params: Promise<{ slug: string }> }) 
           <div className={styles.projectDetails}>
             {project.tags.map((tag) => (
               <div className={styles.tag} key={tag.label}>
-                <div className={styles.label}>{tag.label}</div>
+                <div className={styles.label}>
+                  {t(`project.labels.${tag.label}`)}
+                </div>
                 <div className={styles.content}>{tag.content}</div>
               </div>
             ))}
@@ -92,14 +96,14 @@ export default function Page({ params }: { params: Promise<{ slug: string }> }) 
                 href={`/project/00${projectId - 1}`}
                 className={styles.previousLabel}
               >
-                previous project
+                {t("project.previous")}
               </Link>
             ) : (
               <span
                 className={`${styles.previousLabel} ${styles.disabled}`}
                 aria-disabled="true"
               >
-                previous project
+                {t("project.previous")}
               </span>
             )}
           </div>
@@ -109,14 +113,14 @@ export default function Page({ params }: { params: Promise<{ slug: string }> }) 
                 href={`/project/00${projectId + 1}`}
                 className={styles.nextLabel}
               >
-                next project
+                {t("project.next")}
               </Link>
             ) : (
               <span
                 className={`${styles.nextLabel} ${styles.disabled}`}
                 aria-disabled="true"
               >
-                next project
+                {t("project.next")}
               </span>
             )}
           </div>

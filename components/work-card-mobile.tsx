@@ -6,6 +6,7 @@ import styles from "@/styles/works.module.scss";
 import { useRouter } from "next/navigation";
 import { Project } from "@/utils/projects";
 import { MotionValue, useScroll, useTransform } from "framer-motion";
+import { useTranslation } from "./language-provider";
 
 export default function WorkCardMobile({
   src,
@@ -18,6 +19,7 @@ export default function WorkCardMobile({
   targetScale,
 }: Project) {
   const router = useRouter();
+  const { t } = useTranslation();
   const container = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -48,7 +50,7 @@ export default function WorkCardMobile({
         width={100}
         height={100}
         src={`${src}`}
-        alt="Project Image"
+        alt={t("a11y.projectImage")}
         className={styles.workItemImage}
       />
 

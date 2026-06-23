@@ -5,9 +5,11 @@ import Image from "next/image";
 import styles from "@/styles/works.module.scss";
 import { useRouter } from "next/navigation";
 import { Project } from "@/utils/projects";
+import { useTranslation } from "./language-provider";
 
 export default function WorkCard({ src, title, ...items }: Project) {
   const router = useRouter();
+  const { t } = useTranslation();
 
   const navigateToSingleProjectPage = (projectId: string) => {
     router.push(`/project/${projectId}`);
@@ -21,7 +23,7 @@ export default function WorkCard({ src, title, ...items }: Project) {
         width={100}
         height={100}
         src={`${src}`}
-        alt="Project Image"
+        alt={t("a11y.projectImage")}
         className={styles.workItemImage}
         data-flashlight="grow"
       />

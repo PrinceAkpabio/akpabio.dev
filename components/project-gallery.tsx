@@ -10,6 +10,7 @@ import {
   Square,
 } from "@phosphor-icons/react";
 import { useLenis } from "./lenis-provider";
+import { useTranslation } from "./language-provider";
 import styles from "@/styles/project-gallery.module.scss";
 
 /**
@@ -27,6 +28,7 @@ export default function ProjectGallery({
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
   const lenis = useLenis();
+  const { t } = useTranslation();
   const multiple = images.length > 1;
 
   const next = useCallback(
@@ -65,7 +67,7 @@ export default function ProjectGallery({
           setIndex(0);
           setOpen(true);
         }}
-        aria-label="Expand project image"
+        aria-label={t("a11y.expandImage")}
       >
         <Image
           src={images[0]}
@@ -75,7 +77,7 @@ export default function ProjectGallery({
           className={styles.thumbImage}
         />
         <span className={styles.expandHint}>
-          click to expand <ArrowUpRight weight="bold" />
+          {t("gallery.expand")} <ArrowUpRight weight="bold" />
         </span>
         <span className={styles.counter}>
           <Square weight="regular" /> {images.length}
@@ -102,7 +104,7 @@ export default function ProjectGallery({
                   e.stopPropagation();
                   prev();
                 }}
-                aria-label="Previous image"
+                aria-label={t("a11y.previousImage")}
               >
                 <CaretLeft />
               </button>
@@ -137,7 +139,7 @@ export default function ProjectGallery({
                   e.stopPropagation();
                   next();
                 }}
-                aria-label="Next image"
+                aria-label={t("a11y.nextImage")}
               >
                 <CaretRight />
               </button>

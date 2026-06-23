@@ -1,0 +1,29 @@
+.switcher {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.code,
+.active {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: Fixedsys 62;
+  font-size: 1rem;
+  line-height: normal;
+  letter-spacing: 0.03rem;
+  text-transform: lowercase;
+  color: var(--black-0, #999);
+  transition: color 0.2s ease;
+}
+
+.code:hover {
+  color: var(--black-25, #666);
+}
+
+.active {
+  color: var(--primary, #0f0);
+}
