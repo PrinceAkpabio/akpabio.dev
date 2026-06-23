@@ -48,6 +48,7 @@ const en = {
     previousImage: "Previous image",
     nextImage: "Next image",
     projectImage: "Project image",
+    viewProject: "View project",
   },
 };
 

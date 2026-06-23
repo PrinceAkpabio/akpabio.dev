@@ -50,6 +50,7 @@ const nl: Dictionary = {
     previousImage: "vorige afbeelding",
     nextImage: "volgende afbeelding",
     projectImage: "projectafbeelding",
+    viewProject: "project bekijken",
   },
 };
 

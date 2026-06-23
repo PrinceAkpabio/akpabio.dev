@@ -5,6 +5,7 @@ import Image from "next/image";
 import styles from "@/styles/works.module.scss";
 import { useRouter } from "next/navigation";
 import { WorkCardMobileProps } from "@/lib/projects";
+import { activateOnKey } from "@/lib/a11y";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useTranslation } from "@/components/providers/language-provider";
 
@@ -21,6 +22,8 @@ export default function WorkCardMobile({
   const { t } = useTranslation();
   const container = useRef(null);
 
+  const openProject = () => router.push(`/project/00${id}`);
+
   // Zoom the image as the card scrolls into place
   const { scrollYProgress } = useScroll({
     target: container,
@@ -34,7 +37,11 @@ export default function WorkCardMobile({
   return (
     <div ref={container} className={styles.cardContainer}>
       <motion.figure
-        onClick={() => router.push(`/project/00${id}`)}
+        onClick={openProject}
+        onKeyDown={activateOnKey(openProject)}
+        role="button"
+        tabIndex={0}
+        aria-label={`${t("a11y.viewProject")}: ${title}`}
         className={styles.card}
         style={{ scale, top: `calc(-5vh + ${i * 25}px)` }}
       >
