@@ -23,8 +23,9 @@ export default function WorkCard({ src, title, id }: Project) {
       className={styles.workItem}
     >
       <Image
-        width={100}
-        height={100}
+        width={640}
+        height={640}
+        sizes="(min-width: 900px) 23vw, 100vw"
         src={src}
         alt={t("a11y.projectImage")}
         className={styles.workItemImage}

@@ -73,6 +73,7 @@ export default function ProjectGallery({
           src={images[0]}
           alt={alt}
           fill
+          priority
           sizes="(max-width: 760px) 100vw, 760px"
           className={styles.thumbImage}
         />
