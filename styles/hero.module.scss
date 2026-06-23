@@ -18,6 +18,8 @@
 
   @include for-phone-only {
     padding: 1.5rem;
+    justify-content: flex-start;
+    gap: 3rem;
   }
 
   .introduction {

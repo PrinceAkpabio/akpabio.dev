@@ -35,14 +35,14 @@ export default function Works() {
 
       <div className={styles.worksGridMobile}>
         {projects.map((project: Project, idx: number) => {
-          const targetScale = 1 - (projects.length - idx) * 0.05;
+          const targetScale = 1 - (projects.length - idx) * 0.03;
           return (
             <WorkCardMobile
               key={`p_${idx}`}
               i={idx}
               {...project}
               progress={scrollYProgress}
-              range={[idx * 0.25, 1]}
+              range={[idx / projects.length, 1]}
               targetScale={targetScale}
             />
           );

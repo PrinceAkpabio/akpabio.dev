@@ -5,7 +5,7 @@ import Image from "next/image";
 import styles from "@/styles/works.module.scss";
 import { useRouter } from "next/navigation";
 import { Project } from "@/utils/projects";
-import { MotionValue, useScroll, useTransform } from "framer-motion";
+import { MotionValue, motion, useScroll, useTransform } from "framer-motion";
 import { useTranslation } from "./language-provider";
 
 export default function WorkCardMobile({
@@ -13,7 +13,6 @@ export default function WorkCardMobile({
   title,
   id,
   i,
-  tags,
   progress,
   range,
   targetScale,
@@ -22,39 +21,43 @@ export default function WorkCardMobile({
   const { t } = useTranslation();
   const container = useRef(null);
 
+  // Zoom the image as the card scrolls into place
   const { scrollYProgress } = useScroll({
     target: container,
     offset: ["start end", "start start"],
   });
-
   const imageScale = useTransform(scrollYProgress, [0, 1], [1.2, 1]);
+
+  // Shrink the card as later cards stack over it (depth)
   const scale = useTransform(
     progress as MotionValue<number>,
     range as number[],
     [1, targetScale as number]
   );
 
-  const navigateToSingleProjectPage = (projectId: string) => {
-    router.push(`/project/${projectId}`);
-  };
   return (
-    <figure
-      ref={container}
-      onClick={() => navigateToSingleProjectPage(`00${id}`)}
-      className={styles.workItem}
-      style={{
-        top: `calc(-5vh + ${(i as number) * 27}px)`,
-      }}
-    >
-      <Image
-        width={100}
-        height={100}
-        src={`${src}`}
-        alt={t("a11y.projectImage")}
-        className={styles.workItemImage}
-      />
-
-      <figcaption className={styles.workItemName}>{title}</figcaption>
-    </figure>
+    <div ref={container} className={styles.cardContainer}>
+      <motion.figure
+        onClick={() => router.push(`/project/00${id}`)}
+        className={styles.card}
+        style={{ scale, top: `calc(-5vh + ${(i as number) * 25}px)` }}
+      >
+        <div className={styles.cardImage}>
+          <motion.div
+            className={styles.cardImageInner}
+            style={{ scale: imageScale }}
+          >
+            <Image
+              fill
+              sizes="100vw"
+              src={`${src}`}
+              alt={t("a11y.projectImage")}
+              className={styles.workItemImage}
+            />
+          </motion.div>
+        </div>
+        <figcaption className={styles.workItemName}>{title}</figcaption>
+      </motion.figure>
+    </div>
   );
 }
