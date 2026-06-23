@@ -5,7 +5,13 @@ import HeroIntroCursorBlinker from "./hero-intro-cursor";
 
 const baseText = "Hire Me";
 
-export default function HeroHireMeTypewriterAnimation() {
+export default function HeroHireMeTypewriterAnimation({
+  skip,
+  start,
+}: {
+  skip?: boolean;
+  start?: boolean;
+}) {
   const count = useMotionValue(0);
   const rounded = useTransform(count, (latest) => Math.round(latest));
   const displayText = useTransform(rounded, (latest) =>
@@ -13,14 +19,20 @@ export default function HeroHireMeTypewriterAnimation() {
   );
 
   useEffect(() => {
+    if (skip) {
+      count.set(baseText.length);
+      return;
+    }
+    if (!start) return;
+
     const controls = animate(count, baseText.length, {
       type: "tween",
-      duration: 7,
+      duration: 1,
       ease: "easeOut",
-      delay: 14,
+      delay: 2.5,
     });
     return controls.stop;
-  }, [count]);
+  }, [count, skip, start]);
 
   return (
     <span className={loadingStyles.typewriterEffectWrapper}>

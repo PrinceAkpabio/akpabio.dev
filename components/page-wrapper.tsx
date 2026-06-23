@@ -7,6 +7,7 @@ import Header from "./header";
 import Loading from "../app/loading";
 import Nav from "./navigation";
 import LenisProvider from "./lenis-provider";
+import { LoadingContext } from "./loading-context";
 
 type PageContextProps = {
   children: React.ReactNode;
@@ -38,11 +39,12 @@ export default function PageWrapper({ children }: PageContextProps) {
 
   return (
     <LenisProvider paused={isLoading}>
-      <AnimatePresence mode="wait">
-        {isLoading && <Loading onComplete={handleLoaderComplete} />}
-      </AnimatePresence>
+      <LoadingContext.Provider value={isLoading}>
+        <AnimatePresence mode="wait">
+          {isLoading && <Loading onComplete={handleLoaderComplete} />}
+        </AnimatePresence>
 
-      <div className={styles.pageWrapperBackground}>
+        <div className={styles.pageWrapperBackground}>
         <div className={styles.pageWrapperTop}>
           <div className={styles.pageWrapperTopLeftGrid}></div>
           <Header
@@ -83,7 +85,8 @@ export default function PageWrapper({ children }: PageContextProps) {
             />
           )}
         </AnimatePresence>
-      </div>
+        </div>
+      </LoadingContext.Provider>
     </LenisProvider>
   );
 }
