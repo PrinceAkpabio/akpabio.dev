@@ -1,3 +1,21 @@
+:root {
+  --primary: #00ff00;
+  --black-100: #111111;
+  --black-75: #222222;
+  --black-50: #333333;
+  --black-25: #666666;
+  --black-0: #999999;
+}
+
+[data-theme="light"] {
+  --primary: #00ff00;
+  --black-100: #f4f4f4;
+  --black-75: #e0e0e0;
+  --black-50: #cccccc;
+  --black-25: #777777;
+  --black-0: #333333;
+}
+
 html {
   /* font-size: 1rem; */
   scroll-behavior: initial;
@@ -6,6 +24,9 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden; /* Hide scrollbars */
+  background: var(--black-100);
+  color: var(--black-0);
+  transition: background-color 0.3s ease, color 0.3s ease;
 
   &::-webkit-scrollbar {
     display: none;

@@ -50,6 +50,10 @@
         mix-blend-mode: difference;
         opacity: 0;
         z-index: 7;
+
+        :global([data-theme="light"]) & {
+          mix-blend-mode: normal;
+        }
       }
 
       .introText {
@@ -74,6 +78,10 @@
         letter-spacing: 0.04rem;
         text-transform: lowercase;
         z-index: 7;
+
+        :global([data-theme="light"]) & {
+          mix-blend-mode: normal;
+        }
       }
     }
 

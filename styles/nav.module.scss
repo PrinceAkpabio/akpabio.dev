@@ -46,6 +46,19 @@
     align-items: center;
     gap: 2.5rem;
 
+    .themeToggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+      border: none;
+      background: none;
+      color: var(--black-25, #666);
+      font-size: 1.25rem;
+      cursor: pointer;
+    }
+
     .languageText {
       color: var(--black-0, #999);
       font-family: Fixedsys 62;
@@ -63,7 +76,7 @@
       height: 0.063rem;
       stroke-width: 0.063rem;
       stroke: var(--black-25, #666);
-      background-color: #666666;
+      background-color: var(--black-25, #666);
     }
   }
 }

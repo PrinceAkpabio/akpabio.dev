@@ -73,8 +73,21 @@
     width: 0.609rem;
     height: 0.609rem;
     border-radius: 50%;
-    background-color: #00ff00;
+    background-color: var(--primary, #0f0);
   }
+}
+
+.themeToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--black-25, #666);
+  font-size: 1.25rem;
+  cursor: pointer;
 }
 
 .languageText {
@@ -94,5 +107,5 @@
   height: 0.063rem;
   stroke-width: 0.063rem;
   stroke: var(--black-25, #666);
-  background-color: #666666;
+  background-color: var(--black-25, #666);
 }

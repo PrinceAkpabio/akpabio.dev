@@ -82,6 +82,8 @@
 
       .workItemName {
         align-self: stretch;
+        width: fit-content;
+        background: var(--black-100, #111);
         color: var(--black-0, #999);
         font-family: Fixedsys 62;
         font-size: 1rem;
@@ -190,6 +192,8 @@
 
       .workItemName {
         align-self: stretch;
+        width: fit-content;
+        background: var(--black-100, #111);
         color: var(--black-0, #999);
         font-family: Fixedsys 62;
         font-size: 1rem;

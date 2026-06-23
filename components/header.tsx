@@ -6,8 +6,11 @@ import { SunDim } from "@phosphor-icons/react";
 import BurgerMenu from "./burger-menu";
 import { MenuState } from "./page-wrapper";
 import Link from "next/link";
+import { useTheme } from "./theme-provider";
 
 export default function Header({ isActive, openMenu }: MenuState) {
+  const { toggleTheme } = useTheme();
+
   return (
     <div className={styles.pageHeaderWrapper}>
       <div className={styles.headerSection}>
@@ -20,7 +23,14 @@ export default function Header({ isActive, openMenu }: MenuState) {
         </div>
       </div>
       <div className={styles.headerSection}>
-        <SunDim color="#666666" weight="regular" cursor="pointer" />
+        <button
+          type="button"
+          className={styles.themeToggle}
+          onClick={toggleTheme}
+          aria-label="Toggle theme"
+        >
+          <SunDim weight="regular" />
+        </button>
         <span className={styles.languageText}>EN</span>
         <span className={styles.line}></span>
         <span className={styles.languageText}>FR</span>

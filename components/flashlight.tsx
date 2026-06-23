@@ -71,7 +71,7 @@ export default function Flashlight({
   );
   const maskPosition = useMotionTemplate`${maskX}px ${maskY}px`;
   const maskSizeValue = useMotionTemplate`${springSize}px`;
-  const flashlight = useMotionTemplate`radial-gradient(400px circle at ${springX}px ${springY}px, transparent, #111 90%)`;
+  const flashlight = useMotionTemplate`radial-gradient(400px circle at ${springX}px ${springY}px, transparent, var(--black-100, #111) 90%)`;
 
   return (
     <>

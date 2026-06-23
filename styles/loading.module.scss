@@ -28,7 +28,7 @@
   mask-image: url("../public/mask.svg");
   mask-repeat: no-repeat;
   mask-size: 2.5rem;
-  background: #00ff00;
+  background: var(--primary, #0f0);
   position: absolute;
   justify-content: flex-start;
   gap: 0;

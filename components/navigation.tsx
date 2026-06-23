@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { menuSlide } from "../utils/anim";
 import NavLink from "./navigation-link";
 import { SunDim } from "@phosphor-icons/react";
+import { useTheme } from "./theme-provider";
 
 export interface NavItem {
   title: string;
@@ -57,6 +58,7 @@ const navItems: NavItem[] = [
 
 export default function Nav({ openMenu }: NavLinkActionInterface) {
   const pathname = usePathname();
+  const { toggleTheme } = useTheme();
 
   const [selectedIndicator, setSelectedIndicator] = useState(pathname);
   return (
@@ -83,7 +85,14 @@ export default function Nav({ openMenu }: NavLinkActionInterface) {
         </div>
 
         <div className={styles.footer}>
-          <SunDim color="#666666" weight="regular" cursor="pointer" />
+          <button
+            type="button"
+            className={styles.themeToggle}
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+          >
+            <SunDim weight="regular" />
+          </button>
           <span className={styles.languageText}>EN</span>
           <span className={styles.line}></span>
           <span className={styles.languageText}>FR</span>

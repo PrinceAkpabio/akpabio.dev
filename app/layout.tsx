@@ -2,8 +2,12 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import PageWrapper from "@/components/page-wrapper";
+import ThemeProvider from "@/components/theme-provider";
 
 const fixedSys62 = localFont({ src: "./Fixedsys62.ttf" });
+
+// Applies the saved theme (default dark) before paint to avoid a flash
+const themeScript = `(function(){try{var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();`;
 
 export const metadata: Metadata = {
   title: "Prince Akpabio — Frontend Developer",
@@ -17,9 +21,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning={true}>
       <body className={fixedSys62.className} suppressHydrationWarning={true}>
-        <PageWrapper>{children}</PageWrapper>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <ThemeProvider>
+          <PageWrapper>{children}</PageWrapper>
+        </ThemeProvider>
       </body>
     </html>
   );
