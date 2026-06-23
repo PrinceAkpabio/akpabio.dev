@@ -5,6 +5,25 @@
   --black-50: #333333;
   --black-25: #666666;
   --black-0: #999999;
+
+  /* Page-frame units: --frame = side-column width / corner width (content is
+     calc(100% - 2 * var(--frame))); --bar = header / top-bottom bar / corner
+     height (so the horizontal border lines stay continuous). */
+  --frame: 4rem;
+  --bar: 5rem;
+}
+
+@media (max-width: 1199px) {
+  :root {
+    --frame: 2.5rem;
+  }
+}
+
+@media (max-width: 599px) {
+  :root {
+    --frame: 1.5rem;
+    --bar: 3.5rem;
+  }
 }
 
 [data-theme="light"] {

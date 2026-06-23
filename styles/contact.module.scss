@@ -101,6 +101,12 @@
         margin-bottom: -2rem;
       }
 
+      @include for-tablet-landscape-only {
+        font-size: 6rem;
+      }
+      @include for-tablet-portait-only {
+        font-size: 5rem;
+      }
       @include for-phone-only {
         font-size: 4rem;
         line-height: 6rem;

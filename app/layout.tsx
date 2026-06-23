@@ -1,10 +1,15 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import PageWrapper from "@/components/page-wrapper";
 import ThemeProvider from "@/components/theme-provider";
 
 const fixedSys62 = localFont({ src: "./Fixedsys62.ttf" });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 // Applies the saved theme (default dark) before paint to avoid a flash
 const themeScript = `(function(){try{var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();`;

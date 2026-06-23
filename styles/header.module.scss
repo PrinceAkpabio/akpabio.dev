@@ -4,16 +4,15 @@
   position: relative;
   box-sizing: border-box;
   display: flex;
-  height: 5rem;
-  padding: 2.5rem;
+  height: var(--bar);
+  padding: 0 2.5rem;
   justify-content: space-between;
   align-items: center;
-  width: calc(100% - 8rem);
+  width: calc(100% - 2 * var(--frame));
   border-bottom: 0.063rem solid var(--black-75, #222);
 
   @include for-phone-only {
-    height: 2.5rem;
-    padding: 1.5rem;
+    padding: 0 1.5rem;
   }
 }
 

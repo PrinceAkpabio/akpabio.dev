@@ -41,23 +41,52 @@ export default function Flashlight({
   const springY = useSpring(y, { stiffness: 600, damping: 45, mass: 0.4 });
   const springSize = useSpring(size, { stiffness: 250, damping: 30 });
 
+  // Rest the spotlight at the section's center so the grid reads at rest — no
+  // blank-dark before first input (matters on touch, where there's no cursor)
   useEffect(() => {
-    const handleMove = (e: MouseEvent) => {
+    const rect = maskRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    const cx = rect.width / 2;
+    const cy = rect.height / 2;
+    x.set(cx);
+    y.set(cy);
+    springX.set(cx);
+    springY.set(cy);
+  }, [x, y, springX, springY]);
+
+  useEffect(() => {
+    const update = (
+      clientX: number,
+      clientY: number,
+      target: EventTarget | null
+    ) => {
       const rect = maskRef.current?.getBoundingClientRect();
       if (!rect) return;
-      x.set(e.clientX - rect.left);
-      y.set(e.clientY - rect.top);
+      x.set(clientX - rect.left);
+      y.set(clientY - rect.top);
 
-      const target = e.target as HTMLElement | null;
+      const el = target as HTMLElement | null;
       const overGrowTarget =
-        !!target &&
-        !!document.getElementById(gridId)?.contains(target) &&
-        !!target.closest('[data-flashlight="grow"]');
+        !!el &&
+        !!document.getElementById(gridId)?.contains(el) &&
+        !!el.closest('[data-flashlight="grow"]');
       size.set(overGrowTarget ? maskSize * GROW_FACTOR : maskSize);
     };
 
-    window.addEventListener("mousemove", handleMove);
-    return () => window.removeEventListener("mousemove", handleMove);
+    const onMouse = (e: MouseEvent) => update(e.clientX, e.clientY, e.target);
+    const onTouch = (e: TouchEvent) => {
+      const touch = e.touches[0];
+      if (touch) update(touch.clientX, touch.clientY, touch.target);
+    };
+
+    window.addEventListener("mousemove", onMouse);
+    window.addEventListener("touchmove", onTouch, { passive: true });
+    window.addEventListener("touchstart", onTouch, { passive: true });
+    return () => {
+      window.removeEventListener("mousemove", onMouse);
+      window.removeEventListener("touchmove", onTouch);
+      window.removeEventListener("touchstart", onTouch);
+    };
   }, [x, y, size, gridId, maskSize]);
 
   // Center the masked circle on the pointer, accounting for the live size

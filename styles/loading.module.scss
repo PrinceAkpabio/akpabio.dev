@@ -9,7 +9,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  width: calc(100% - 8rem);
+  width: calc(100% - 2 * var(--frame));
   align-self: stretch;
   height: 100%;
   box-sizing: border-box;
@@ -42,6 +42,10 @@
   width: 100%;
   box-sizing: border-box;
   overflow: hidden;
+
+  @include for-phone-only {
+    display: none;
+  }
 }
 
 .gridWrapper {
@@ -146,6 +150,12 @@
   text-transform: uppercase;
   z-index: 7;
 
+  @include for-tablet-landscape-only {
+    font-size: 8rem;
+  }
+  @include for-tablet-portait-only {
+    font-size: 6rem;
+  }
   @include for-phone-only {
     font-size: 4rem;
     line-height: 6rem;

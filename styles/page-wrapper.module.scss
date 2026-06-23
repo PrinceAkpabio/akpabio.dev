@@ -55,7 +55,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: calc(100% - 8rem);
+  width: calc(100% - 2 * var(--frame));
   align-self: stretch;
   height: auto;
 }
@@ -64,85 +64,65 @@
   position: relative;
   box-sizing: border-box;
   display: flex;
-  width: 4rem;
-  height: 4rem;
-  padding: 2.5rem;
+  width: var(--frame);
+  height: var(--bar);
+  padding: 0;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-bottom: 0.063rem solid var(--black-75, #222);
   border-left: 0.063rem solid var(--black-75, #222);
-  @include for-phone-only {
-    // width: 2.5rem;
-    height: 2.5rem;
-    padding: 1.5rem;
-  }
 }
 
 .pageWrapperBottomRightGrid {
   position: relative;
   box-sizing: border-box;
   display: flex;
-  width: 4rem;
-  height: 4rem;
-  padding: 2.5rem;
+  width: var(--frame);
+  height: var(--bar);
+  padding: 0;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-top: 0.063rem solid var(--black-75, #222);
   border-left: 0.063rem solid var(--black-75, #222);
-  @include for-phone-only {
-    // width: 2.5rem;
-    height: 2.5rem;
-    padding: 1.5rem;
-  }
 }
 
 .pageWrapperTopLeftGrid {
   position: relative;
   box-sizing: border-box;
   display: flex;
-  width: 4rem;
-  height: 4rem;
-  padding: 2.5rem;
+  width: var(--frame);
+  height: var(--bar);
+  padding: 0;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-right: 0.063rem solid var(--black-75, #222);
   border-bottom: 0.063rem solid var(--black-75, #222);
 
-  @include for-phone-only {
-    // width: 2.5rem;
-    height: 2.5rem;
-    padding: 1.5rem;
-  }
 }
 .pageWrapperBottomLeftGrid {
   position: relative;
   box-sizing: border-box;
   display: flex;
-  width: 4rem;
-  height: 4rem;
-  padding: 2.5rem;
+  width: var(--frame);
+  height: var(--bar);
+  padding: 0;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-top: 0.063rem solid var(--black-75, #222);
   border-right: 0.063rem solid var(--black-75, #222);
 
-  @include for-phone-only {
-    // width: 2.5rem;
-    height: 2.5rem;
-    padding: 1.5rem;
-  }
 }
 
 .pageWrapperRightPadding {
   position: relative;
   display: flex;
-  width: 4rem;
+  width: var(--frame);
   height: auto;
-  padding: 2.5rem;
+  padding: 0;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -156,9 +136,9 @@
 .pageWrapperLeftPadding {
   position: relative;
   display: flex;
-  width: 4rem;
+  width: var(--frame);
   height: auto;
-  padding: 2.5rem;
+  padding: 0;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -168,43 +148,28 @@
   box-sizing: border-box;
   border-right: 0.063rem solid var(--black-75, #222);
 }
-.pageWrapperLeftPadding,
-.pageWrapperRightPadding {
-  @include for-phone-only {
-    width: 2.5rem;
-    padding: 1.5rem;
-  }
-}
 .pageWrapperTopPadding {
   position: relative;
   box-sizing: border-box;
   display: flex;
-  height: 4rem;
-  padding: 2.5rem;
+  height: var(--bar);
+  padding: 0;
   justify-content: space-between;
   align-items: center;
-  width: calc(100% - 8rem);
+  width: calc(100% - 2 * var(--frame));
   border-bottom: 0.063rem solid var(--black-75, #222);
-  @include for-phone-only {
-    height: 2.5rem;
-    padding: 1.5rem;
-  }
 }
 .pageWrapperBottomPadding {
   position: relative;
   box-sizing: border-box;
   display: flex;
-  height: 4rem;
-  padding: 2.5rem;
+  height: var(--bar);
+  padding: 0;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: calc(100% - 8rem);
+  width: calc(100% - 2 * var(--frame));
   border-top: 0.063rem solid var(--black-75, #222);
-  @include for-phone-only {
-    height: 2.5rem;
-    padding: 1.5rem;
-  }
 }
 
 .pageWrapperTopRightGrid,

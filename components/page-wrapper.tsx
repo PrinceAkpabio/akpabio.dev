@@ -25,6 +25,9 @@ export default function PageWrapper({ children }: PageContextProps) {
   // Revealed only once the loader counter reaches 100%
   const handleLoaderComplete = useCallback(() => setIsLoading(false), []);
 
+  // Scroll is locked while the menu is open by pausing Lenis (below)
+  const toggleMenu = useCallback(() => setIsActive((active) => !active), []);
+
   useEffect(() => {
     if (isLoading) {
       // Lock the page behind the loader; Lenis is also paused via the provider
@@ -38,7 +41,7 @@ export default function PageWrapper({ children }: PageContextProps) {
   }, [isLoading]);
 
   return (
-    <LenisProvider paused={isLoading}>
+    <LenisProvider paused={isLoading || isActive}>
       <LoadingContext.Provider value={isLoading}>
         <AnimatePresence mode="wait">
           {isLoading && <Loading onComplete={handleLoaderComplete} />}
@@ -47,15 +50,7 @@ export default function PageWrapper({ children }: PageContextProps) {
         <div className={styles.pageWrapperBackground}>
         <div className={styles.pageWrapperTop}>
           <div className={styles.pageWrapperTopLeftGrid}></div>
-          <Header
-            isActive={isActive}
-            openMenu={() => {
-              setIsActive(!isActive);
-              isActive
-                ? (document.body.style.overflowY = "scroll")
-                : (document.body.style.overflowY = "hidden");
-            }}
-          ></Header>
+          <Header isActive={isActive} openMenu={toggleMenu}></Header>
           <div className={styles.pageWrapperTopRightGrid}></div>
         </div>
 
@@ -74,16 +69,7 @@ export default function PageWrapper({ children }: PageContextProps) {
         </div>
 
         <AnimatePresence mode="wait">
-          {isActive && (
-            <Nav
-              openMenu={() => {
-                setIsActive(!isActive);
-                isActive
-                  ? (document.body.style.overflowY = "scroll")
-                  : (document.body.style.overflowY = "hidden");
-              }}
-            />
-          )}
+          {isActive && <Nav openMenu={toggleMenu} />}
         </AnimatePresence>
         </div>
       </LoadingContext.Provider>

@@ -51,6 +51,9 @@
     @include for-phone-only {
       display: none;
     }
+    @include for-tablet-portait-only {
+      display: none;
+    }
 
     .workItem {
       display: flex;
@@ -155,6 +158,11 @@
     box-sizing: border-box;
 
     @include for-phone-only {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    @include for-tablet-portait-only {
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
@@ -347,6 +355,12 @@
       line-height: normal;
       text-transform: lowercase;
 
+      @include for-tablet-landscape-only {
+        font-size: 7rem;
+      }
+      @include for-tablet-portait-only {
+        font-size: 5rem;
+      }
       @include for-phone-only {
         font-size: 3rem;
       }
