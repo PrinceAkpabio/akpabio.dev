@@ -31,7 +31,7 @@ export default function Flashlight({
   maskSize?: number;
 }) {
   const grid = usePageGrid(gridId);
-  const maskRef = useRef<HTMLDivElement>(null);
+  const layerRef = useRef<HTMLDivElement>(null);
 
   const x = useMotionValue(-9999);
   const y = useMotionValue(-9999);
@@ -44,7 +44,7 @@ export default function Flashlight({
   // Rest the spotlight at the section's center so the grid reads at rest — no
   // blank-dark before first input (matters on touch, where there's no cursor)
   useEffect(() => {
-    const rect = maskRef.current?.getBoundingClientRect();
+    const rect = layerRef.current?.getBoundingClientRect();
     if (!rect) return;
     const cx = rect.width / 2;
     const cy = rect.height / 2;
@@ -60,7 +60,7 @@ export default function Flashlight({
       clientY: number,
       target: EventTarget | null
     ) => {
-      const rect = maskRef.current?.getBoundingClientRect();
+      const rect = layerRef.current?.getBoundingClientRect();
       if (!rect) return;
       x.set(clientX - rect.left);
       y.set(clientY - rect.top);
@@ -105,13 +105,13 @@ export default function Flashlight({
   return (
     <>
       <motion.div
-        ref={maskRef}
         aria-hidden
         className={loadingStyles.mask}
         style={{ maskPosition, maskSize: maskSizeValue }}
       />
 
       <motion.div
+        ref={layerRef}
         aria-hidden
         className={loadingStyles.flashlight}
         style={{ background: flashlight }}
