@@ -73,6 +73,8 @@
 
     .name {
       @include fixedsys(9rem, normal);
+      // Fluid so long titles fit on mid-desktops instead of overflowing at 9rem
+      font-size: clamp(4rem, 9vw, 9rem);
       color: var(--black-50, #333);
       text-align: center;
       text-transform: lowercase;

@@ -115,6 +115,9 @@
 
     .name {
       @include fixedsys(8.125rem, normal);
+      // Fluid so the longest line fits: the fixed 8.125rem overflowed the
+      // content box on mid-desktops (~1200-1500px), where no breakpoint applied.
+      font-size: clamp(5rem, 8vw, 8.125rem);
       color: var(--black-50, #333);
       text-align: center;
       text-transform: lowercase;
@@ -147,6 +150,9 @@
 
     .role {
       @include fixedsys(8.125rem, normal);
+      // Fluid so the longest line fits: the fixed 8.125rem overflowed the
+      // content box on mid-desktops (~1200-1500px), where no breakpoint applied.
+      font-size: clamp(5rem, 8vw, 8.125rem);
       color: var(--black-25, #666);
       text-align: center;
       text-transform: lowercase;
