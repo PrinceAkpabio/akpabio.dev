@@ -5,8 +5,7 @@ import styles from "@/styles/hero.module.scss";
 import Link from "next/link";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import HeroIntroductionTypewriterAnimation from "./hero-intro-typewriter-animation";
-import HeroHireMeTypewriterAnimation from "./hero-hire-me-typewriter-animation";
+import Typewriter from "./typewriter";
 import { useScrollTo } from "@/components/providers/lenis-provider";
 import { useLoading } from "@/components/providers/loading-context";
 import { useTranslation } from "@/components/providers/language-provider";
@@ -112,13 +111,27 @@ export default function Hero() {
       <div className={styles.introduction}>
         <div className={styles.left}>
           <span ref={heroIntroItem} style={{ display: "none" }}>
-            <HeroIntroductionTypewriterAnimation
+            <Typewriter
+              textKey="hero.intro"
+              duration={2}
+              ease="easeInOut"
+              delay={0.3}
+              className={styles.introText}
               skip={skipIntro}
               start={!isLoading}
             />
           </span>
           <span ref={heroHireMeItem} style={{ display: "none" }}>
-            <HeroHireMeTypewriterAnimation skip={skipIntro} start={!isLoading} />
+            <Typewriter
+              textKey="hero.hireMe"
+              duration={1}
+              ease="easeOut"
+              delay={2.5}
+              className={styles.hireMeText}
+              skip={skipIntro}
+              start={!isLoading}
+              showCursor
+            />
           </span>
         </div>
         <div className={styles.right}>

@@ -4,10 +4,11 @@ import Contact from "@/components/sections/contact";
 import { use, useEffect } from "react";
 import styles from "@/styles/works.module.scss";
 import Link from "next/link";
-import { useLenis, useScrollTo } from "@/components/providers/lenis-provider";
+import { useLenis } from "@/components/providers/lenis-provider";
 import { useTranslation } from "@/components/providers/language-provider";
 import Flashlight from "@/components/sections/flashlight";
 import ProjectGallery from "@/components/sections/project-gallery";
+import SectionNav from "@/components/layout/section-nav";
 import { projects } from "@/lib/projects";
 
 export default function Page({ params }: { params: Promise<{ slug: string }> }) {
@@ -15,7 +16,6 @@ export default function Page({ params }: { params: Promise<{ slug: string }> }) 
   const projectId = Number(slug);
   const project = projects.find((p) => p.id === projectId) ?? projects[0];
   const images = project.images ?? [project.src];
-  const scrollTo = useScrollTo();
   const lenis = useLenis();
   const { t } = useTranslation();
 
@@ -39,30 +39,7 @@ export default function Page({ params }: { params: Promise<{ slug: string }> }) 
             </Link>
           </div>
           <div className={styles.right}>
-            <span
-              onClick={() => scrollTo("#works-section")}
-              className={styles.menuItem}
-            >
-              {t("nav.works")}
-            </span>
-            <Link
-              href="#contact-section"
-              className={styles.menuItem}
-              onClick={(e) => {
-                e.preventDefault();
-                scrollTo("#contact-section");
-              }}
-            >
-              {t("nav.contact")}
-            </Link>
-            <Link
-              href="/prince-akpabio-cv.pdf"
-              className={styles.menuItem}
-              download="prince-akpabio-cv"
-              target="_blank"
-            >
-              {t("nav.resume")}
-            </Link>
+            <SectionNav className={styles.menuItem} />
           </div>
         </div>
 

@@ -2,12 +2,11 @@
 
 import styles from "@/styles/contact.module.scss";
 import Link from "next/link";
-import { useScrollTo } from "@/components/providers/lenis-provider";
 import Flashlight from "./flashlight";
+import SectionNav from "@/components/layout/section-nav";
 import { useTranslation } from "@/components/providers/language-provider";
 
 export default function Contact() {
-  const scrollTo = useScrollTo();
   const { t } = useTranslation();
 
   return (
@@ -45,34 +44,7 @@ export default function Contact() {
           </p>
         </div>
         <div className={styles.right}>
-          <Link
-            href="#works-section"
-            className={styles.menuItem}
-            onClick={(e) => {
-              e.preventDefault();
-              scrollTo("#works-section");
-            }}
-          >
-            {t("nav.works")}
-          </Link>
-          <Link
-            href="#contact-section"
-            className={styles.menuItem}
-            onClick={(e) => {
-              e.preventDefault();
-              scrollTo("#contact-section");
-            }}
-          >
-            {t("nav.contact")}
-          </Link>
-          <Link
-            href="/prince-akpabio-cv.pdf"
-            className={styles.menuItem}
-            download="prince-akpabio-cv"
-            target="_blank"
-          >
-            {t("nav.resume")}
-          </Link>
+          <SectionNav className={styles.menuItem} />
         </div>
       </div>
     </div>
