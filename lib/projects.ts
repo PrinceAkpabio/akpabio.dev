@@ -7,13 +7,17 @@ export interface Project {
   /** Optional extra images for the project gallery; falls back to [src]. */
   images?: string[];
   tags: Tag[];
-  i?: number;
-  progress?: MotionValue<number>;
-  range?: number[];
-  targetScale?: number;
 }
 
 export type Tag = { label: string; content: string };
+
+/** A project plus the scroll-driven values the mobile stacking card needs. */
+export type WorkCardMobileProps = Project & {
+  i: number;
+  progress: MotionValue<number>;
+  range: number[];
+  targetScale: number;
+};
 
 export const projects: Project[] = [
   {

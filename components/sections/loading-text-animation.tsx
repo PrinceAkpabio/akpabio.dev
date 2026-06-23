@@ -1,5 +1,7 @@
+"use client";
+
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import CursorBlinker from "./cursor";
 import loadingStyles from "@/styles/loading.module.scss";
 import { useTranslation } from "@/components/providers/language-provider";

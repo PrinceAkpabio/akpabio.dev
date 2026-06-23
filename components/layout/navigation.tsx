@@ -17,20 +17,12 @@ export interface NavItem {
   download?: boolean;
 }
 
-export type NavLinkDataItem = {
-  index: number;
-  title: string;
-  href: string;
-  download?: boolean;
-};
-export interface NavLinkItem {
-  data: NavLinkDataItem;
+export interface NavLinkProps {
+  data: NavItem & { index: number };
   isActive: boolean;
   setSelectedIndicator: React.Dispatch<React.SetStateAction<string>>;
-  openMenu: NavLinkAction;
+  openMenu: () => void;
 }
-
-export type NavLinkAction = () => void;
 
 export interface NavLinkActionInterface {
   openMenu: () => void;

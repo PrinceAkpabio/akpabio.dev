@@ -4,8 +4,8 @@ import { useRef } from "react";
 import Image from "next/image";
 import styles from "@/styles/works.module.scss";
 import { useRouter } from "next/navigation";
-import { Project } from "@/lib/projects";
-import { MotionValue, motion, useScroll, useTransform } from "framer-motion";
+import { WorkCardMobileProps } from "@/lib/projects";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useTranslation } from "@/components/providers/language-provider";
 
 export default function WorkCardMobile({
@@ -16,7 +16,7 @@ export default function WorkCardMobile({
   progress,
   range,
   targetScale,
-}: Project) {
+}: WorkCardMobileProps) {
   const router = useRouter();
   const { t } = useTranslation();
   const container = useRef(null);
@@ -29,18 +29,14 @@ export default function WorkCardMobile({
   const imageScale = useTransform(scrollYProgress, [0, 1], [1.2, 1]);
 
   // Shrink the card as later cards stack over it (depth)
-  const scale = useTransform(
-    progress as MotionValue<number>,
-    range as number[],
-    [1, targetScale as number]
-  );
+  const scale = useTransform(progress, range, [1, targetScale]);
 
   return (
     <div ref={container} className={styles.cardContainer}>
       <motion.figure
         onClick={() => router.push(`/project/00${id}`)}
         className={styles.card}
-        style={{ scale, top: `calc(-5vh + ${(i as number) * 25}px)` }}
+        style={{ scale, top: `calc(-5vh + ${i * 25}px)` }}
       >
         <div className={styles.cardImage}>
           <motion.div

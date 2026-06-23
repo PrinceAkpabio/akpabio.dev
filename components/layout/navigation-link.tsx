@@ -1,8 +1,10 @@
+"use client";
+
 import styles from "@/styles/nav-link.module.scss";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { slide } from "@/lib/anim";
-import { NavLinkItem } from "./navigation";
+import { NavLinkProps } from "./navigation";
 import { useScrollTo } from "@/components/providers/lenis-provider";
 
 export default function NavLink({
@@ -10,7 +12,7 @@ export default function NavLink({
   isActive,
   setSelectedIndicator,
   openMenu,
-}: NavLinkItem) {
+}: NavLinkProps) {
   const { title, href, index } = data;
   const scrollTo = useScrollTo();
 
