@@ -2,6 +2,7 @@
 
 .contactSection {
   position: relative;
+  isolation: isolate;
   display: flex;
   padding: 2.5rem;
   gap: 2.5rem;
@@ -82,6 +83,7 @@
 
     .callToAction {
       color: var(--primary, #0f0);
+      mix-blend-mode: difference;
       text-align: right;
       font-family: Fixedsys 62;
       font-size: 7.5rem;

@@ -6,6 +6,7 @@ import styles from "@/styles/works.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 import { useScrollTo } from "@/components/lenis-provider";
+import Flashlight from "@/components/flashlight";
 
 export default function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
@@ -14,7 +15,9 @@ export default function Page({ params }: { params: Promise<{ slug: string }> }) 
 
   return (
     <>
-      <div className={styles.projectSection}>
+      <div id="projectGrid" className={styles.projectSection}>
+        <Flashlight gridId="projectGrid" />
+
         <div className={styles.introduction}>
           <div className={styles.left}>
             <Link href="/" className={styles.introText}>
@@ -50,7 +53,9 @@ export default function Page({ params }: { params: Promise<{ slug: string }> }) 
         </div>
 
         <div className={styles.projectName}>
-          <p className={styles.name}>projectname {slug}</p>
+          <p className={styles.name} data-flashlight="grow">
+            projectname {slug}
+          </p>
         </div>
 
         <div className={styles.project}>
@@ -94,6 +99,7 @@ export default function Page({ params }: { params: Promise<{ slug: string }> }) 
               }
               alt="project image"
               className={styles.imageContent}
+              data-flashlight="grow"
             />
           </div>
         </div>

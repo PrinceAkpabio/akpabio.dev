@@ -2,6 +2,7 @@
 
 .worksSection {
   position: relative;
+  isolation: isolate;
   display: flex;
   padding: 2.5rem;
   flex-direction: column;
@@ -252,6 +253,7 @@
 
 .projectSection {
   position: relative;
+  isolation: isolate;
   display: flex;
   padding: 2.5rem;
   flex-direction: column;

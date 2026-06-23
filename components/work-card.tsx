@@ -23,6 +23,7 @@ export default function WorkCard({ src, title, ...items }: Project) {
         src={`${src}`}
         alt="Project Image"
         className={styles.workItemImage}
+        data-flashlight="grow"
       />
 
       <figcaption className={styles.workItemName}>{title}</figcaption>

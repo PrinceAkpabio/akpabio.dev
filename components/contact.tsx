@@ -24,8 +24,12 @@ export default function Contact() {
       </div>
 
       <div className={styles.contactMiddle}>
-        <div className={styles.callToAction}>Let’s</div>
-        <div className={styles.callToAction}>Talk</div>
+        <div className={styles.callToAction} data-flashlight="grow">
+          Let’s
+        </div>
+        <div className={styles.callToAction} data-flashlight="grow">
+          Talk
+        </div>
       </div>
 
       <div className={styles.contactBottom}>

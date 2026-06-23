@@ -155,16 +155,16 @@ export default function Hero() {
       </div>
 
       <div className={styles.introductionBottom}>
-        <div ref={firstNameItem} className={styles.name}>
+        <div ref={firstNameItem} className={styles.name} data-flashlight="grow">
           Prince
         </div>
-        <div ref={lastNameItem} className={styles.name}>
+        <div ref={lastNameItem} className={styles.name} data-flashlight="grow">
           Akpabio
         </div>
-        <div ref={roleOneItem} className={styles.role}>
+        <div ref={roleOneItem} className={styles.role} data-flashlight="grow">
           Frontend
         </div>
-        <div ref={roleTwoItem} className={styles.role}>
+        <div ref={roleTwoItem} className={styles.role} data-flashlight="grow">
           Developer
         </div>
 

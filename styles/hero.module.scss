@@ -2,6 +2,7 @@
 
 .heroSection {
   position: relative;
+  isolation: isolate;
   display: flex;
   padding: 2.5rem;
   flex-direction: column;
@@ -46,6 +47,7 @@
         width: 0.5rem;
         height: 0.031rem;
         background: var(--primary, #0f0);
+        mix-blend-mode: difference;
         opacity: 0;
         z-index: 7;
       }
@@ -63,6 +65,7 @@
 
       .hireMeText {
         color: var(--primary, #0f0);
+        mix-blend-mode: difference;
         font-family: Fixedsys 62;
         font-size: 1rem;
         font-style: normal;
