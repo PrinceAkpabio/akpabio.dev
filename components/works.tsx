@@ -6,6 +6,7 @@ import { Project, projects } from "@/utils/projects";
 import WorkCard from "./work-card";
 import WorkCardMobile from "./work-card-mobile";
 import { useScroll } from "framer-motion";
+import Flashlight from "./flashlight";
 
 export default function Works() {
   const container = useRef(null);
@@ -18,6 +19,8 @@ export default function Works() {
 
   return (
     <div ref={container} id="works-section" className={styles.worksSection}>
+      <Flashlight gridId="works-section" />
+
       <div className={styles.sectionTitle}>
         <p className={styles.title}> Works</p>
       </div>

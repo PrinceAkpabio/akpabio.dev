@@ -16,6 +16,8 @@
   }
 
   .sectionTitle {
+    position: relative;
+    z-index: 8;
     display: flex;
     max-width: 25rem;
     flex-direction: column;
@@ -36,6 +38,8 @@
   }
 
   .worksGrid {
+    position: relative;
+    z-index: 8;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(16, 5vw);
@@ -138,6 +142,8 @@
   }
 
   .worksGridMobile {
+    position: relative;
+    z-index: 8;
     display: none;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(16, 5vw);
