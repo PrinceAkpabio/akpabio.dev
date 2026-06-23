@@ -14,7 +14,6 @@
   min-height: calc(100vh - var(--bar));
   min-height: calc(100dvh - var(--bar));
   box-sizing: border-box;
-  //   cursor: none;
 
   @include for-phone-only {
     padding: 1.5rem;

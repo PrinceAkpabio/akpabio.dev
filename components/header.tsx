@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import styles from "@/styles/header.module.scss";
 import { SunDim } from "@phosphor-icons/react";
 import BurgerMenu from "./burger-menu";

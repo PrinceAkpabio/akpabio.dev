@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "@/styles/hero.module.scss";
 import Link from "next/link";
 import gsap from "gsap";
@@ -171,10 +171,8 @@ export default function Hero() {
         </div>
 
         <div ref={animatedScrollIcon} className={styles.animatedScrollIcon}>
-          {/* <div ref={ellipseTwoItem} className={styles.ellipseTwo}></div> */}
           <div ref={ellipseOneItem} className={styles.ellipseOne}></div>
         </div>
-        {/* <Image className={styles.scrollSvg} src={Scroll} alt="Scroll svg" /> */}
       </div>
     </div>
   );

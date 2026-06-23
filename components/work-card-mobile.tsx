@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import styles from "@/styles/works.module.scss";
 import { useRouter } from "next/navigation";
@@ -50,7 +50,7 @@ export default function WorkCardMobile({
             <Image
               fill
               sizes="100vw"
-              src={`${src}`}
+              src={src}
               alt={t("a11y.projectImage")}
               className={styles.workItemImage}
             />

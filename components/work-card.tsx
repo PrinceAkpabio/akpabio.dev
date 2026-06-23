@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
 import styles from "@/styles/works.module.scss";
 import { useRouter } from "next/navigation";
@@ -22,7 +21,7 @@ export default function WorkCard({ src, title, ...items }: Project) {
       <Image
         width={100}
         height={100}
-        src={`${src}`}
+        src={src}
         alt={t("a11y.projectImage")}
         className={styles.workItemImage}
         data-flashlight="grow"

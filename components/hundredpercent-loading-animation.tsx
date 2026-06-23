@@ -22,7 +22,6 @@ export default function HundredPercentLoadingTextAnimation({
 
   return (
     <motion.div
-      // transition={{ type: "tween", ease: "easeInOut" }}
       className={
         count === 100
           ? loadingStyles.loadedNumberCount
