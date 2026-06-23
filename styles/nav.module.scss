@@ -1,3 +1,5 @@
+@import "./_layout";
+
 .menu {
   height: 100vh;
   height: 100dvh;
@@ -30,13 +32,9 @@
       flex: 1 0 0;
 
       a {
+        @include fixedsys(16px, 24px);
         text-decoration: none;
         color: var(--black-0, #999);
-        font-family: Fixedsys 62;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 24px; /* 150% */
         letter-spacing: 0.64px;
         text-transform: lowercase;
       }
@@ -48,36 +46,7 @@
     gap: 2.5rem;
 
     .themeToggle {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0;
-      padding: 0;
-      border: none;
-      background: none;
-      color: var(--black-25, #666);
-      font-size: 1.25rem;
-      cursor: pointer;
-    }
-
-    .languageText {
-      color: var(--black-0, #999);
-      font-family: Fixedsys 62;
-      font-size: 0.75rem;
-      font-style: normal;
-      font-weight: 500;
-      line-height: normal;
-      letter-spacing: 0.03rem;
-      text-transform: lowercase;
-      cursor: pointer;
-    }
-
-    .line {
-      width: 3rem;
-      height: 0.063rem;
-      stroke-width: 0.063rem;
-      stroke: var(--black-25, #666);
-      background-color: var(--black-25, #666);
+      @include icon-button;
     }
   }
 }

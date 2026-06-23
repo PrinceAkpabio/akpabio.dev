@@ -13,7 +13,6 @@
   align-self: stretch;
   height: 100%;
   box-sizing: border-box;
-  // cursor: none;
 
   @include for-phone-only {
     padding: 1.5rem;
@@ -34,24 +33,16 @@
       flex: 1 0 0;
 
       .contactTitle {
+        @include fixedsys;
         color: var(--black-0, #999);
-        font-family: Fixedsys 62;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 1.5rem; /* 150% */
         letter-spacing: 0.04rem;
         text-transform: lowercase;
         z-index: 7;
       }
 
       .contactMessage {
+        @include fixedsys;
         color: var(--black-0, #999);
-        font-family: Fixedsys 62;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 1.5rem; /* 150% */
         text-transform: lowercase;
         z-index: 7;
       }
@@ -82,20 +73,14 @@
     box-sizing: border-box;
 
     .callToAction {
+      @include fixedsys(7.5rem, normal);
       color: var(--primary, #0f0);
       mix-blend-mode: difference;
       text-align: right;
-      font-family: Fixedsys 62;
-      font-size: 7.5rem;
-      font-style: normal;
-      font-weight: 500;
-      line-height: normal;
       text-transform: lowercase;
       z-index: 7;
 
-      :global([data-theme="light"]) & {
-        mix-blend-mode: normal;
-      }
+      @include light-blend-normal;
 
       &:nth-child(1) {
         margin-bottom: -2rem;
@@ -137,13 +122,9 @@
       }
 
       .designTag {
+        @include fixedsys;
         color: var(--black-0, #999);
         text-align: right;
-        font-family: Fixedsys 62;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 1.5rem; /* 150% */
         text-transform: lowercase;
         z-index: 7;
 
@@ -167,20 +148,13 @@
 
       @include for-small-phone-only {
         flex-direction: column;
-
-        // max-width: none;
-        // width: 100%;
         justify-content: center;
         align-items: center;
       }
 
       .menuItem {
+        @include fixedsys;
         color: var(--black-0, #999);
-        font-family: Fixedsys 62;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 1.5rem; /* 150% */
         letter-spacing: 0.04rem;
         text-transform: lowercase;
         text-decoration: none;

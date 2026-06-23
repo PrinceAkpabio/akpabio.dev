@@ -53,37 +53,25 @@
         opacity: 0;
         z-index: 7;
 
-        :global([data-theme="light"]) & {
-          mix-blend-mode: normal;
-        }
+        @include light-blend-normal;
       }
 
       .introText {
+        @include fixedsys;
         color: var(--black-0, #999);
-        font-family: Fixedsys 62;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 1.5rem; /* 150% */
         text-transform: lowercase;
         z-index: 7;
       }
 
       .hireMeText {
+        @include fixedsys;
         color: var(--primary, #0f0);
         mix-blend-mode: difference;
-        font-family: Fixedsys 62;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 1.5rem; /* 150% */
         letter-spacing: 0.04rem;
         text-transform: lowercase;
         z-index: 7;
 
-        :global([data-theme="light"]) & {
-          mix-blend-mode: normal;
-        }
+        @include light-blend-normal;
       }
     }
 
@@ -100,12 +88,8 @@
       }
 
       .menuItem {
+        @include fixedsys;
         color: var(--black-0, #999);
-        font-family: Fixedsys 62;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 1.5rem; /* 150% */
         letter-spacing: 0.04rem;
         text-transform: lowercase;
         text-decoration: none;
@@ -130,13 +114,9 @@
     }
 
     .name {
+      @include fixedsys(8.125rem, normal);
       color: var(--black-50, #333);
       text-align: center;
-      font-family: Fixedsys 62;
-      font-size: 8.125rem;
-      font-style: normal;
-      font-weight: 500;
-      line-height: normal;
       text-transform: lowercase;
       z-index: 7;
       box-sizing: border-box;
@@ -166,13 +146,9 @@
     }
 
     .role {
+      @include fixedsys(8.125rem, normal);
       color: var(--black-25, #666);
       text-align: center;
-      font-family: Fixedsys 62;
-      font-size: 8.125rem;
-      font-style: normal;
-      font-weight: 500;
-      line-height: normal;
       text-transform: lowercase;
       z-index: 7;
       margin-bottom: -1.625rem;

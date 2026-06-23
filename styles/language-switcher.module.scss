@@ -1,3 +1,5 @@
+@import "./_layout";
+
 .switcher {
   display: flex;
   align-items: center;
@@ -6,11 +8,7 @@
 
 .code,
 .active {
-  margin: 0;
-  padding: 0;
-  border: none;
-  background: none;
-  cursor: pointer;
+  @include button-reset;
   font-family: Fixedsys 62;
   font-size: 1rem;
   line-height: normal;

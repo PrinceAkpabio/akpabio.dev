@@ -33,17 +33,15 @@
     }
   }
 }
+
 .logoName {
+  @include fixedsys(1rem, normal);
   color: var(--black-0, #999);
-  font-family: Fixedsys 62;
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
   letter-spacing: 0.03rem;
   text-transform: lowercase;
   text-decoration: none;
 }
+
 .status {
   display: flex;
   align-items: center;
@@ -53,16 +51,14 @@
     display: none;
   }
 }
+
 .statusText {
+  @include fixedsys(0.75rem, normal);
   color: var(--black-25, #666);
-  font-family: Fixedsys 62;
-  font-size: 0.75rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
   letter-spacing: 0.03rem;
   text-transform: lowercase;
 }
+
 .statusIconWrapper {
   display: flex;
   align-items: center;
@@ -77,34 +73,5 @@
 }
 
 .themeToggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-  border: none;
-  background: none;
-  color: var(--black-25, #666);
-  font-size: 1.25rem;
-  cursor: pointer;
-}
-
-.languageText {
-  color: var(--black-0, #999);
-  font-family: Fixedsys 62;
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  letter-spacing: 0.03rem;
-  text-transform: lowercase;
-  cursor: pointer;
-}
-
-.line {
-  width: 3rem;
-  height: 0.063rem;
-  stroke-width: 0.063rem;
-  stroke: var(--black-25, #666);
-  background-color: var(--black-25, #666);
+  @include icon-button;
 }

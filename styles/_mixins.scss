@@ -1,0 +1,36 @@
+// Shared SCSS mixins (imported transitively via _layout)
+
+// The Fixedsys body type used across the site. Pass size/line-height per site;
+// callers add their own letter-spacing / text-transform / text-align.
+@mixin fixedsys($size: 1rem, $line: 1.5rem) {
+  font-family: Fixedsys 62;
+  font-size: $size;
+  font-style: normal;
+  font-weight: 500;
+  line-height: $line;
+}
+
+@mixin button-reset {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+// Icon toggle button (theme toggle in header + burger menu)
+@mixin icon-button {
+  @include button-reset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--black-25, #666);
+  font-size: 1.25rem;
+}
+
+// Disable the green-text invert blend in light mode
+@mixin light-blend-normal {
+  :global([data-theme="light"]) & {
+    mix-blend-mode: normal;
+  }
+}

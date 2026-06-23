@@ -1,10 +1,8 @@
+@import "./_layout";
+
 .link {
+  @include fixedsys;
   color: var(--black-0, #999);
-  font-family: Fixedsys 62;
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 1.5rem; /* 150% */
   letter-spacing: 0.04rem;
   text-transform: lowercase;
   cursor: pointer;
@@ -15,12 +13,8 @@
     gap: 0.5em;
   }
   .statusText {
+    @include fixedsys(0.75rem, normal);
     color: var(--black-25, #666);
-    font-family: Fixedsys 62;
-    font-size: 0.75rem;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
     letter-spacing: 0.03rem;
     text-transform: lowercase;
   }
@@ -33,7 +27,7 @@
       width: 0.609rem;
       height: 0.609rem;
       border-radius: 50%;
-      background-color: #00ff00;
+      background-color: var(--primary, #0f0);
     }
   }
 }
