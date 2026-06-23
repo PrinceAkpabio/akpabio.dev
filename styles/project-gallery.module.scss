@@ -1,13 +1,13 @@
 @import "./_layout";
 
 .thumb {
+  @include soft-image-frame;
   position: relative;
   display: block;
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
-  border: none;
   background: var(--black-100, #111);
   cursor: pointer;
   overflow: hidden;

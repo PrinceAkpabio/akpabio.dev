@@ -2,7 +2,7 @@
 
 import Contact from "@/components/sections/contact";
 import { use, useEffect } from "react";
-import styles from "@/styles/works.module.scss";
+import styles from "@/styles/project.module.scss";
 import Link from "next/link";
 import { useLenis } from "@/components/providers/lenis-provider";
 import { useTranslation } from "@/components/providers/language-provider";

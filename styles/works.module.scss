@@ -70,10 +70,12 @@
       }
 
       .workItemImage {
+        @include soft-image-frame;
         width: 100%;
         height: 100%;
         object-fit: cover;
         display: block;
+        box-sizing: border-box;
         background: linear-gradient(0deg, #fff 0%, #fff 100%),
           lightgray 50% / cover no-repeat;
         background-blend-mode: saturation, normal;
@@ -144,13 +146,11 @@
     }
 
     .cardImage {
+      @include soft-image-frame;
       position: relative;
       width: 100%;
       height: 60dvh;
       overflow: hidden;
-      border: 1px solid var(--black-50, #333);
-      border-radius: 0.75rem;
-      box-shadow: 0 0 2rem rgba(0, 0, 0, 0.5);
     }
 
     .cardImageInner {
@@ -168,253 +168,6 @@
       width: fit-content;
       color: var(--black-0, #999);
       text-transform: lowercase;
-    }
-  }
-}
-
-.projectSection {
-  position: relative;
-  isolation: isolate;
-  display: flex;
-  padding: 2.5rem;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-  align-self: stretch;
-  height: 100%;
-  box-sizing: border-box;
-  gap: 2.5rem;
-
-  @include for-phone-only {
-    padding: 1.5rem;
-  }
-
-  .introduction {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    align-self: stretch;
-
-    .left {
-      display: flex;
-      max-width: 25rem;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1.5rem;
-      flex: 1 0 0;
-
-      .introText {
-        color: var(--black-0, #999);
-        font-family: Fixedsys 62;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 1.5rem; /* 150% */
-        text-transform: lowercase;
-        text-decoration: none;
-        z-index: 7;
-      }
-    }
-
-    .right {
-      display: flex;
-      max-width: 25rem;
-      justify-content: flex-end;
-      align-items: flex-start;
-      gap: 1.5rem;
-      flex: 1 0 0;
-
-      @include for-phone-only {
-        display: none;
-      }
-
-      .menuItem {
-        color: var(--black-0, #999);
-        font-family: Fixedsys 62;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 1.5rem; /* 150% */
-        letter-spacing: 0.04rem;
-        text-transform: lowercase;
-        text-decoration: none;
-        z-index: 7;
-        cursor: pointer;
-      }
-    }
-  }
-
-  .projectName {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    gap: 2.5rem;
-    align-self: stretch;
-
-    .name {
-      color: var(--black-50, #333);
-      text-align: center;
-      font-family: Fixedsys 62;
-      font-size: 9rem;
-      font-style: normal;
-      font-weight: 500;
-      line-height: normal;
-      text-transform: lowercase;
-
-      @include for-tablet-landscape-only {
-        font-size: 7rem;
-      }
-      @include for-tablet-portait-only {
-        font-size: 5rem;
-      }
-      @include for-phone-only {
-        font-size: 3rem;
-      }
-      @include for-small-phone-only {
-        font-size: 1.5rem;
-      }
-    }
-  }
-
-  .project {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 40px;
-    align-self: stretch;
-
-    @include for-phone-only {
-      flex-direction: column-reverse;
-    }
-
-    .projectDetails {
-      display: flex;
-      max-width: 400px;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 24px;
-      flex: 1 0 0;
-      align-self: stretch;
-
-      .tag {
-        display: flex;
-        width: auto;
-        height: auto;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 4px;
-
-        .label {
-          align-self: stretch;
-          color: var(--black-25, #666);
-          font-family: Fixedsys 62;
-          font-size: 1rem;
-          font-style: normal;
-          font-weight: 500;
-          line-height: 1.5rem; /* 150% */
-          letter-spacing: 0.64px;
-          text-transform: lowercase;
-        }
-
-        .content {
-          align-self: stretch;
-          color: var(--black-0, #999);
-          font-family: Fixedsys 62;
-          font-size: 1rem;
-          font-style: normal;
-          font-weight: 500;
-          line-height: 1.5rem; /* 150% */
-          letter-spacing: 0.64px;
-          text-transform: lowercase;
-        }
-      }
-    }
-
-    .projectImage {
-      display: flex;
-      width: 100%;
-      height: 456px;
-      max-width: 760px;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 24px;
-      flex: 1 0 0;
-
-      .imageContent {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        background-blend-mode: saturation, normal;
-        box-sizing: border-box;
-      }
-    }
-  }
-
-  .projectNavigation {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    align-self: stretch;
-
-    @include for-phone-only {
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .left {
-      display: flex;
-      max-width: 25rem;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1.5rem;
-      flex: 1 0 0;
-
-      .previousLabel {
-        color: var(--black-0, #999);
-        font-family: Fixedsys 62;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 1.5rem; /* 150% */
-        text-transform: lowercase;
-        text-decoration: none;
-        z-index: 7;
-        cursor: pointer;
-
-        &.disabled {
-          color: var(--black-50, #333);
-          cursor: not-allowed;
-        }
-      }
-    }
-
-    .right {
-      display: flex;
-      max-width: 25rem;
-      justify-content: flex-end;
-      align-items: flex-start;
-      gap: 1.5rem;
-      flex: 1 0 0;
-
-      .nextLabel {
-        color: var(--black-0, #999);
-        font-family: Fixedsys 62;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 1.5rem; /* 150% */
-        letter-spacing: 0.04rem;
-        text-transform: lowercase;
-        text-decoration: none;
-        z-index: 7;
-        cursor: pointer;
-
-        &.disabled {
-          color: var(--black-50, #333);
-          cursor: not-allowed;
-        }
-      }
     }
   }
 }
