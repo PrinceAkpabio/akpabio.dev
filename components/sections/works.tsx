@@ -2,12 +2,12 @@
 
 import React, { useRef } from "react";
 import styles from "@/styles/works.module.scss";
-import { Project, projects } from "@/utils/projects";
+import { Project, projects } from "@/lib/projects";
 import WorkCard from "./work-card";
 import WorkCardMobile from "./work-card-mobile";
 import { useScroll } from "framer-motion";
 import Flashlight from "./flashlight";
-import { useTranslation } from "./language-provider";
+import { useTranslation } from "@/components/providers/language-provider";
 
 export default function Works() {
   const { t } = useTranslation();

@@ -9,7 +9,7 @@ import {
   useTransform,
 } from "framer-motion";
 import loadingStyles from "@/styles/loading.module.scss";
-import usePageGrid from "@/utils/usePageGrid";
+import usePageGrid from "@/hooks/usePageGrid";
 
 // How much the mask grows when hovering a [data-flashlight="grow"] element
 const GROW_FACTOR = 2.75;

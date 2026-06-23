@@ -2,7 +2,7 @@ import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { useEffect, useState } from "react";
 import CursorBlinker from "./cursor";
 import loadingStyles from "@/styles/loading.module.scss";
-import { useTranslation } from "./language-provider";
+import { useTranslation } from "@/components/providers/language-provider";
 
 export default function LoadingTextAnimation() {
   const { t } = useTranslation();

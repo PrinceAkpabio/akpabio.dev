@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import PageWrapper from "@/components/page-wrapper";
-import ThemeProvider from "@/components/theme-provider";
-import LanguageProvider from "@/components/language-provider";
+import PageWrapper from "@/components/layout/page-wrapper";
+import ThemeProvider from "@/components/providers/theme-provider";
+import LanguageProvider from "@/components/providers/language-provider";
 
 const fixedSys62 = localFont({ src: "./Fixedsys62.ttf" });
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslation } from "./language-provider";
+import { useTranslation } from "@/components/providers/language-provider";
 import { locales, localeLabels } from "@/i18n";
 import styles from "@/styles/language-switcher.module.scss";
 

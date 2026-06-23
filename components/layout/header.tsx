@@ -3,10 +3,10 @@
 import styles from "@/styles/header.module.scss";
 import { SunDim } from "@phosphor-icons/react";
 import BurgerMenu from "./burger-menu";
-import { MenuState } from "./page-wrapper";
+import { MenuState } from "@/types/menu";
 import Link from "next/link";
-import { useTheme } from "./theme-provider";
-import { useTranslation } from "./language-provider";
+import { useTheme } from "@/components/providers/theme-provider";
+import { useTranslation } from "@/components/providers/language-provider";
 import LanguageSwitcher from "./language-switcher";
 
 export default function Header({ isActive, openMenu }: MenuState) {

@@ -4,11 +4,11 @@ import React, { useState } from "react";
 import styles from "@/styles/nav.module.scss";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
-import { menuSlide } from "../utils/anim";
+import { menuSlide } from "@/lib/anim";
 import NavLink from "./navigation-link";
 import { SunDim } from "@phosphor-icons/react";
-import { useTheme } from "./theme-provider";
-import { useTranslation } from "./language-provider";
+import { useTheme } from "@/components/providers/theme-provider";
+import { useTranslation } from "@/components/providers/language-provider";
 import LanguageSwitcher from "./language-switcher";
 
 export interface NavItem {

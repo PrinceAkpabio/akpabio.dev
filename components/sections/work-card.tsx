@@ -3,8 +3,8 @@
 import Image from "next/image";
 import styles from "@/styles/works.module.scss";
 import { useRouter } from "next/navigation";
-import { Project } from "@/utils/projects";
-import { useTranslation } from "./language-provider";
+import { Project } from "@/lib/projects";
+import { useTranslation } from "@/components/providers/language-provider";
 
 export default function WorkCard({ src, title, ...items }: Project) {
   const router = useRouter();

@@ -4,9 +4,9 @@ import { useRef } from "react";
 import Image from "next/image";
 import styles from "@/styles/works.module.scss";
 import { useRouter } from "next/navigation";
-import { Project } from "@/utils/projects";
+import { Project } from "@/lib/projects";
 import { MotionValue, motion, useScroll, useTransform } from "framer-motion";
-import { useTranslation } from "./language-provider";
+import { useTranslation } from "@/components/providers/language-provider";
 
 export default function WorkCardMobile({
   src,

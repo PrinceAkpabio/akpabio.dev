@@ -4,18 +4,13 @@ import React, { useCallback, useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import styles from "@/styles/page-wrapper.module.scss";
 import Header from "./header";
-import Loading from "../app/loading";
+import Loading from "@/app/loading";
 import Nav from "./navigation";
-import LenisProvider from "./lenis-provider";
-import { LoadingContext } from "./loading-context";
+import LenisProvider from "@/components/providers/lenis-provider";
+import { LoadingContext } from "@/components/providers/loading-context";
 
 type PageContextProps = {
   children: React.ReactNode;
-};
-
-export type MenuState = {
-  isActive: boolean;
-  openMenu: () => void;
 };
 
 export default function PageWrapper({ children }: PageContextProps) {

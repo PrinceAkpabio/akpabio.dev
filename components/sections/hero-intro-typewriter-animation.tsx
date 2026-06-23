@@ -1,10 +1,9 @@
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { useEffect } from "react";
 import loadingStyles from "@/styles/hero.module.scss";
-import HeroIntroCursorBlinker from "./hero-intro-cursor";
-import { useTranslation } from "./language-provider";
+import { useTranslation } from "@/components/providers/language-provider";
 
-export default function HeroHireMeTypewriterAnimation({
+export default function HeroIntroductionTypewriterAnimation({
   skip,
   start,
 }: {
@@ -12,7 +11,7 @@ export default function HeroHireMeTypewriterAnimation({
   start?: boolean;
 }) {
   const { t } = useTranslation();
-  const baseText = t("hero.hireMe");
+  const baseText = t("hero.intro");
   const count = useMotionValue(0);
   const rounded = useTransform(count, (latest) => Math.round(latest));
   const displayText = useTransform(rounded, (latest) =>
@@ -28,17 +27,16 @@ export default function HeroHireMeTypewriterAnimation({
 
     const controls = animate(count, baseText.length, {
       type: "tween",
-      duration: 1,
-      ease: "easeOut",
-      delay: 2.5,
+      duration: 2,
+      ease: "easeInOut",
+      delay: 0.3,
     });
     return controls.stop;
   }, [count, skip, start, baseText]);
 
   return (
     <span className={loadingStyles.typewriterEffectWrapper}>
-      <motion.p className={loadingStyles.hireMeText}>{displayText}</motion.p>
-      <HeroIntroCursorBlinker />
+      <motion.p className={loadingStyles.introText}>{displayText}</motion.p>
     </span>
   );
 }

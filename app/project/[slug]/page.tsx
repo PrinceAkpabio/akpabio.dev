@@ -1,14 +1,14 @@
 "use client";
 
-import Contact from "@/components/contact";
+import Contact from "@/components/sections/contact";
 import { use, useEffect } from "react";
 import styles from "@/styles/works.module.scss";
 import Link from "next/link";
-import { useLenis, useScrollTo } from "@/components/lenis-provider";
-import { useTranslation } from "@/components/language-provider";
-import Flashlight from "@/components/flashlight";
-import ProjectGallery from "@/components/project-gallery";
-import { projects } from "@/utils/projects";
+import { useLenis, useScrollTo } from "@/components/providers/lenis-provider";
+import { useTranslation } from "@/components/providers/language-provider";
+import Flashlight from "@/components/sections/flashlight";
+import ProjectGallery from "@/components/sections/project-gallery";
+import { projects } from "@/lib/projects";
 
 export default function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);

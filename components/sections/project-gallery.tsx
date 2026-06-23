@@ -9,8 +9,8 @@ import {
   CaretRight,
   Square,
 } from "@phosphor-icons/react";
-import { useLenis } from "./lenis-provider";
-import { useTranslation } from "./language-provider";
+import { useLenis } from "@/components/providers/lenis-provider";
+import { useTranslation } from "@/components/providers/language-provider";
 import styles from "@/styles/project-gallery.module.scss";
 
 /**

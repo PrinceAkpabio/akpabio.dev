@@ -7,9 +7,9 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import HeroIntroductionTypewriterAnimation from "./hero-intro-typewriter-animation";
 import HeroHireMeTypewriterAnimation from "./hero-hire-me-typewriter-animation";
-import { useScrollTo } from "./lenis-provider";
-import { useLoading } from "./loading-context";
-import { useTranslation } from "./language-provider";
+import { useScrollTo } from "@/components/providers/lenis-provider";
+import { useLoading } from "@/components/providers/loading-context";
+import { useTranslation } from "@/components/providers/language-provider";
 import Flashlight from "./flashlight";
 
 export default function Hero() {

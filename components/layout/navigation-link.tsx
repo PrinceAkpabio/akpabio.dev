@@ -1,9 +1,9 @@
 import styles from "@/styles/nav-link.module.scss";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { slide } from "@/utils/anim";
+import { slide } from "@/lib/anim";
 import { NavLinkItem } from "./navigation";
-import { useScrollTo } from "./lenis-provider";
+import { useScrollTo } from "@/components/providers/lenis-provider";
 
 export default function NavLink({
   data,

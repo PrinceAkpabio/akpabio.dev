@@ -2,9 +2,9 @@
 
 import styles from "@/styles/contact.module.scss";
 import Link from "next/link";
-import { useScrollTo } from "./lenis-provider";
+import { useScrollTo } from "@/components/providers/lenis-provider";
 import Flashlight from "./flashlight";
-import { useTranslation } from "./language-provider";
+import { useTranslation } from "@/components/providers/language-provider";
 
 export default function Contact() {
   const scrollTo = useScrollTo();
