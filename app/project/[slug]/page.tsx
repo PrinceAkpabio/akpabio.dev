@@ -4,6 +4,7 @@ import Contact from "@/components/sections/contact";
 import { use, useEffect } from "react";
 import styles from "@/styles/project.module.scss";
 import Link from "next/link";
+import { ArrowUpRight } from "@phosphor-icons/react";
 import { useLenis } from "@/components/providers/lenis-provider";
 import { useTranslation } from "@/components/providers/language-provider";
 import Flashlight from "@/components/sections/flashlight";
@@ -17,7 +18,9 @@ export default function Page({ params }: { params: Promise<{ slug: string }> }) 
   const project = projects.find((p) => p.id === projectId) ?? projects[0];
   const images = project.images ?? [project.src];
   const lenis = useLenis();
-  const { t } = useTranslation();
+  const { t, dict } = useTranslation();
+  const item =
+    dict.project.items.find((it) => it.id === project.id) ?? dict.project.items[0];
 
   const hasPrevious = projectId > 1;
   const hasNext = projectId < projects.length;
@@ -45,24 +48,75 @@ export default function Page({ params }: { params: Promise<{ slug: string }> }) 
 
         <div className={styles.projectName}>
           <p className={styles.name} data-flashlight="grow">
-            {project.title}
+            {item.title}
           </p>
         </div>
 
         <div className={styles.project}>
           <div className={styles.projectDetails}>
-            {project.tags.map((tag) => (
-              <div className={styles.tag} key={tag.label}>
-                <div className={styles.label}>
-                  {t(`project.labels.${tag.label}`)}
-                </div>
-                <div className={styles.content}>{tag.content}</div>
+            <div className={styles.meta}>
+              <div className={styles.tag}>
+                <div className={styles.label}>{t("project.labels.company")}</div>
+                <div className={styles.content}>{project.company}</div>
               </div>
-            ))}
+              <div className={styles.tag}>
+                <div className={styles.label}>{t("project.labels.role")}</div>
+                <div className={styles.content}>{item.role}</div>
+              </div>
+              <div className={styles.tag}>
+                <div className={styles.label}>{t("project.labels.year")}</div>
+                <div className={styles.content}>{item.year}</div>
+              </div>
+            </div>
+
+            <div className={styles.tag}>
+              <div className={styles.label}>{t("project.labels.overview")}</div>
+              <p className={styles.content}>{item.overview}</p>
+            </div>
+
+            <div className={styles.tag}>
+              <div className={styles.label}>
+                {t("project.labels.contributions")}
+              </div>
+              <ul className={styles.contributions}>
+                {item.contributions.map((contribution) => (
+                  <li key={contribution} className={styles.content}>
+                    {contribution}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className={styles.tag}>
+              <div className={styles.label}>{t("project.labels.stack")}</div>
+              <div className={styles.stack}>
+                {project.stack.map((tech) => (
+                  <span key={tech} className={styles.chip}>
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className={styles.tag}>
+              <div className={styles.label}>{t("project.labels.outcome")}</div>
+              <p className={styles.content}>{item.outcome}</p>
+            </div>
+
+            {project.liveUrl && (
+              <Link
+                href={project.liveUrl}
+                className={styles.liveLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t("project.visitSite")} <ArrowUpRight weight="bold" />
+              </Link>
+            )}
           </div>
 
           <div className={styles.projectImage} data-flashlight="grow">
-            <ProjectGallery images={images} alt={project.title} />
+            <ProjectGallery images={images} alt={item.title} />
           </div>
         </div>
 

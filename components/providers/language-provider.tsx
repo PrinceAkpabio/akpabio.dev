@@ -41,12 +41,16 @@ type LanguageContextValue = {
   locale: Locale;
   setLocale: (locale: Locale) => void;
   t: (key: string) => string;
+  // Resolved dictionary for the current locale — for reading structured values
+  // (objects / arrays, e.g. project items) that t()'s string lookup can't return.
+  dict: Dictionary;
 };
 
 const LanguageContext = createContext<LanguageContextValue>({
   locale: defaultLocale,
   setLocale: () => {},
   t: (key) => key,
+  dict: dictionaries[defaultLocale],
 });
 
 export const useTranslation = () => useContext(LanguageContext);
@@ -88,7 +92,9 @@ export default function LanguageProvider({
     lookup(dictionaries[locale], key) ?? lookup(dictionaries.en, key) ?? key;
 
   return (
-    <LanguageContext.Provider value={{ locale, setLocale, t }}>
+    <LanguageContext.Provider
+      value={{ locale, setLocale, t, dict: dictionaries[locale] }}
+    >
       {children}
     </LanguageContext.Provider>
   );

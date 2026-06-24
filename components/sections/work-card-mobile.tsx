@@ -11,7 +11,6 @@ import { useTranslation } from "@/components/providers/language-provider";
 
 export default function WorkCardMobile({
   src,
-  title,
   id,
   i,
   progress,
@@ -19,8 +18,9 @@ export default function WorkCardMobile({
   targetScale,
 }: WorkCardMobileProps) {
   const router = useRouter();
-  const { t } = useTranslation();
+  const { t, dict } = useTranslation();
   const container = useRef(null);
+  const title = dict.project.items.find((item) => item.id === id)?.title ?? "";
 
   const openProject = () => router.push(`/project/00${id}`);
 

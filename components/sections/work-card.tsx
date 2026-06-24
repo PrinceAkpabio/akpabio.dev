@@ -7,9 +7,10 @@ import { Project } from "@/lib/projects";
 import { activateOnKey } from "@/lib/a11y";
 import { useTranslation } from "@/components/providers/language-provider";
 
-export default function WorkCard({ src, title, id }: Project) {
+export default function WorkCard({ src, id }: Project) {
   const router = useRouter();
-  const { t } = useTranslation();
+  const { t, dict } = useTranslation();
+  const title = dict.project.items.find((item) => item.id === id)?.title ?? "";
 
   const openProject = () => router.push(`/project/00${id}`);
 
