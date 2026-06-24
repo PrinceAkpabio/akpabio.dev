@@ -46,6 +46,36 @@
         text-transform: lowercase;
         z-index: 7;
       }
+
+      .socials {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .socialLink {
+        @include fixedsys;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--black-0, #999);
+        letter-spacing: 0.04rem;
+        text-transform: lowercase;
+        text-decoration: none;
+        transition: color 0.2s ease;
+
+        svg {
+          font-size: 1.25rem;
+        }
+
+        // Green on hover, inverted against the green cursor mask so it stays
+        // readable (same trick as the big text)
+        &:hover {
+          color: var(--primary, #0f0);
+          mix-blend-mode: difference;
+
+          @include light-blend-normal;
+        }
+      }
     }
 
     .right {
