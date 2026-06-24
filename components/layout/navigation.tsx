@@ -6,8 +6,9 @@ import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { menuSlide } from "@/lib/anim";
 import NavLink from "./navigation-link";
-import { SunDim } from "@phosphor-icons/react";
+import { SunDim, SpeakerSimpleHigh, SpeakerSimpleSlash } from "@phosphor-icons/react";
 import { useTheme } from "@/components/providers/theme-provider";
+import { useSound } from "@/components/providers/sound-provider";
 import { useTranslation } from "@/components/providers/language-provider";
 import LanguageSwitcher from "./language-switcher";
 
@@ -31,6 +32,7 @@ export interface NavLinkActionInterface {
 export default function Nav({ openMenu }: NavLinkActionInterface) {
   const pathname = usePathname();
   const { toggleTheme } = useTheme();
+  const { playing: soundOn, toggle: toggleSound } = useSound();
   const { t } = useTranslation();
 
   const navItems: NavItem[] = [
@@ -65,6 +67,19 @@ export default function Nav({ openMenu }: NavLinkActionInterface) {
         </div>
 
         <div className={styles.footer}>
+          <button
+            type="button"
+            className={styles.soundToggle}
+            onClick={toggleSound}
+            aria-label={t("a11y.toggleSound")}
+            aria-pressed={soundOn}
+          >
+            {soundOn ? (
+              <SpeakerSimpleHigh weight="regular" />
+            ) : (
+              <SpeakerSimpleSlash weight="regular" />
+            )}
+          </button>
           <button
             type="button"
             className={styles.themeToggle}

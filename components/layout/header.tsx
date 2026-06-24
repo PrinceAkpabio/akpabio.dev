@@ -1,16 +1,18 @@
 "use client";
 
 import styles from "@/styles/header.module.scss";
-import { SunDim } from "@phosphor-icons/react";
+import { SunDim, SpeakerSimpleHigh, SpeakerSimpleSlash } from "@phosphor-icons/react";
 import BurgerMenu from "./burger-menu";
 import { MenuState } from "@/types/menu";
 import Link from "next/link";
 import { useTheme } from "@/components/providers/theme-provider";
+import { useSound } from "@/components/providers/sound-provider";
 import { useTranslation } from "@/components/providers/language-provider";
 import LanguageSwitcher from "./language-switcher";
 
 export default function Header({ isActive, openMenu }: MenuState) {
   const { toggleTheme } = useTheme();
+  const { playing: soundOn, toggle: toggleSound } = useSound();
   const { t } = useTranslation();
 
   return (
@@ -27,6 +29,19 @@ export default function Header({ isActive, openMenu }: MenuState) {
         </div>
       </div>
       <div className={styles.headerSection}>
+        <button
+          type="button"
+          className={styles.soundToggle}
+          onClick={toggleSound}
+          aria-label={t("a11y.toggleSound")}
+          aria-pressed={soundOn}
+        >
+          {soundOn ? (
+            <SpeakerSimpleHigh weight="regular" />
+          ) : (
+            <SpeakerSimpleSlash weight="regular" />
+          )}
+        </button>
         <button
           type="button"
           className={styles.themeToggle}

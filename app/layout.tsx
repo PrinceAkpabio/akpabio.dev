@@ -4,6 +4,7 @@ import "./globals.css";
 import PageWrapper from "@/components/layout/page-wrapper";
 import ThemeProvider from "@/components/providers/theme-provider";
 import LanguageProvider from "@/components/providers/language-provider";
+import SoundProvider from "@/components/providers/sound-provider";
 
 const fixedSys62 = localFont({ src: "./Fixedsys62.ttf" });
 
@@ -32,7 +33,9 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: initScript }} />
         <ThemeProvider>
           <LanguageProvider>
-            <PageWrapper>{children}</PageWrapper>
+            <SoundProvider>
+              <PageWrapper>{children}</PageWrapper>
+            </SoundProvider>
           </LanguageProvider>
         </ThemeProvider>
       </body>
