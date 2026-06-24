@@ -11,6 +11,7 @@ import { useTranslation } from "@/components/providers/language-provider";
 
 export default function WorkCardMobile({
   src,
+  srcMobile,
   id,
   i,
   progress,
@@ -53,7 +54,7 @@ export default function WorkCardMobile({
             <Image
               fill
               sizes="100vw"
-              src={src}
+              src={srcMobile ?? src}
               alt={t("a11y.projectImage")}
               className={styles.workItemImage}
             />

@@ -38,7 +38,7 @@
     position: relative;
     z-index: 8;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: 5vw;
     column-gap: 1.5rem;
     width: 100%;
@@ -74,11 +74,9 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        object-position: top;
         display: block;
         box-sizing: border-box;
-        background: linear-gradient(0deg, #fff 0%, #fff 100%),
-          lightgray 50% / cover no-repeat;
-        background-blend-mode: saturation, normal;
       }
 
       .workItemName {
@@ -90,19 +88,22 @@
         text-transform: lowercase;
       }
 
-      // Staggered masonry derived from the card index, so it scales with the
-      // number of projects: 4 columns, each card spans 4 rows, columns offset
-      // by 2 rows and stacked every 5. Bump the rank range to allow > 24 cards.
-      @for $rank from 0 through 5 {
-        @for $col from 1 through 4 {
-          &:nth-child(#{$rank * 4 + $col}) {
-            $row-start: 2 * $col - 1 + $rank * 5;
+      // Landscape masonry, index-driven. 3 wide columns; each card spans 4 rows
+      // and a column's next card stacks every 5 rows. The middle column dips 2
+      // rows while the outer columns stay high, so each rank reads as a V (left
+      // high, middle low, right high) and the cells interlock. Bump the rank
+      // range for more cards.
+      @for $rank from 0 through 7 {
+        @for $col from 1 through 3 {
+          &:nth-child(#{$rank * 3 + $col}) {
+            $row-start: 1 + if($col == 2, 2, 0) + $rank * 5;
             grid-column: #{$col} / #{$col + 1};
             grid-row: #{$row-start} / #{$row-start + 4};
           }
         }
       }
     }
+
   }
 
   .worksGridMobile {
@@ -161,6 +162,7 @@
 
     .workItemImage {
       object-fit: cover;
+      object-position: top;
     }
 
     .workItemName {

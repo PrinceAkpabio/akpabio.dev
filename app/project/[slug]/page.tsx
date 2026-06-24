@@ -10,13 +10,19 @@ import { useTranslation } from "@/components/providers/language-provider";
 import Flashlight from "@/components/sections/flashlight";
 import ProjectGallery from "@/components/sections/project-gallery";
 import SectionNav from "@/components/layout/section-nav";
+import useIsMobile from "@/hooks/useIsMobile";
 import { projects } from "@/lib/projects";
 
 export default function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
   const projectId = Number(slug);
   const project = projects.find((p) => p.id === projectId) ?? projects[0];
-  const images = project.images ?? [project.src];
+  const isMobile = useIsMobile();
+  const desktopImages = project.images ?? [project.src];
+  const mobileImages =
+    project.imagesMobile ??
+    (project.srcMobile ? [project.srcMobile] : desktopImages);
+  const images = isMobile ? mobileImages : desktopImages;
   const lenis = useLenis();
   const { t, dict } = useTranslation();
   const item =
@@ -116,7 +122,11 @@ export default function Page({ params }: { params: Promise<{ slug: string }> }) 
           </div>
 
           <div className={styles.projectImage} data-flashlight="grow">
-            <ProjectGallery images={images} alt={item.title} />
+            <ProjectGallery
+              images={images}
+              alt={item.title}
+              imagePosition={isMobile ? undefined : project.cardPosition}
+            />
           </div>
         </div>
 

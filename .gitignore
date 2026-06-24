@@ -37,3 +37,6 @@ next-env.d.ts
 
 # Local-only notes (never commit)
 *.local.md
+
+# Full-res source screenshots — kept locally for re-cropping, never deployed/committed
+/public/_raw/

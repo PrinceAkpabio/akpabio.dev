@@ -21,9 +21,11 @@ import styles from "@/styles/project-gallery.module.scss";
 export default function ProjectGallery({
   images,
   alt,
+  imagePosition,
 }: {
   images: string[];
   alt: string;
+  imagePosition?: string;
 }) {
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
@@ -76,6 +78,7 @@ export default function ProjectGallery({
           priority
           sizes="(max-width: 760px) 100vw, 760px"
           className={styles.thumbImage}
+          style={imagePosition ? { objectPosition: imagePosition } : undefined}
         />
         <span className={styles.expandHint}>
           {t("gallery.expand")} <ArrowUpRight weight="bold" />
