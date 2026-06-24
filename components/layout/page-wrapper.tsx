@@ -8,7 +8,6 @@ import Loading from "@/app/loading";
 import Nav from "./navigation";
 import LenisProvider from "@/components/providers/lenis-provider";
 import { LoadingContext } from "@/components/providers/loading-context";
-import { useSound } from "@/components/providers/sound-provider";
 
 type PageContextProps = {
   children: React.ReactNode;
@@ -17,7 +16,6 @@ type PageContextProps = {
 export default function PageWrapper({ children }: PageContextProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [isActive, setIsActive] = useState(false);
-  const { start: startSound } = useSound();
 
   // Revealed only once the loader counter reaches 100%
   const handleLoaderComplete = useCallback(() => setIsLoading(false), []);
@@ -35,10 +33,7 @@ export default function PageWrapper({ children }: PageContextProps) {
     }
 
     document.body.style.overflowY = "scroll";
-    // Arm the ambient loop once the page is revealed (plays now if the browser
-    // allows, otherwise on the visitor's first interaction)
-    startSound();
-  }, [isLoading, startSound]);
+  }, [isLoading]);
 
   return (
     <LenisProvider paused={isLoading || isActive}>

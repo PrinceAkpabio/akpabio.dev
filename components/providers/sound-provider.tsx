@@ -16,11 +16,9 @@ const VOLUME = 0.25;
 const SoundContext = createContext<{
   playing: boolean;
   toggle: () => void;
-  start: () => void;
 }>({
   playing: false,
   toggle: () => {},
-  start: () => {},
 });
 
 export const useSound = () => useContext(SoundContext);
@@ -31,10 +29,10 @@ const wantsSound = () => {
   return v === "on" || v === "1" || v === "true";
 };
 
-// Ambient loop. `enabled` is the intent (armed); `playing` is the real playback
-// state, so the icon only shows "on" once audio is actually sounding. It starts
-// from the toggle, a `?sound=on` link, or once the loader reveals the page — and
-// if the browser blocks autoplay (no gesture yet), it starts on the first input.
+// Ambient loop, off by default. `enabled` is the intent (armed); `playing` is the
+// real playback state, so the icon only shows "on" once audio is actually sounding.
+// It starts from the toggle, or from a `?sound=on` link — and if the browser blocks
+// autoplay (no gesture yet), it starts on the visitor's first interaction.
 export default function SoundProvider({ children }: { children: ReactNode }) {
   const [enabled, setEnabled] = useState<boolean>(wantsSound);
   const [playing, setPlaying] = useState(false);
@@ -79,10 +77,9 @@ export default function SoundProvider({ children }: { children: ReactNode }) {
   }, [enabled]);
 
   const toggle = useCallback(() => setEnabled((on) => !on), []);
-  const start = useCallback(() => setEnabled(true), []);
 
   return (
-    <SoundContext.Provider value={{ playing, toggle, start }}>
+    <SoundContext.Provider value={{ playing, toggle }}>
       {children}
       <audio ref={audioRef} src={SRC} loop preload="none" aria-hidden="true" />
     </SoundContext.Provider>
