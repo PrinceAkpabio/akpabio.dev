@@ -17,9 +17,9 @@ export const viewport: Viewport = {
 const initScript = `(function(){try{var d=document.documentElement;d.setAttribute('data-theme',localStorage.getItem('theme')||'dark');var l=localStorage.getItem('lang');if(l)d.setAttribute('lang',l);}catch(e){d.setAttribute('data-theme','dark');}})();`;
 
 export const metadata: Metadata = {
-  title: "Prince Akpabio — Frontend Developer",
+  title: "Prince Akpabio — Software Engineer",
   description:
-    "Prince is a frontend software developer with 5 years of experience.",
+    "Software engineer with 5 years building travel and fintech products. Based in Abuja, Nigeria. Available for hire.",
 };
 
 export default function RootLayout({
