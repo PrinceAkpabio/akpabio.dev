@@ -10,10 +10,10 @@ const de: Dictionary = {
   },
   hero: {
     intro:
-      "Ich bin ein Entwickler aus Abuja, Nigeria, der sich der Gestaltung interaktiver digitaler Erlebnisse im Web widmet und mit verschiedenen Branchenführern zusammenarbeitet, um dieses Ziel zu erreichen.",
+      "Softwareentwickler mit Sitz in Abuja, Nigeria. Fünf Jahre Erfahrung im Aufbau produktiver Oberflächen für Reise- und Fintech-Produkte, und derzeit vertiefe ich mich in Data Engineering und Backend-Systeme.",
     hireMe: "Stell mich ein",
-    role1: "Frontend",
-    role2: "Entwickler",
+    role1: "Software",
+    role2: "entwickler",
   },
   works: {
     title: "projekte",
@@ -21,7 +21,7 @@ const de: Dictionary = {
   contact: {
     title: "kontakt",
     message:
-      "Hast du eine Frage, einen Vorschlag oder ein Projekt, oder möchtest du an etwas zusammenarbeiten? Melde dich gerne.",
+      "Du baust etwas und brauchst einen versierten Ingenieur? Oder möchtest du einfach über Datensysteme und Reisetechnologie sprechen? So oder so, melde dich.",
     cta1: "lass uns",
     cta2: "reden",
     designedBy: "Gestaltet von",
@@ -44,19 +44,19 @@ const de: Dictionary = {
         id: 1,
         title: "Wakanow Travel Platform",
         role: "Frontend-Entwickler",
-        year: "2024 - heute",
+        year: "2024 – heute",
         overview:
-          "Wakanows zentrale Multi-Produkt-Reiseplattform - Flüge, Hotels, Zahlungen und Kontoverwaltung - für Kunden, Agenten und Mitarbeiter in Nigeria und darüber hinaus.",
+          "Wakanows zentrale Reiseplattform für Flugbuchungen, Hotelreservierungen, Reise-Extras, Zahlungen und die Verwaltung von Kundenkonten über mehrere Märkte hinweg. Eines der größten Reisetechnologie-Produkte Westafrikas, das Kunden, Agenten und interne Teams in großem Maßstab bedient.",
         contributions: [
-          "Kundenauthentifizierung: E-Mail/Passwort, Google SSO und Microsoft SSO",
-          "Anmelde- und Registrierungsabläufe für Agenten, Mitarbeiter und Kunden",
-          "Abläufe zum Zurücksetzen des Passworts und zur Kontowiederherstellung",
-          "Buchungsabläufe für Flüge und Hotels",
-          "Zahlungsintegrationen und dynamische, validierte Formulare",
-          "Verwaltung des Benutzerprofils",
+          "Aufbau und Pflege der zentralen Buchungserlebnisse für Flüge, Hotels und Reise-Extras",
+          "Umsetzung der Authentifizierungsabläufe für Kunden, Agenten und Mitarbeiter, einschließlich Google und Microsoft SSO",
+          "Entwicklung von Zahlungs- und Checkout-Integrationen, einschließlich PSS-Zahlungsunterstützung und Feature-Flag-gesteuerten Rollouts",
+          "Verbesserung der Währungsumrechnung und Preisdarstellung über mehrere Märkte hinweg",
+          "Erstellung dynamischer Formulare, Validierungsabläufe und Funktionen zur Verwaltung von Kundenprofilen",
+          "Beiträge zu gemeinsam genutzten Frontend-Modulen und plattformweiten Komponenten, die in mehreren Produkten verwendet werden",
         ],
         outcome:
-          "Mehr Anmeldeoptionen und ein reibungsloserer Onboarding-Prozess, mit wartbaren Frontend-Modulen, die von mehreren Produktteams genutzt werden.",
+          "Lieferung von Funktionen in den Bereichen Buchung, Zahlungen, Authentifizierung und Kontoverwaltung sowie Mitwirkung an der Weiterentwicklung einer gemeinsamen Frontend-Architektur, die im gesamten Wakanow-Ökosystem genutzt wird.",
       },
       {
         id: 2,
@@ -64,15 +64,15 @@ const de: Dictionary = {
         role: "Frontend-Entwickler",
         year: "2026",
         overview:
-          "Ein eigenständiges Produkt für Umrah- und Saudi-Visa mit einem eigenen durchgängigen Buchungsablauf.",
+          "Ein eigenständiges Produkt für Umrah- und Saudi-Visa mit einem eigenen durchgängigen Buchungsablauf, getrennt von der Hauptplattform von Wakanow.",
         contributions: [
           "Visumantragsablauf und Erfassung von Kundendaten",
           "Passverwaltung und dynamische Antragsformulare",
-          "Validierungsabläufe und Buchungsverwaltung",
-          "Backend-API-Integrationen",
+          "Mehrstufige Validierungsabläufe und Buchungsverwaltung",
+          "Backend-API-Integrationen für die Visumbearbeitung",
         ],
         outcome:
-          "Ein eigenständiger Buchungsablauf, der komplexe, mehrstufige Visumanträge bewältigt.",
+          "Die Visumbeantragung ist ein komplexer, dokumentenlastiger Prozess. Die Arbeit bestand darin, ihn für Kunden navigierbar zu machen, ohne dass ein Mitarbeiter sie begleiten muss.",
       },
       {
         id: 3,
@@ -80,14 +80,14 @@ const de: Dictionary = {
         role: "Frontend-Entwickler",
         year: "2026",
         overview:
-          "Internes Betriebsportal, mit dem Mitarbeiter Visumanträge prüfen und bearbeiten.",
+          "Internes Betriebsportal, mit dem Wakanow-Mitarbeiter über die kundenseitige Buchungsplattform eingereichte Visumanträge prüfen, bearbeiten und verwalten.",
         contributions: [
           "Abläufe zur Antragsprüfung und Statusverwaltung",
           "Admin-Betriebswerkzeuge und Datenverwaltungsoberflächen",
-          "Automatisierung von Bearbeitungsschritten",
+          "Workflow-Automatisierung für die mehrstufige Bearbeitung",
         ],
         outcome:
-          "Gab dem Betriebspersonal ein strukturiertes Werkzeug zur Verwaltung von Anträgen im großen Maßstab.",
+          "Zuvor verfolgten die Betriebsteams die Anträge manuell. Das Portal gab ihnen einen richtigen Arbeitsablauf: prüfen, Status aktualisieren, nächste Schritte bearbeiten, alles an einem Ort.",
       },
       {
         id: 4,
@@ -95,30 +95,30 @@ const de: Dictionary = {
         role: "Software-Entwickler",
         year: "2024",
         overview:
-          "Eine wiederverwendbare Zahlungs- und Checkout-Erfahrung, die über mehrere Produkte hinweg genutzt wird, einschließlich White-Label-Partnern.",
+          "Eine wiederverwendbare Zahlungs- und Checkout-Erfahrung, entwickelt für den Einsatz über Wakanow-Produkte und White-Label-Partner hinweg.",
         contributions: [
           "Zahlungseinzug und generische Checkout-Erlebnisse",
-          "Unterstützung für White-Label-Zahlungen",
+          "Unterstützung für White-Label-Zahlungen über Partnerintegrationen hinweg",
           "Transaktionsverarbeitung und Zahlungs-Buchungs-Integration",
           "Fehlerbehandlung und Wiederherstellungsabläufe",
         ],
         outcome:
-          "Eine einzige Zahlungsoberfläche, die über mehrere Produkte und Partner hinweg wiederverwendet wird.",
+          "Dieselbe Zahlungsoberfläche läuft jetzt über mehrere Wakanow-Produkte und Partnerintegrationen. Sie wurde für die Wiederverwendung gebaut, und genau so wird sie genutzt.",
       },
       {
         id: 5,
         title: "FCMB Shares Purchase Platform",
         role: "Frontend-Entwickler",
-        year: "Juli 2024",
+        year: "2024",
         overview:
-          "Interne Plattform, mit der Mitarbeiter der FCMB-Bank Aktienkäufe von Kunden bearbeiten (Fintech-Bereich).",
+          "Interne Plattform, die von Mitarbeitern der First City Monument Bank (FCMB) an den Schaltern und auf Aufsichtsebene genutzt wird, um Anträge von Kunden auf Aktienkäufe zu bearbeiten.",
         contributions: [
           "Aktienkaufablauf und Oberflächen für das Kunden-Onboarding",
           "Formularverarbeitung und Validierung für Kaufanträge",
           "Integration mit Backend-Bankdiensten",
         ],
         outcome:
-          "Stattete Bankmitarbeiter mit einem fokussierten Werkzeug zur Bearbeitung von Aktienkäufen aus.",
+          "Schaltermitarbeiter und Vorgesetzte erhielten ein richtiges Werkzeug zur Bearbeitung von Aktienkäufen. Validierte Formulare, integriert mit Bankdiensten, gebaut für das Tempo eines Bankschalters.",
       },
     ],
   },
